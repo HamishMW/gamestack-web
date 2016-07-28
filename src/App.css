@@ -1,0 +1,49 @@
+.App {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #263238;
+  height: 100vh;
+  width: 100vw;
+}
+
+.App-logo {
+  height: 102px;
+  fill: #00BCD4;
+}
+
+.App-beta-tag {
+  margin: 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid orange;
+  display: block;
+  padding: 3px 10px;
+  flex: 0;
+  color: orange;
+  border-radius: 20px;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.App-title {
+  font-size: 28px;
+  color: rgba(255, 255, 255, 1);
+  font-weight: 300;
+  margin: 0;
+  margin-right: 5px;
+}
+
+.App-subheading {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: normal;
+  margin: 0;
+}
