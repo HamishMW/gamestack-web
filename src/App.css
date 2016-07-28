@@ -1,3 +1,29 @@
+@keyframes logo-intro {
+  0% {
+    fill: rgba(0, 0, 0, 0.4);
+    transform: translate3d(0, 70px, 0);
+  }
+  50% {
+    fill: rgba(0, 188, 212, 1);
+    transform: translate3d(0, 70px, 0);
+  }
+  100% {
+    fill: rgba(0, 188, 212, 1);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes text-intro {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -40px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 .App {
   text-align: center;
   display: flex;
@@ -8,9 +34,10 @@
   width: 100vw;
 }
 
-.App-logo {
-  height: 102px;
-  fill: #00BCD4;
+.Logo {
+  fill: rgba(0, 0, 0, 0.4);
+  transform: translate3d(0, 70px, 0);
+  animation: logo-intro 1.4s cubic-bezier(0.4, 0.0, 0.2, 1) 0.5s forwards;
 }
 
 .App-beta-tag {
@@ -18,11 +45,11 @@
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  border: 1px solid orange;
+  border: 1px solid #FF9100;
   display: block;
   padding: 3px 10px;
   flex: 0;
-  color: orange;
+  color: #FF9100;
   border-radius: 20px;
 }
 
@@ -31,6 +58,9 @@
   flex-direction: row;
   align-items: center;
   margin-top: 20px;
+  opacity: 0;
+  transform: translate3d(0, -40px, 0);
+  animation: text-intro 1s cubic-bezier(0.4, 0.0, 0.2, 1) 1.3s forwards;
 }
 
 .App-title {
@@ -46,4 +76,7 @@
   color: rgba(255, 255, 255, 0.3);
   font-weight: normal;
   margin: 0;
+  opacity: 0;
+  transform: translate3d(0, -40px, 0);
+  animation: text-intro 1s cubic-bezier(0.4, 0.0, 0.2, 1) 1.5s forwards;
 }
