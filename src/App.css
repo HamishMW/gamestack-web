@@ -10,7 +10,7 @@
 
 .Logo {
   fill: rgba(0, 0, 0, 0.4);
-  transform: translate3d(0, 70px, 0);
+  transform: translate3d(0, 45px, 0);
   animation: logo-intro 1.4s cubic-bezier(0.4, 0.0, 0.2, 1) 0.5s forwards;
 }
 
@@ -57,11 +57,11 @@
 @keyframes logo-intro {
   0% {
     fill: rgba(0, 0, 0, 0.4);
-    transform: translate3d(0, 70px, 0);
+    transform: translate3d(0, 45px, 0);
   }
   50% {
     fill: rgba(0, 188, 212, 1);
-    transform: translate3d(0, 70px, 0);
+    transform: translate3d(0, 45px, 0);
   }
   100% {
     fill: rgba(0, 188, 212, 1);
