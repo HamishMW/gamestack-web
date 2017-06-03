@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #263238;
+  background-color: #21262F;
   height: 100vh;
   width: 100vw;
 }
@@ -17,12 +17,13 @@
 .App-beta-tag {
   margin: 0;
   font-size: 14px;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  border: 1px solid #FF9100;
+  background: rgba(41, 121, 255, 0.2);
   display: block;
   padding: 3px 10px;
-  color: #FF9100;
+  color: rgba(41, 121, 255, 1);
   border-radius: 80px;
 }
 
@@ -60,11 +61,11 @@
     transform: translate3d(0, 45px, 0);
   }
   50% {
-    fill: rgba(0, 188, 212, 1);
+    fill: rgba(41, 121, 255, 1);
     transform: translate3d(0, 45px, 0);
   }
   100% {
-    fill: rgba(0, 188, 212, 1);
+    fill: rgba(41, 121, 255, 1);
     transform: translate3d(0, 0, 0);
   }
 }

@@ -7,7 +7,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-details">
-          <Logo color="#00BCD4"/>
+          <Logo color="#2979FF"/>
           <div className="App-header">
             <h1 className="App-title">Gamestack</h1>
             <div className="App-beta-tag">Beta</div>
