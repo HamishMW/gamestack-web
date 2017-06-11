@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
-import Logo from './Logo';
-import './App.css';
+import Home from './screens/Home';
+import Auth from './screens/Auth';
+import {
+  BrowserRouter as Router, Route, Link
+} from 'react-router-dom';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-details">
-          <Logo color="#2979FF"/>
-          <div className="App-header">
-            <h1 className="App-title">Gamestack</h1>
-            <div className="App-beta-tag">Beta</div>
-          </div>
-          <p className="App-subheading">coming soon</p>
-        </div>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <Router>
+    <div>
+      <Route exact path="/" component={Home}/>
+      <Route path="/auth" component={Auth}/>
+    </div>
+  </Router>
+)
 
 export default App;
