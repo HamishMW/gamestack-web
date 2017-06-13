@@ -1,0 +1,64 @@
+.Button {
+  height: 40px;
+  background: #2979FF;
+  border-radius: 6px;
+  border: 0;
+  transition: all 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  padding: 0;
+  cursor: pointer;
+}
+
+.Button:hover,
+.Button:focus,
+.Button:active {
+  background: #2B6FE2;
+  outline: none;
+}
+
+.Button--flat {
+  background: transparent;
+}
+
+.Button--flat:hover,
+.Button--flat:focus,
+.Button--flat:active {
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+.Button--shadow {
+  box-shadow:
+    0 4px 16px 0 rgba(0, 0, 0, 0.2),
+    0 12px 36px 0 rgba(0, 0, 0, 0.3);
+}
+
+.Button__content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.Button__icon {
+  margin-right: 6px;
+  margin-left: -8px;
+}
+
+.Button__text {
+  color: white;
+  font-size: 14px;
+  position: relative;
+  top: -1px;
+}
+
+.Button:disabled {
+  cursor: default;
+  opacity: 0.8;
+}
+
+.Button:disabled:hover {
+  cursor: default;
+  background: inherit;
+}

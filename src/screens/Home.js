@@ -1,17 +1,42 @@
 import React from 'react';
 import './Home.css';
 import Logo from '../components/Logo';
+import Button from '../components/Button';
 
 const Home = () => (
   <div className="Home">
-    <div className="Home__details">
-      <Logo className="Home__logo" color="#2979FF"/>
-      <div className="Home__header">
-        <h1 className="Home__title">Gamestack</h1>
-        <div className="Home__beta-tag">Beta</div>
+    <div className="Container">
+      <div className="backgroundHeader"/>
+      <div className="MainHero">
+        <div className="MainHero__details">
+          <div className="MainHero__logo">
+            <Logo className="MainHero__logo-icon" color="#2979FF"/>
+            <div className="MainHero__logo-text">Gamestack</div>
+          </div>
+          <div className="MainHero__text">
+            <h1 className="MainHero__title">Finish your games.</h1>
+            <p className="MainHero__description">Sync your game libraries. Track your progress and achievements.</p>
+          </div>
+          <div className="MainHero__actions">
+            <Button icon="apple" text="Request beta invite" style={{marginRight: 10, marginBottom: 20}} shadow onClick={() => window.location='mailto:contact@gamestackapp.com'} />
+            <Button icon="android" text="Android coming soon" flat disabled onClick={() => console.log('heyo')} />
+          </div>
+        </div>
+        <div className="MainHero__image">
+          <div className="PhoneContainer">
+            <div className="PhoneContainer__phone">
+              <div className="PhoneContainer__screen" />
+            </div>
+          </div>
+        </div>
       </div>
-      <p className="Home__subheading">coming soon</p>
     </div>
+    <footer className="Footer">
+      <div className="Footer__item">© Gamestack</div>
+      <a className="Footer__link" href="mailto:contact@gamestackapp.com">Contact</a>
+      <a className="Footer__link" href="/terms">Terms of Service</a>
+      <a className="Footer__link" href="/privacy">Privacy</a>
+    </footer>
   </div>
 )
 
