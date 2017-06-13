@@ -8,6 +8,7 @@
   "dependencies": {
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-ga": "^2.2.0",
     "react-markdown": "^2.5.0",
     "react-router-dom": "^4.1.1"
   },
