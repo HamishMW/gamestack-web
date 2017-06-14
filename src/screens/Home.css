@@ -16,12 +16,18 @@
   top: 0;
   right: 0;
   left: 0;
-  height: 700px;
+  height: 600px;
   background: url(../images/homeBackground.jpg);
   background-size: cover;
-  background-position: -30px center;
+  background-position: top center;
   background-repeat: no-repeat;
-  opacity: 0.5;
+  opacity: 0.9;
+}
+
+@media (max-width: 780px) {
+  .backgroundHeader {
+    background-position: top left;
+  }
 }
 
 .backgroundHeader:before {

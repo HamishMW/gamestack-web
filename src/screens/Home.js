@@ -2,6 +2,7 @@ import React from 'react';
 import './Home.css';
 import Logo from '../components/Logo';
 import Button from '../components/Button';
+import { Link } from 'react-router-dom'
 
 const Home = () => (
   <div className="Home">
@@ -34,8 +35,8 @@ const Home = () => (
     <footer className="Footer">
       <div className="Footer__item">© Gamestack</div>
       <a className="Footer__link" href="mailto:contact@gamestackapp.com">Contact</a>
-      <a className="Footer__link" href="/terms">Terms of Service</a>
-      <a className="Footer__link" href="/privacy">Privacy</a>
+      <Link className="Footer__link" to="/terms">Terms of Service</Link>
+      <Link className="Footer__link" to="/privacy">Privacy</Link>
     </footer>
   </div>
 )
