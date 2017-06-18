@@ -1,5 +1,5 @@
 .Button {
-  height: 40px;
+  height: 46px;
   background: #2979FF;
   border-radius: 6px;
   border: 0;
@@ -29,8 +29,8 @@
 
 .Button--shadow {
   box-shadow:
-    0 4px 16px 0 rgba(0, 0, 0, 0.2),
-    0 12px 36px 0 rgba(0, 0, 0, 0.3);
+    0 4px 16px 0 rgba(0, 0, 0, 0.15),
+    0 12px 36px 0 rgba(0, 0, 0, 0.2);
 }
 
 .Button__content {
