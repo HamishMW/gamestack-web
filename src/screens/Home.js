@@ -5,6 +5,8 @@ import Button from '../components/Button';
 import Icon from '../utils/Icon';
 import SteamCardImg from '../images/steam-card.jpg';
 import BlizzardCardImg from '../images/blizzard-card.jpg';
+import ConsoleCardImg from '../images/console-card.jpg';
+import HeroVideo from '../images/app-preview.mp4';
 import { Link } from 'react-router-dom';
 
 const ImageCard = (props) => {
@@ -31,21 +33,25 @@ const Home = () => (
         <div className="MainHero__details">
           <div className="MainHero__logo">
             <Logo className="MainHero__logo-icon" color="#2979FF"/>
-            <div className="MainHero__logo-text">Gamestack</div>
+            <h1 className="MainHero__logo-text">Gamestack</h1>
           </div>
           <div className="MainHero__text">
-            <h1 className="MainHero__title">Finish your games.</h1>
+            <h2 className="MainHero__title">Finish your games</h2>
             <p className="MainHero__description">A todo list and progress tracker to help you organize and play all of your games.</p>
           </div>
           <div className="MainHero__actions">
-            <Button icon="apple" text="Request beta invite" style={{marginRight: 10, marginBottom: 20}} shadow onClick={() => window.location='mailto:contact@gamestackapp.com'} />
+            <Button icon="apple" text="Request beta invite" style={{marginRight: 10, marginBottom: 20}} shadow onClick={() => window.location='mailto:contact@gamestackapp.com?subject=Gamestack Beta Request'} />
             <Button icon="android" text="Android coming soon" flat disabled />
           </div>
         </div>
         <div className="MainHero__image">
           <div className="PhoneContainer">
             <div className="PhoneContainer__phone">
-              <div className="PhoneContainer__screen" />
+              <div className="PhoneContainer__screen">
+                <video className="PhoneContainer__video" autoPlay muted loop playsInline>
+      						<source src={HeroVideo} type="video/mp4" />
+      					</video>
+              </div>
             </div>
           </div>
         </div>
@@ -68,15 +74,14 @@ const Home = () => (
           shadow
           image={BlizzardCardImg}/>
         <ImageCard
-          logo="logo"
-          logoColor="rgba(0, 0, 0, 0.25)"
-          noImage
+          logo="console"
           description="More coming soon. Stay tuned for updates!"
-          image={BlizzardCardImg}/>
+          shadow
+          image={ConsoleCardImg}/>
       </div>
     </div>
     <footer className="Footer">
-      <div className="Footer__item">© Gamestack</div>
+      <div className="Footer__item">{`© ${new Date().getFullYear()} Hamish Williams`}</div>
       <a className="Footer__link" href="mailto:contact@gamestackapp.com">Contact</a>
       <Link className="Footer__link" to="/terms">Terms of Service</Link>
       <Link className="Footer__link" to="/privacy">Privacy</Link>

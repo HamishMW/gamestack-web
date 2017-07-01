@@ -88,6 +88,9 @@
 .MainHero__details {
   max-width: 450px;
   padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @media (max-width: 1000px) {
@@ -181,7 +184,7 @@
 
 .PhoneContainer {
   display: flex;
-  height: 500px;
+  height: 560px;
   overflow: hidden;
   padding-left: 50px;
   padding-right: 50px;
@@ -219,11 +222,15 @@
   left: 0;
   background: linear-gradient(rgba(33, 38, 47, 0), rgba(33, 38, 47, 1));
   height: 240px;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .PhoneContainer__phone {
   display: flex;
+  position: relative;
   background: linear-gradient(#2E3747, #21262F);
+  justify-content: center;
   border-radius: 50px;
   width: 100%;
   max-width: 348px;
@@ -236,6 +243,18 @@
     inset 0 4px 7px 1px rgba(0, 0, 0, 0.23);
 }
 
+.PhoneContainer__phone:before {
+  content: '';
+  height: 6px;
+  width: 60px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  margin-left: -30px;
+}
+
 @media (max-width: 780px) {
   .PhoneContainer__phone {
     height: 600px;
@@ -245,23 +264,28 @@
 @media (max-width: 400px) {
   .PhoneContainer__phone {
     height: 540px;
+    max-width: 300px;
   }
 }
 
+@media (max-width: 350px) {
+  .PhoneContainer__phone {
+    max-width: 280px;
+  }
+}
 
 .PhoneContainer__screen {
   flex: 1 0 auto;
-  margin: 74px 22px;
-  background-image: url(../images/home-screenshot@2x.png);
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-  box-shadow: 0 0 0 2px #21262F;
+  padding: 74px 22px;
   border-radius: 4px;
+  max-width: 100%;
 }
 
-@media (min-device-pixel-ratio: 3) {
-  .PhoneContainer__screen { background-image: url(../images/home-screenshot@3x.png); }
+.PhoneContainer__video {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 0 2px #21262F;
+  border-radius: 4px;
 }
 
 .Footer {
