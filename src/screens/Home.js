@@ -7,6 +7,7 @@ import SteamCardImg from '../images/steam-card.jpg';
 import BlizzardCardImg from '../images/blizzard-card.jpg';
 import ConsoleCardImg from '../images/console-card.jpg';
 import HeroVideo from '../images/app-preview.mp4';
+import HeroVideoFrame from '../images/app-preview-frame.jpg';
 import { Link } from 'react-router-dom';
 
 const ImageCard = (props) => {
@@ -48,7 +49,7 @@ const Home = () => (
           <div className="PhoneContainer">
             <div className="PhoneContainer__phone">
               <div className="PhoneContainer__screen">
-                <video className="PhoneContainer__video" autoPlay muted loop playsInline>
+                <video className="PhoneContainer__video" autoPlay muted loop playsInline poster={HeroVideoFrame}>
       						<source src={HeroVideo} type="video/mp4" />
       					</video>
               </div>
