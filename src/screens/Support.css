@@ -1,0 +1,33 @@
+.Support {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  color: white;
+}
+
+.Support__text-section {
+  max-width: 1040px;
+  padding: 200px 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 90px;
+  text-align: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.Support__text-section-title {
+  font-size: 32px;
+  font-weight: 400;
+  margin: 0 0 15px;
+}
+
+.Support__text-section-description {
+  font-size: 16px;
+  max-width: 435px;
+  margin: 0;
+  line-height: 1.4;
+}

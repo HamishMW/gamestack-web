@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from './screens/Home';
 import Auth from './screens/Auth';
+import Support from './screens/Support';
 import Terms from './articles/Terms';
 import Privacy from './articles/Privacy';
 import {Helmet} from 'react-helmet';
@@ -39,6 +40,7 @@ const App = () => (
     <Router>
       <div>
         <Route exact path='/' component={Home}/>
+        <Route path='/support' component={Support}/>
         <Route path='/auth' component={Auth}/>
         <Route path='/terms' component={Terms}/>
         <Route path='/privacy' component={Privacy}/>

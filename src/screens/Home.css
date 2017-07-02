@@ -292,43 +292,6 @@
   object-fit: cover;
 }
 
-.Footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 60px;
-  flex: 1 0 auto;
-  position: relative;
-  align-items: flex-end;
-}
-
-.Footer__item,
-.Footer__link {
-  margin: 15px;
-  display: block;
-  font-size: 14px;
-}
-
-.Footer__link {
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-}
-
-.Footer__item {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-@media (max-width: 600px) {
-  .Footer {
-    flex-direction: column;
-    padding-bottom: 60px;
-    height: auto;
-    align-items: center;
-    justify-content: flex-end;
-  }
-}
-
 .Home__cards {
   max-width: 1040px;
   width: 100%;

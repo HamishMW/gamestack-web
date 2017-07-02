@@ -2,6 +2,7 @@ import React from 'react';
 import './Home.css';
 import Logo from '../components/Logo';
 import Button from '../components/Button';
+import Footer from '../components/Footer';
 import Icon from '../utils/Icon';
 import SteamCardImg from '../images/steam-card.jpg';
 import BlizzardCardImg from '../images/blizzard-card.jpg';
@@ -76,18 +77,13 @@ const Home = () => (
           image={BlizzardCardImg}/>
         <ImageCard
           logo="console"
+          logoColor="rgba(255, 255, 255, 0.2)"
           description="More coming soon. Stay tuned for updates!"
-          shadow
+          noImage
           image={ConsoleCardImg}/>
       </div>
     </div>
-    <footer className="Footer">
-      <div className="Footer__item">{`© ${new Date().getFullYear()} Hamish Williams`}</div>
-      <a className="Footer__link" href="mailto:contact@gamestackapp.com">Contact</a>
-      <Link className="Footer__link" to="/terms">Terms of Service</Link>
-      <Link className="Footer__link" to="/privacy">Privacy</Link>
-      <a className="Footer__link" href="https://twitter.com/gamestackapp">Twitter</a>
-    </footer>
+    <Footer />
   </div>
 )
 
