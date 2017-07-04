@@ -1,5 +1,7 @@
 import React from 'react';
 import Article from '../components/Article';
+import {Helmet} from 'react-helmet';
+import Footer from '../components/Footer';
 
 const input = `
 # Gamestack Terms of Service
@@ -106,7 +108,14 @@ Questions or comments about the Service may be directed to us at the email addre
 `;
 
 const Terms = () => (
-  <Article source={input} />
+  <div className="Terms">
+    <Helmet>
+      <title>Terms</title>
+      <meta name="description" content='Gamestack terms of service'/>
+    </Helmet>
+    <Article source={input} />
+    <Footer />
+  </div>
 );
 
 export default Terms;

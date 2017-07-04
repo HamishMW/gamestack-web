@@ -1,5 +1,7 @@
 import React from 'react';
 import Article from '../components/Article';
+import {Helmet} from 'react-helmet';
+import Footer from '../components/Footer';
 
 const input = `
 # Gamestack Privacy Policy
@@ -82,7 +84,14 @@ If you have any questions about this privacy policy, please contact us at:  [con
 `;
 
 const Privacy = () => (
-  <Article source={input} />
+  <div className="Privacy">
+    <Helmet>
+      <title>Privacy</title>
+      <meta name="description" content='Gamestack privacy policy'/>
+    </Helmet>
+    <Article source={input} />
+    <Footer />
+  </div>
 );
 
 export default Privacy;

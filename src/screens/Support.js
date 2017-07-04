@@ -5,9 +5,15 @@ import Button from '../components/Button';
 import Footer from '../components/Footer';
 import Icon from '../utils/Icon';
 import { Link } from 'react-router-dom';
+import {Helmet} from 'react-helmet';
 
 const Support = () => (
   <div className="Support">
+    <Helmet>
+      <title>Support</title>
+      <meta name="description" content='Contact Gamestack support if you‘re having problems'/>
+    </Helmet>
+
     <div className="Container">
       <div className="backgroundHeader"/>
       <div className="Support__text-section">
