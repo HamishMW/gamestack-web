@@ -15,7 +15,6 @@ const Support = () => (
     </Helmet>
 
     <div className="Container">
-      <div className="backgroundHeader"/>
       <div className="Support__text-section">
         <h2 className="Support__text-section-title">Gamestack Support</h2>
         <p className="Support__text-section-description">Reach out to us if you have feedback or want to report a technical problem.</p>

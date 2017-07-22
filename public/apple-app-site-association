@@ -1,0 +1,9 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [{
+      "appID": "8TKQ56J9GD.com.gamestackapp.gamestack",
+      "paths": ["/app/*"]
+    }]
+  }
+}
