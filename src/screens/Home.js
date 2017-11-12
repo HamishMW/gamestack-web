@@ -48,7 +48,7 @@ export default class Home extends Component {
                 <p className="MainHero__description">Sync your Steam & Blizzard game libraries. Track your progress, achievements, and time played.</p>
               </div>
               <div className="MainHero__actions">
-                <Button icon="apple" text="Request beta invite" style={{marginRight: 10, marginBottom: 20}} shadow onClick={() => window.location='mailto:contact@gamestackapp.com?subject=Gamestack Beta Request'} />
+                <Button icon="apple" text="Request beta invite" className="MainHero__button" shadow onClick={() => window.location='mailto:contact@gamestackapp.com?subject=Gamestack Beta Request'} />
                 <Button icon="android" text="Android coming soon" flat disabled />
               </div>
             </div>
