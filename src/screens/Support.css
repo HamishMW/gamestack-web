@@ -4,7 +4,7 @@
   justify-content: center;
   width: 100%;
   min-height: 100vh;
-  color: white;
+  color: rgba(var(--color-text), 1);
 }
 
 .Support__text-section {

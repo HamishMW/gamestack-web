@@ -6,6 +6,7 @@ import Terms from './articles/Terms';
 import Privacy from './articles/Privacy';
 import {Helmet} from 'react-helmet';
 import TagManager from './utils/TagManager';
+import './variables.css';
 
 import {
   BrowserRouter as Router, Route, Link

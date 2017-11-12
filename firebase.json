@@ -5,16 +5,16 @@
   "hosting": {
     "public": "build",
     "rewrites": [{
-      "source": "/auth/steam/redirect",
+      "source": "/functions/steamRedirect",
       "function": "steamRedirect"
     },{
-      "source": "/auth/steam/verify",
+      "source": "/functions/steamVerify",
       "function": "steamVerify"
     },{
-      "source": "/auth/blizzard/redirect",
+      "source": "/functions/blizzardRedirect",
       "function": "blizzardRedirect"
     },{
-      "source": "/auth/blizzard/token",
+      "source": "/functions/blizzardToken",
       "function": "blizzardToken"
     },{
       "source": "**",

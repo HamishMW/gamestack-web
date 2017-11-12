@@ -1,10 +1,10 @@
 .Button {
-  height: 46px;
-  background: #2979FF;
+  height: 48px;
+  background: rgba(var(--color-primary), 1);
   border-radius: 6px;
   border: 0;
   transition: all 0.3s ease;
-  font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  font-family: var(--font-stack);
   padding: 0;
   cursor: pointer;
 }
@@ -23,14 +23,14 @@
 .Button--flat:hover,
 .Button--flat:focus,
 .Button--flat:active {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(var(--color-text), 0.1);
   outline: none;
 }
 
 .Button--shadow {
   box-shadow:
-    0 4px 16px 0 rgba(0, 0, 0, 0.15),
-    0 12px 36px 0 rgba(0, 0, 0, 0.2);
+    0 4px 16px 0 rgba(var(--color-black), 0.15),
+    0 12px 36px 0 rgba(var(--color-black), 0.2);
 }
 
 .Button__content {

@@ -1,13 +1,13 @@
 .Loader {
-  fill: rgba(0, 0, 0, 0.4);
-  animation: loader--pulse 1.4s cubic-bezier(0.4, 0.0, 0.2, 1) 0.5s infinite alternate;
+  fill: rgba(var(--color-black), 0.4);
+  animation: loader--pulse 1.4s var(--curve-fastout-slowin) 0.5s infinite alternate;
 }
 
 @keyframes loader--pulse {
   0% {
-    fill: rgba(0, 0, 0, 0.4);
+    fill: rgba(var(--color-black), 0.4);
   }
   100% {
-    fill: rgba(41, 121, 255, 1);
+    fill: rgba(var(--color-primary), 1);
   }
 }
