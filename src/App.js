@@ -9,7 +9,7 @@ import TagManager from './utils/TagManager';
 import './variables.css';
 
 import {
-  BrowserRouter as Router, Route, Link
+  BrowserRouter as Router, Route
 } from 'react-router-dom';
 
 const App = () => (

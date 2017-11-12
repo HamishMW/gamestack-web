@@ -9,14 +9,20 @@
 
 .Support__text-section {
   max-width: 1040px;
-  padding: 200px 20px 0;
+  padding: 60px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 90px;
+  margin: 0 auto 20px;
   text-align: center;
   flex-direction: column;
   position: relative;
+}
+
+@media (max-width: 1000px) {
+  .Support__text-section {
+    max-width: 100vw;
+  }
 }
 
 .Support__text-section-title {

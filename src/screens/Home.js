@@ -12,7 +12,6 @@ import BackgroundMedium2x from '../images/background-medium@2x.png';
 import BackgroundSmall from '../images/background-small.png';
 import BackgroundSmall2x from '../images/background-small@2x.png';
 import HeroVideoFrame from '../images/app-preview-frame.jpg';
-import { Link } from 'react-router-dom';
 
 export default class Home extends Component {
   state = {
@@ -36,10 +35,9 @@ export default class Home extends Component {
     const { isDesktop } = this.state;
 
     return (
-      <div className="Home">
+      <main className="Home">
         <div className="Container">
-
-          <div className="MainHero">
+          <section className="MainHero">
             <div className="MainHero__details">
               <div className="MainHero__logo">
                 <Logo className="MainHero__logo-icon" color="#2979FF"/>
@@ -55,9 +53,9 @@ export default class Home extends Component {
               </div>
             </div>
             { isDesktop && <Footer className="MainHero__footer" /> }
-          </div>
+          </section>
 
-          <div className="PreviewSection">
+          <section className="PreviewSection">
             <div className="PhoneContainer">
               <div className="PhoneContainer__phone">
                 <div className="PhoneContainer__screen">
@@ -70,8 +68,8 @@ export default class Home extends Component {
 
             <div className="PreviewSection__detail">
               <div className="PreviewSection__detailSection">
-                <Icon className="PreviewSection__detailIcon" icon="steam" color="rgba(var(--color-white), 0.8)"/>
-                <Icon className="PreviewSection__detailIcon" icon="blizzard" color="rgba(var(--color-white), 0.8)" />
+                <Icon className="PreviewSection__detailIcon" icon="steam"/>
+                <Icon className="PreviewSection__detailIcon" icon="blizzard" />
               </div>
               <div className="PreviewSection__detailText">Currently supported</div>
             </div>
@@ -102,10 +100,10 @@ export default class Home extends Component {
                 <polygon points="0 0, 0 100, 100 100"/>
               </svg>
             </div>
-          </div>
+          </section>
           { !isDesktop && <Footer /> }
         </div>
-      </div>
+      </main>
     )
   }
 }

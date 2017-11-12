@@ -5,9 +5,9 @@ import Loader from '../components/Loader';
 class Auth extends Component {
   render() {
     return (
-      <div className="Auth">
+      <main className="Auth">
         <Loader/>
-      </div>
+      </main>
     );
   }
 }

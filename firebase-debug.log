@@ -1,0 +1,48 @@
+[debug] [2017-11-12T05:41:56.060Z] ----------------------------------------------------------------------
+[debug] [2017-11-12T05:41:56.062Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy --only hosting
+[debug] [2017-11-12T05:41:56.062Z] CLI Version:   3.14.0
+[debug] [2017-11-12T05:41:56.062Z] Platform:      darwin
+[debug] [2017-11-12T05:41:56.062Z] Node Version:  v7.10.0
+[debug] [2017-11-12T05:41:56.063Z] Time:          Sun Nov 12 2017 16:41:56 GMT+1100 (AEDT)
+[debug] [2017-11-12T05:41:56.063Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-12T05:41:56.081Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-12T05:41:56.081Z] > authorizing via signed-in user
+[debug] [2017-11-12T05:41:56.086Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/gamestack-app  
+ Sun Nov 12 2017 16:41:56 GMT+1100 (AEDT)
+[debug] [2017-11-12T05:41:57.528Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-12T05:41:57.528Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/gamestack-app/tokens  
+ Sun Nov 12 2017 16:41:57 GMT+1100 (AEDT)
+[debug] [2017-11-12T05:41:58.494Z] <<< HTTP RESPONSE 200
+[info] 1
+[info] 
+[info] === Deploying to 'gamestack-app'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing build directory for upload...
+[debug] [2017-11-12T05:42:01.646Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/gamestack-app/uploads/-KyijvUgMmZX_5WlgMW8?fileCount=27&message=  
+ Sun Nov 12 2017 16:42:01 GMT+1100 (AEDT)
+[debug] [2017-11-12T05:44:08.398Z] ----------------------------------------------------------------------
+[debug] [2017-11-12T05:44:08.402Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy --only hosting
+[debug] [2017-11-12T05:44:08.404Z] CLI Version:   3.14.0
+[debug] [2017-11-12T05:44:08.404Z] Platform:      darwin
+[debug] [2017-11-12T05:44:08.404Z] Node Version:  v7.10.0
+[debug] [2017-11-12T05:44:08.405Z] Time:          Sun Nov 12 2017 16:44:08 GMT+1100 (AEDT)
+[debug] [2017-11-12T05:44:08.405Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-11-12T05:44:08.423Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-11-12T05:44:08.424Z] > authorizing via signed-in user
+[debug] [2017-11-12T05:44:08.427Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/gamestack-app  
+ Sun Nov 12 2017 16:44:08 GMT+1100 (AEDT)
+[debug] [2017-11-12T05:44:09.438Z] <<< HTTP RESPONSE 200
+[debug] [2017-11-12T05:44:09.440Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/gamestack-app/tokens  
+ Sun Nov 12 2017 16:44:09 GMT+1100 (AEDT)
+[debug] [2017-11-12T05:44:10.388Z] <<< HTTP RESPONSE 200
+[info] 1
+[info] 
+[info] === Deploying to 'gamestack-app'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing build directory for upload...
+[debug] [2017-11-12T05:44:13.207Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/gamestack-app/uploads/-KyikQ_sUFsmOdXiapek?fileCount=27&message=  
+ Sun Nov 12 2017 16:44:13 GMT+1100 (AEDT)

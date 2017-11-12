@@ -224,7 +224,7 @@
   height: 100vh;
   width: 30vh;
   position: absolute;
-  left: 0;
+  left: -1px;
   z-index: 1;
   fill: rgba(var(--color-background), 1);
 }
@@ -234,12 +234,13 @@
     height: 20vw;
     width: 100vw;
     position: absolute;
-    bottom: 0;
+    left: 0;
+    bottom: -1px;
   }
 }
 
 .PreviewSection__angle--top {
-  top: 0;
+  top: -1px;
   bottom: auto;
 }
 
@@ -282,6 +283,7 @@
 
 .PreviewSection__detailIcon {
   margin-right: 15px;
+  fill: rgba(var(--color-white), 0.8);
 }
 
 @media (max-width: 1000px) {
