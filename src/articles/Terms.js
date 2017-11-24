@@ -4,7 +4,7 @@ import terms from './terms.md';
 
 export default class Privacy extends Component {
   state = {
-    markdown: null,
+    markdown: '',
   }
 
   componentWillMount() {

@@ -1,9 +1,10 @@
 import React from 'react';
 import './Footer.css';
 import { Link } from 'react-router-dom';
+import ClassNames from '../utils/ClassNames';
 
 const Footer = (props) => (
-  <footer className={`Footer ${props.className}`}>
+  <footer className={ClassNames(['Footer', props.className])}>
     <div className="Footer__row">
       <Link className="Footer__link" to="/support">Support</Link>
       <a className="Footer__link" href="mailto:contact@gamestackapp.com">Contact</a>

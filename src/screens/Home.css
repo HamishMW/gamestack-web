@@ -7,6 +7,16 @@
   color: white;
 }
 
+.Home__mobileFooter {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .Home__mobileFooter {
+    display: block;
+  }
+}
+
 .Container {
   display: flex;
   flex-direction: row;
@@ -151,12 +161,19 @@
   }
 }
 
+@media (max-width: 440px) {
+  .MainHero__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .MainHero__button {
   margin-right: 10px;
   margin-bottom: 20px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 440px) {
   .MainHero__button {
     margin-right: 0;
   }
@@ -180,8 +197,14 @@
   bottom: 0;
 }
 
+@media (max-width: 1000px) {
+  .MainHero__footer {
+    display: none;
+  }
+}
+
 .PreviewSection {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -194,6 +217,7 @@
   .PreviewSection {
     height: auto;
     padding: 180px 30px 100px;
+    overflow: hidden;
   }
 }
 
@@ -250,17 +274,19 @@
 }
 
 .PreviewSection__angle {
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   width: 30vh;
   position: absolute;
   left: -1px;
-  z-index: 1;
+  z-index: 20;
   fill: rgba(var(--color-background), 1);
 }
 
 @media (max-width: 1000px) {
   .PreviewSection__angle {
     height: 20vw;
+    min-height: 0;
     width: 100vw;
     position: absolute;
     left: 0;
@@ -271,6 +297,13 @@
 .PreviewSection__angle--top {
   top: -1px;
   bottom: auto;
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .PreviewSection__angle--top {
+    display: block;
+  }
 }
 
 .PreviewSection__detail {
@@ -349,7 +382,8 @@
   align-items: center;
   z-index: 10;
   overflow: visible;
-  padding-bottom: 40px;
+  padding-top: 40px;
+  padding-bottom: 80px;
 }
 
 @media (max-width: 1000px) {
@@ -362,7 +396,7 @@
 .PhoneContainer__phone {
   display: flex;
   position: relative;
-  background: linear-gradient(#2E3747, rgba(var(--color-background), 1));
+  background: linear-gradient(#2E3747, #21252B);
   justify-content: center;
   border-radius: 54px;
   max-width: 360px;
@@ -408,7 +442,7 @@
   flex: 1 0 auto;
   width: 100%;
   height: auto;
-  box-shadow: 0 0 0 2px rgba(33, 38, 47, 1);
+  box-shadow: 0 0 0 2px #21252B;
   border-radius: 4px;
   object-fit: cover;
 }
