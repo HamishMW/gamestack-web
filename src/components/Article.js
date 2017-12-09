@@ -5,6 +5,7 @@ import Logo from '../components/Logo';
 import Footer from '../components/Footer';
 import { Helmet } from 'react-helmet';
 import Theme from '../utils/Theme';
+import ScrollToTop from '../utils/ScrollToTop';
 
 const Fragment = React.Fragment;
 
@@ -30,6 +31,7 @@ class Article extends Component {
 
     return (
       <Fragment>
+        <ScrollToTop />
         <Helmet>
           <title>{title}</title>
           { description && <meta name="description" content={description}/>}
