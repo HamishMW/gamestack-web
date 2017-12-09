@@ -25,10 +25,7 @@ class App extends Component {
             <title>Gamestack | Track your games</title>
             <meta
               name="description"
-              content={
-                `Gamestack is a todo list for your game collection. Sync your Steam
-                and Blizzard game libraries, track your progress, finish your games.`
-              }
+              content={'Gamestack is a todo list for your game collection. Sync your Steam and Blizzard game libraries, track your progress, finish your games.'}
             />
           </Helmet>
           <TagManager gtmId="GTM-TCWSWLM" />
@@ -83,48 +80,6 @@ injectGlobal`
 
   ::selection {
     background: ${Theme.colorPrimary(0.4)};
-  }
-
-  .Markdown h1,
-  .Markdown h2,
-  .Markdown h3,
-  .Markdown h4 {
-    color: ${Theme.colorText(0.9)};
-    font-weight: 400;
-  }
-
-  .Markdown h1 {
-    font-size: 42px;
-  }
-
-  @media (max-width: ${Media.tablet}) {
-    .Markdown h1 {
-      font-size: 32px;
-    }
-  }
-
-  .Markdown h2 {
-    font-size: 24px;
-    margin-top: 50px;
-  }
-
-  .Markdown h3 {
-    font-size: 18px;
-    font-weight: 500;
-    margin-top: 30px;
-    margin-bottom: 15px;
-  }
-
-  .Markdown a,
-  .Markdown a:visited {
-    color: ${Theme.colorPrimary(1)};
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .Markdown a:hover {
-    background:  ${Theme.colorPrimary(0.2)};
   }
 `;
 
