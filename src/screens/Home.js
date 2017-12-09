@@ -195,7 +195,7 @@ const PreviewSectionImage = styled.img`
   width: 100%;
   opacity: ${props => props.show ? 0.5 : 0};
   ${props => props.blur && 'filter: blur(10px);'}
-  transition: all 1s ease;
+  transition: opacity 0.6s ease;
 `;
 
 const PreviewSectionAngle = styled.svg`
