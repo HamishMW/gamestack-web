@@ -34,7 +34,7 @@ class Home extends Component {
       <HomeContainer>
         <MainHero
           appName="Gamestack"
-          title="Finish your games"
+          title="Track your games"
           description={
             `Sync your Steam & Blizzard game libraries.
             Track your progress, achievements, and time played.`

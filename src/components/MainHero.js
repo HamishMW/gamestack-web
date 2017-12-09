@@ -114,6 +114,8 @@ const MainHeroTitle = styled.h1`
   font-size: 56px;
   font-weight: 600;
   margin: 20px 0 0;
+  line-height: 1;
+  margin-bottom: 5px;
 
   @media (max-width: ${Media.desktop}) {
     font-size: 48px;
