@@ -10,50 +10,6 @@ import ScrollToTop from '../utils/ScrollToTop';
 
 const Fragment = React.Fragment;
 
-const MarkDownStyle = `
-  .Markdown h1,
-  .Markdown h2,
-  .Markdown h3,
-  .Markdown h4 {
-    color: ${Theme.colorText(0.9)};
-    font-weight: 400;
-  }
-
-  .Markdown h1 {
-    font-size: 42px;
-  }
-
-  @media (max-width: ${Media.tablet}) {
-    .Markdown h1 {
-      font-size: 32px;
-    }
-  }
-
-  .Markdown h2 {
-    font-size: 24px;
-    margin-top: 50px;
-  }
-
-  .Markdown h3 {
-    font-size: 18px;
-    font-weight: 500;
-    margin-top: 30px;
-    margin-bottom: 15px;
-  }
-
-  .Markdown a,
-  .Markdown a:visited {
-    color: ${Theme.colorPrimary(1)};
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .Markdown a:hover {
-    background: ${Theme.colorPrimary(0.2)};
-  }
-`;
-
 class Article extends Component {
   state = {
     markdown: '',
@@ -80,9 +36,8 @@ class Article extends Component {
         <Helmet>
           <title>{title}</title>
           { description && <meta name="description" content={description}/>}
-          <style>{MarkDownStyle}</style>
         </Helmet>
-        <ArticleContainer className="Markdown">
+        <ArticleContainer>
           <ArticleHeader>
             <Logo color={Theme.colorPrimary(1)} />
           </ArticleHeader>
@@ -101,6 +56,48 @@ const ArticleContainer = styled.article`
   color: ${props => props.theme.colorText(0.7)};
   box-sizing: border-box;
   line-height: 1.4;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: ${props => props.theme.colorText(0.9)};
+    font-weight: 400;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+  @media (max-width: ${Media.tablet}) {
+    h1 {
+      font-size: 32px;
+    }
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-top: 50px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+
+  a,
+  a:visited {
+    color: ${props => props.theme.colorPrimary(1)};
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  a:hover {
+    background: ${props => props.theme.colorPrimary(0.2)};
+  }
 `;
 
 const ArticleHeader = styled.header`
