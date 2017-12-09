@@ -1,22 +1,34 @@
-import React, { Component } from 'react';
-import './Auth.css';
+import React from 'react';
+import styled from 'styled-components';
 import Loader from '../components/Loader';
 import { Helmet } from 'react-helmet';
 
-class Auth extends Component {
-  render() {
-    return (
-      <div>
-        <Helmet>
-          <title>'Waiting'</title>
-          <meta name="description" content='...waiting'/>
-        </Helmet>
-        <main className="Auth">
-          <Loader/>
-        </main>
-      </div>
-    );
-  }
+const Fragment = React.Fragment;
+
+const Auth = () => {
+  return (
+    <Fragment>
+      <Helmet>
+        <title>Waiting</title>
+        <meta name="description" content="waiting"/>
+      </Helmet>
+      <AuthWrapper>
+        <Loader/>
+      </AuthWrapper>
+    </Fragment>
+  );
 }
+
+const AuthWrapper = styled.main`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+`;
 
 export default Auth;

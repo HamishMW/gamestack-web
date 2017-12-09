@@ -3,29 +3,22 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
-    "react-scripts": "1.0.17",
-    "react-snapshot": "^1.3.0"
+    "flow-bin": "^0.53.0",
+    "react-scripts": "1.0.17"
   },
   "dependencies": {
-    "react": "^16.1.0",
-    "react-dom": "^16.1.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-google-tag-manager": "^2.2.1",
     "react-helmet": "^5.2.0",
     "react-markdown": "^2.5.1",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "styled-components": "^2.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && react-snapshot",
+    "build": "react-scripts build",
     "deploy": "firebase deploy --only hosting",
     "eject": "react-scripts eject"
-  },
-  "reactSnapshot": {
-    "include": [
-      "/functions"
-    ],
-    "exclude": [
-      "/auth"
-    ]
   }
 }
