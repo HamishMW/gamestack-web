@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import Logo from '../components/Logo';
@@ -11,29 +11,27 @@ import { Link } from 'react-router-dom';
 
 const Fragment = React.Fragment;
 
-class Article extends Component {
-  render() {
-    const { title, description, article } = this.props;
+const Article = (props) => {
+  const { title, description, article } = props;
 
-    return (
-      <Fragment>
-        <ScrollToTop />
-        <Helmet>
-          <title>{title}</title>
-          { description && <meta name="description" content={description}/>}
-        </Helmet>
-        <ArticleContainer>
-          <ArticleHeader>
-            <Link to="/"><Logo color={Theme.colorPrimary(1)} /></Link>
-          </ArticleHeader>
-          <ArticleContent>
-            <ReactMarkdown source={article} />
-          </ArticleContent>
-        </ArticleContainer>
-        <Footer />
-      </Fragment>
-    )
-  }
+  return (
+    <Fragment>
+      <ScrollToTop />
+      <Helmet>
+        <title>{title}</title>
+        { description && <meta name="description" content={description}/>}
+      </Helmet>
+      <ArticleContainer>
+        <ArticleHeader>
+          <Link to="/"><Logo color={Theme.colorPrimary(1)} /></Link>
+        </ArticleHeader>
+        <ArticleContent>
+          <ReactMarkdown source={article} />
+        </ArticleContent>
+      </ArticleContainer>
+      <Footer />
+    </Fragment>
+  )
 };
 
 const ArticleContainer = styled.article`

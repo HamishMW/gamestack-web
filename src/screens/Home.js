@@ -23,13 +23,21 @@ class Home extends Component {
     imageLoaded: false,
   };
 
+  componentDidMount() {
+    if (this.image.complete) {
+      this.setImageLoaded();
+    }
+  }
+
   setImageLoaded = () => {
-    this.setState({imageLoaded: true});
+    const isReactSnap = window.location.port === '45678';
+    !isReactSnap && this.setState({imageLoaded: true});
   }
 
   render() {
     const { imageLoaded } = this.state;
     const isReactSnap = window.location.port === '45678';
+    const imageAlt = 'Gamestack – organize all your games in one place';
 
     return (
       <HomeContainer>
@@ -66,30 +74,29 @@ class Home extends Component {
               <PreviewSectionImage
                 blur
                 src={BackgroundSmallBlur}
-                show={true}
+                show={!imageLoaded}
                 srcSet={`${BackgroundSmallBlur}`}
-                alt="Gamestack – organize all your games in one place"
+                alt={imageAlt}
               />
             </PreviewSectionPicture>
-            {!isReactSnap &&
-              <PreviewSectionPicture>
-                <source
-                  srcSet={`${BackgroundLarge} 1x, ${BackgroundLarge2x} 2x`}
-                  media="(min-width: 1400px)"
-                />
-                <source
-                  srcSet={`${BackgroundMedium} 1x, ${BackgroundMedium2x} 2x`}
-                  media="(min-width: 600px)"
-                />
-                <PreviewSectionImage
-                  src={BackgroundSmall}
-                  show={imageLoaded}
-                  onLoad={this.setImageLoaded}
-                  srcSet={`${BackgroundSmall} 1x, ${BackgroundSmall2x} 2x`}
-                  alt="Gamestack – organize all your games in one place"
-                />
-              </PreviewSectionPicture>
-            }
+            <PreviewSectionPicture>
+              <source
+                srcSet={`${BackgroundLarge} 1x, ${BackgroundLarge2x} 2x`}
+                media="(min-width: 1400px)"
+              />
+              <source
+                srcSet={`${BackgroundMedium} 1x, ${BackgroundMedium2x} 2x`}
+                media="(min-width: 600px)"
+              />
+              <PreviewSectionImage
+                innerRef={(image) => this.image = image}
+                src={BackgroundSmall}
+                show={imageLoaded && !isReactSnap}
+                onLoad={this.setImageLoaded}
+                srcSet={`${BackgroundSmall} 1x, ${BackgroundSmall2x} 2x`}
+                alt={imageAlt}
+              />
+            </PreviewSectionPicture>
 
             <PreviewSectionAngle
               top
