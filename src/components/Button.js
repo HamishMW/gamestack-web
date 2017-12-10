@@ -33,6 +33,7 @@ const ButtonWrapper = styled.button`
   font-family: inherit;
   padding: 0;
   cursor: pointer;
+  color: ${props => props.theme.colorText(1)};
 
   &:hover,
   &:focus,
@@ -48,6 +49,18 @@ const ButtonWrapper = styled.button`
     &:focus,
     &:active {
       background: ${props.theme.colorText(0.1)};
+      outline: none;
+    }
+  `}
+
+  ${props => props.secondary &&`
+    background: ${props.theme.colorWhite(1)};
+    color: ${props.theme.colorPrimary(1)};
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: ${props.theme.colorWhite(0.8)};;
       outline: none;
     }
   `}
@@ -83,9 +96,9 @@ const ButtonIcon = styled(Icon)`
 `;
 
 const ButtonText = styled.div`
-  color: white;
   font-size: 14px;
   position: relative;
+  font-weight: 600;
   line-height: 1;
 `;
 

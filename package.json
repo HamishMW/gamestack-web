@@ -1,10 +1,11 @@
 {
   "name": "gamestack-web",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "devDependencies": {
     "flow-bin": "^0.53.0",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.0.17",
+    "react-snap": "^1.1.1"
   },
   "dependencies": {
     "react": "^16.2.0",
@@ -17,8 +18,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && react-snap",
     "deploy": "firebase deploy --only hosting",
     "eject": "react-scripts eject"
+  },
+  "reactSnap": {
+    "skipThirdPartyRequests": true
   }
 }

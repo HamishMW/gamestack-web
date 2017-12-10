@@ -1,3 +1,4 @@
+const Terms = `
 # Gamestack Terms of Service
 
 Last Updated: June 2017
@@ -98,3 +99,5 @@ Please let us know what you think of the Service, these Terms and, in general, G
 ## Questions & Contact Information
 
 Questions or comments about the Service may be directed to us at the email address [contact@gamestackapp.com](mailto:contact@gamestackapp.com).
+`
+export default Terms;

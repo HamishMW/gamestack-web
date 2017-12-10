@@ -86,11 +86,21 @@ const PhoneContainerScreen = styled.div`
 
 const PhoneContainerVideo = styled.video`
   flex: 1 0 auto;
-  width: 100%;
-  height: auto;
   box-shadow: 0 0 0 2px #21252B;
   border-radius: 4px;
   object-fit: cover;
+  width: 240px;
+  height: 426px;
+
+  @media (min-width: ${Media.desktop}) {
+    width: 320px;
+    height: 568px;
+  }
+
+  @media (max-width: ${Media.mobile}) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export default PhoneContainer;

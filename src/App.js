@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 import { ThemeProvider, injectGlobal } from 'styled-components';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import Home from './screens/Home';
 import Auth from './screens/Auth';
 import FourOhFour from './screens/FourOhFour';
 import Support from './screens/Support';
-import { Helmet } from 'react-helmet';
+import Article from './components/Article';
 import TagManager from './utils/TagManager';
 import Theme from './utils/Theme';
-import { Media } from './utils/StyleUtils';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Article from './components/Article';
-import terms from './articles/terms.md';
-import privacy from './articles/privacy.md';
+import Terms from './articles/Terms';
+import Privacy from './articles/Privacy';
 
 const Fragment = React.Fragment;
 
 class App extends Component {
-
   render() {
     return (
       <ThemeProvider theme={Theme}>
@@ -38,13 +36,13 @@ class App extends Component {
               <Route path="/terms" render={() => (
                 <Article
                   title="Gamestack Terms of Service"
-                  file={terms}
+                  article={Terms}
                 />
               )}/>
               <Route path="/privacy" component={() => (
                 <Article
                   title="Gamestack Privacy Policy"
-                  file={privacy}
+                  article={Privacy}
                 />
               )}/>
               <Route component={FourOhFour} />

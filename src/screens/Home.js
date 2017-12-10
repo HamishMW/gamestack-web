@@ -29,6 +29,7 @@ class Home extends Component {
 
   render() {
     const { imageLoaded } = this.state;
+    const isReactSnap = window.location.port === '45678';
 
     return (
       <HomeContainer>
@@ -65,38 +66,39 @@ class Home extends Component {
               <PreviewSectionImage
                 blur
                 src={BackgroundSmallBlur}
-                show={!imageLoaded}
+                show={true}
                 srcSet={`${BackgroundSmallBlur}`}
                 alt="Gamestack – organize all your games in one place"
               />
             </PreviewSectionPicture>
-            <PreviewSectionPicture>
-              <source
-                srcSet={`${BackgroundLarge} 1x, ${BackgroundLarge2x} 2x`}
-                media="(min-width: 1400px)"
-              />
-              <source
-                srcSet={`${BackgroundMedium} 1x, ${BackgroundMedium2x} 2x`}
-                media="(min-width: 600px)"
-              />
-              <PreviewSectionImage
-                src={BackgroundSmall}
-                show={imageLoaded}
-                onLoad={this.setImageLoaded}
-                srcSet={`${BackgroundSmall} 1x, ${BackgroundSmall2x} 2x`}
-                alt="Gamestack – organize all your games in one place"
-              />
-            </PreviewSectionPicture>
+            {!isReactSnap &&
+              <PreviewSectionPicture>
+                <source
+                  srcSet={`${BackgroundLarge} 1x, ${BackgroundLarge2x} 2x`}
+                  media="(min-width: 1400px)"
+                />
+                <source
+                  srcSet={`${BackgroundMedium} 1x, ${BackgroundMedium2x} 2x`}
+                  media="(min-width: 600px)"
+                />
+                <PreviewSectionImage
+                  src={BackgroundSmall}
+                  show={imageLoaded}
+                  onLoad={this.setImageLoaded}
+                  srcSet={`${BackgroundSmall} 1x, ${BackgroundSmall2x} 2x`}
+                  alt="Gamestack – organize all your games in one place"
+                />
+              </PreviewSectionPicture>
+            }
+
             <PreviewSectionAngle
               top
-              xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 100 100"
               preserveAspectRatio="none"
             >
               <polygon points="0 0, 100 0, 100 100"/>
             </PreviewSectionAngle>
             <PreviewSectionAngle
-              xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 100 100"
               preserveAspectRatio="none"
             >
@@ -193,9 +195,10 @@ const PreviewSectionImage = styled.img`
   left: 0;
   height: 100%;
   width: 100%;
-  opacity: ${props => props.show ? 0.5 : 0};
+  opacity: 0;
+  ${props => props.show && 'opacity: 0.5;'}
   ${props => props.blur && 'filter: blur(10px);'}
-  transition: opacity 0.6s ease;
+  transition: opacity 0.9s ease;
 `;
 
 const PreviewSectionAngle = styled.svg`

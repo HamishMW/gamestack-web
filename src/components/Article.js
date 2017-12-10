@@ -7,28 +7,13 @@ import { Helmet } from 'react-helmet';
 import Theme from '../utils/Theme';
 import { Media } from '../utils/StyleUtils';
 import ScrollToTop from '../utils/ScrollToTop';
+import { Link } from 'react-router-dom';
 
 const Fragment = React.Fragment;
 
 class Article extends Component {
-  state = {
-    markdown: '',
-  }
-
-  componentWillMount() {
-    this.fetchMarkdown();
-  }
-
-  fetchMarkdown = async () => {
-    const { file } = this.props;
-    const data = await fetch(file);
-    const text = await data.text();
-    this.setState({markdown: text});
-  }
-
   render() {
-    const { title, description } = this.props;
-    const { markdown } = this.state;
+    const { title, description, article } = this.props;
 
     return (
       <Fragment>
@@ -39,9 +24,11 @@ class Article extends Component {
         </Helmet>
         <ArticleContainer>
           <ArticleHeader>
-            <Logo color={Theme.colorPrimary(1)} />
+            <Link to="/"><Logo color={Theme.colorPrimary(1)} /></Link>
           </ArticleHeader>
-          <ReactMarkdown source={markdown} />
+          <ArticleContent>
+            <ReactMarkdown source={article} />
+          </ArticleContent>
         </ArticleContainer>
         <Footer />
       </Fragment>
@@ -56,7 +43,9 @@ const ArticleContainer = styled.article`
   color: ${props => props.theme.colorText(0.7)};
   box-sizing: border-box;
   line-height: 1.4;
+`;
 
+const ArticleContent = styled.div`
   h1,
   h2,
   h3,

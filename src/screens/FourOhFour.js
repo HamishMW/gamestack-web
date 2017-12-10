@@ -1,43 +1,98 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
+import FourOhFourMp4 from '../images/four-oh-four.mp4';
+import FourOhFourWebm from '../images/four-oh-four.webm';
+import FourOhFourBlur from '../images/four-oh-four-blur.jpg';
+import Footer from '../components/Footer';
+import { Media } from '../utils/StyleUtils';
+import { Link } from 'react-router-dom';
+import Button from '../components/Button';
 
 const Fragment = React.Fragment;
 
-const FourOhFour = () => {
-  return (
-    <Fragment>
-      <Helmet>
-        <title>Not Found</title>
-        <meta name="description" content="This page doesn't exist"/>
-      </Helmet>
-      <FourOhFourWrapper>
-        <FourOhFourTitle>404</FourOhFourTitle>
-        <FourOhFourDescription>
-          The page could not be fount. It probably doesn't exist, or it may have moved
-        </FourOhFourDescription>
-      </FourOhFourWrapper>
-    </Fragment>
-  );
+class FourOhFour extends Component {
+  state = {
+    videoLoaded: false,
+  };
+
+  setLoaded = () => {
+    this.setState({videoLoaded: true});
+  }
+
+  render() {
+    const { videoLoaded } = this.state;
+    const isReactSnap = window.location.port === '45678';
+
+    return (
+      <Fragment>
+        <Helmet>
+          <title>404 Not Found</title>
+          <meta name="description" content="This page doesn't exist"/>
+        </Helmet>
+        <FourOhFourWrapper>
+          <FourOhFourContent>
+            <FourOhFourBackground>404</FourOhFourBackground>
+            <FourOhFourTitle>Sneaky Beaky</FourOhFourTitle>
+            <FourOhFourDescription>This page went in sneaky beaky like and couldn't be found. It probably doesn't exist, or it may have moved</FourOhFourDescription>
+            <Link to="/"><Button secondary text="Back to home" /></Link>
+          </FourOhFourContent>
+
+          <FourOhFourVideoWrapper>
+            <FourOhFourImage src={FourOhFourBlur} loaded={videoLoaded} image alt="404 not found" />
+            {!isReactSnap &&
+              <FourOhFourVideo
+                autoPlay
+                muted
+                loop
+                playsInline
+                loaded={videoLoaded}
+                onLoadStart={this.setLoaded}
+              >
+                <source src={FourOhFourWebm} type="video/webm" />
+                <source src={FourOhFourMp4} type="video/mp4" />
+                <img src={FourOhFourBlur} alt="404 not found" />
+              </FourOhFourVideo>
+            }
+          </FourOhFourVideoWrapper>
+          <FourOhFourFooter />
+        </FourOhFourWrapper>
+      </Fragment>
+    );
+  }
 }
 
-const FourOhFourWrapper = styled.main`
+const FourOhFourWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center
+`;
+
+const FourOhFourContent = styled.div`
+  display: flex;
+  align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  flex-direction: column;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
+  text-align: center;
+  padding: 0 20px;
+  overflow: hidden;
 `;
 
 const FourOhFourTitle = styled.h1`
   font-size: 64px;
+  line-height: 1;
   color: white;
   margin: 0;
   margin-bottom: 16px;
+
+  @media (max-width: ${Media.mobile}) {
+    font-size: 48px;
+  }
 `;
 
 const FourOhFourDescription = styled.p`
@@ -45,9 +100,71 @@ const FourOhFourDescription = styled.p`
   color: white;
   margin: 0;
   max-width: 500px;
-  padding: 0 10px;
   text-align: center;
   line-height: 1.6;
+  margin-bottom: 30px;
+`;
+
+const FourOhFourBackground = styled.div`
+  font-size: 320px;
+  font-weight: 800;
+  position: absolute;
+  z-index: -1;
+  color: ${props => props.theme.colorWhite(0.15)};
+
+  @media (max-width: ${Media.mobile}) {
+    font-size: 220px;
+  }
+`;
+
+const FourOhFourVideoWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: ${props => props.theme.colorPrimary(0.8)};
+    z-index: 1;
+  }
+`;
+
+const FourOhFourVideo = styled.video`
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  object-fit: cover;
+  z-index: 0;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+
+  ${props => props.image && 'filter: blur(10px);'}
+
+  ${props => props.loaded && !props.image &&
+    'opacity: 1;'
+  }
+
+  ${props => !props.loaded && props.image &&
+    'opacity: 1;'
+  }
+`;
+
+const FourOhFourImage = FourOhFourVideo.withComponent('img');
+
+const FourOhFourFooter = styled(Footer)`
+  background: transparent;
 `;
 
 export default FourOhFour;
