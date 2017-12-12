@@ -119,12 +119,10 @@ class Home extends Component {
   }
 }
 
-const HomeContainer = styled(Container)`
-  display: flex;
+const HomeContainer = Container.extend`
   justify-content: center;
   width: 100%;
   min-height: 100vh;
-  color: white;
 `;
 
 const HomeMobileFooter = styled(Footer)`
@@ -200,7 +198,7 @@ const PreviewSectionPicture = styled.picture`
     top: 0;
     bottom: 0;
     left: 0;
-    width: 30vh;
+    width: 60px;
     z-index: 1;
 
     ${props =>

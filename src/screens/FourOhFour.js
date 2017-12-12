@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
+import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
+import Container from '../components/Container';
+import Button from '../components/Button';
+import { Media } from '../utils/StyleUtils';
 import FourOhFourMp4 from '../images/four-oh-four.mp4';
 import FourOhFourWebm from '../images/four-oh-four.webm';
 import FourOhFourBlur from '../images/four-oh-four-blur.jpg';
-import Footer from '../components/Footer';
-import { Media } from '../utils/StyleUtils';
-import { Link } from 'react-router-dom';
-import Button from '../components/Button';
 
 const Fragment = React.Fragment;
 
@@ -62,8 +63,7 @@ class FourOhFour extends Component {
   }
 }
 
-const FourOhFourWrapper = styled.div`
-  display: flex;
+const FourOhFourWrapper = Container.extend`
   flex-direction: column;
   align-items: center;
   justify-content: center

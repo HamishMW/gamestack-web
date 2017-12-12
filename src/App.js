@@ -77,7 +77,7 @@ injectGlobal`
   }
 
   ::selection {
-    background: ${Theme.colorPrimary(0.4)};
+    background: ${Theme.colorPrimary(0.5)};
   }
 `;
 

@@ -50,6 +50,7 @@ const MainHeroContainer = styled.section`
   justify-content: center;
   position: relative;
   z-index: 40;
+  color: ${props => props.theme.colorText(1)};
 
   @media (max-width: ${Media.tablet}) {
     flex-direction: column;
