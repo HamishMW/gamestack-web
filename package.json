@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && react-snap",
+    "build": "react-scripts build && react-snap && sw-precache --config=sw-precache-config.js",
     "deploy": "firebase deploy --only hosting",
     "eject": "react-scripts eject"
   },

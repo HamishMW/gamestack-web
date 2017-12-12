@@ -98,19 +98,19 @@ class Home extends Component {
               />
             </PreviewSectionPicture>
 
-            <PreviewSectionAngle
-              top
-              viewBox="0 0 100 100"
-              preserveAspectRatio="none"
-            >
+            <PreviewSectionAngle top viewBox="0 0 100 100" preserveAspectRatio="none">
               <polygon points="0 0, 100 0, 100 100"/>
             </PreviewSectionAngle>
-            <PreviewSectionAngle
-              viewBox="0 0 100 100"
-              preserveAspectRatio="none"
-            >
-              <polygon points="0 0, 0 100, 100 100"/>
-            </PreviewSectionAngle>
+
+            <PreviewSectionMaskWrapper>
+              <PreviewSectionAngle left viewBox="0 0 100 100" preserveAspectRatio="none">
+                <polygon points="0 0, 100 0, 100 100"/>
+              </PreviewSectionAngle>
+              <PreviewSectionMask />
+              <PreviewSectionAngle viewBox="0 0 100 100" preserveAspectRatio="none">
+                <polygon points="0 0, 0 100, 100 100"/>
+              </PreviewSectionAngle>
+            </PreviewSectionMaskWrapper>
           </PreviewSectionBackground>
         </PreviewSection>
         <HomeMobileFooter />
@@ -159,7 +159,7 @@ const PreviewSectionBackground = styled.div`
   position: absolute;
   height: 100%;
   background-color: ${props => props.theme.colorPrimary(1)};
-  width: 60vw;
+  width: 100vw;
   right: 0;
   overflow: hidden;
 
@@ -189,8 +189,36 @@ const PreviewSectionPicture = styled.picture`
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 100%;
+  width: 60vw;
+  position: absolute;
+  right: 0;
   overflow: hidden;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 30vh;
+    z-index: 1;
+
+    ${props =>
+      `background: linear-gradient(90deg,
+        ${props.theme.colorPrimary(1)},
+        ${props.theme.colorPrimary(0)}
+      );`
+    }
+
+    @media (max-width: ${Media.tablet}) {
+      display: none;
+    }
+  }
+
+  @media (max-width: ${Media.tablet}) {
+    left: 0;
+    width: 100vw;
+  }
 `;
 
 const PreviewSectionImage = styled.img`
@@ -208,12 +236,40 @@ const PreviewSectionImage = styled.img`
   transition: opacity 0.9s ease;
 `;
 
+const PreviewSectionMaskWrapper = styled.div`
+  position: absolute;
+  min-height: 100vh;
+  left: -30vh;
+  z-index: 20;
+  height: 100%;
+  transform: translate3d(calc(40vw + 30vh), 0, 0);
+
+  @media (max-width: ${Media.tablet}) {
+    left: 0;
+    transform: none;
+  }
+`;
+
+const PreviewSectionMask = styled.div`
+  width: 40vw;
+  min-height: 100vh;
+  height: 100%;
+  left: -40vw;
+  z-index: 20;
+  position: absolute;
+  background: ${props => props.theme.colorBackground(1)};
+
+  @media (max-width: ${Media.tablet}) {
+    display: none;
+  }
+`;
+
 const PreviewSectionAngle = styled.svg`
   min-height: 100vh;
   height: 100%;
   width: 30vh;
   position: absolute;
-  left: -1px;
+  left: 0;
   z-index: 20;
   fill: ${props => props.theme.colorBackground(1)};
 
@@ -223,16 +279,24 @@ const PreviewSectionAngle = styled.svg`
     width: 100vw;
     position: absolute;
     left: 0;
-    bottom: -1px;
+    bottom: 0;
   }
 
   ${props => props.top &&`
-    top: -1px;
+    top: 0;
     bottom: auto;
     display: none;
 
     @media (max-width: ${Media.tablet}) {
       display: block;
+    }
+  `}
+
+  ${props => props.left &&`
+    left: -40vw;
+    margin-left: -30vh;
+    @media (max-width: ${Media.tablet}) {
+      display: none;
     }
   `}
 `;
