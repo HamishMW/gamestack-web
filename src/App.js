@@ -7,7 +7,6 @@ import Auth from './screens/Auth';
 import FourOhFour from './screens/FourOhFour';
 import Support from './screens/Support';
 import Article from './components/Article';
-import TagManager from './utils/TagManager';
 import Theme from './utils/Theme';
 import Terms from './articles/Terms';
 import Privacy from './articles/Privacy';
@@ -26,7 +25,6 @@ class App extends Component {
               content={'Gamestack is a todo list for your game collection. Sync your Steam and Blizzard game libraries, track your progress, finish your games.'}
             />
           </Helmet>
-          <TagManager gtmId="GTM-TCWSWLM" />
           <Router>
             <Switch>
               <Route exact path="/" component={Home} />

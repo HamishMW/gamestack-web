@@ -7,12 +7,12 @@ import Theme from '../utils/Theme';
 import { Media } from '../utils/StyleUtils';
 
 const MainHero = (props) => {
-  const { appName, title, description } = props;
+  const { appName, title, description, className } = props;
   const contactEmail = 'contact@gamestackapp.com';
   const mailToString = `mailto:${contactEmail}?subject=${appName}%20Beta%20Request`;
 
   return (
-    <MainHeroContainer>
+    <MainHeroContainer className={className}>
       <MainHeroDetails>
         <MainHeroLogo>
           <MainHeroLogoIcon color={Theme.colorPrimary(1)}/>

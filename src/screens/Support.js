@@ -7,11 +7,13 @@ import SupportImage from '../images/support.png';
 import Container from '../components/Container';
 import { Helmet } from 'react-helmet';
 import { Media } from '../utils/StyleUtils';
+import ScrollToTop from '../utils/ScrollToTop';
 
 const Fragment = React.Fragment;
 
 const Support = () => (
   <Fragment>
+    <ScrollToTop />
     <Helmet>
       <title>Support</title>
       <meta name="description" content="Contact Gamestack support if you‘re having problems"/>

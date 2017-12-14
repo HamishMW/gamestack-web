@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
 import MainHero from '../components/MainHero';
@@ -18,6 +18,8 @@ import BackgroundSmallBlur from '../images/background-small-blur.png';
 import BackgroundSmall from '../images/background-small.png';
 import BackgroundSmall2x from '../images/background-small@2x.png';
 
+const isReactSnap = window.location.port === '45678';
+
 class Home extends Component {
   state = {
     imageLoaded: false,
@@ -30,18 +32,16 @@ class Home extends Component {
   }
 
   setImageLoaded = () => {
-    const isReactSnap = window.location.port === '45678';
     !isReactSnap && this.setState({imageLoaded: true});
   }
 
   render() {
     const { imageLoaded } = this.state;
-    const isReactSnap = window.location.port === '45678';
     const imageAlt = 'Gamestack – organize all your games in one place';
 
     return (
       <HomeContainer>
-        <MainHero
+        <HomeHero
           appName="Gamestack"
           title="Track your games"
           description={
@@ -51,7 +51,7 @@ class Home extends Component {
         />
 
         <PreviewSection>
-          <PhoneContainer video={HeroVideo} frame={HeroVideoFrame} />
+          <HomePhoneContainer video={HeroVideo} frame={HeroVideoFrame} />
 
           <PreviewSectionDetail>
             <PreviewSectionDetailRow>
@@ -65,11 +65,11 @@ class Home extends Component {
             <PreviewSectionPicture>
               <source
                 srcSet={`${BackgroundLargeBlur}`}
-                media="(min-width: 1400px)"
+                media={`(min-width: ${Media.desktop})`}
               />
               <source
                 srcSet={`${BackgroundMediumBlur}`}
-                media="(min-width: 600px)"
+                media={`(min-width: ${Media.mobile})`}
               />
               <PreviewSectionImage
                 blur
@@ -82,11 +82,11 @@ class Home extends Component {
             <PreviewSectionPicture>
               <source
                 srcSet={`${BackgroundLarge} 1x, ${BackgroundLarge2x} 2x`}
-                media="(min-width: 1400px)"
+                media={`(min-width: ${Media.desktop})`}
               />
               <source
                 srcSet={`${BackgroundMedium} 1x, ${BackgroundMedium2x} 2x`}
-                media="(min-width: 600px)"
+                media={`(min-width: ${Media.mobile})`}
               />
               <PreviewSectionImage
                 innerRef={(image) => this.image = image}
@@ -103,9 +103,6 @@ class Home extends Component {
             </PreviewSectionAngle>
 
             <PreviewSectionMaskWrapper>
-              <PreviewSectionAngle left viewBox="0 0 100 100" preserveAspectRatio="none">
-                <polygon points="0 0, 100 0, 100 100"/>
-              </PreviewSectionAngle>
               <PreviewSectionMask />
               <PreviewSectionAngle viewBox="0 0 100 100" preserveAspectRatio="none">
                 <polygon points="0 0, 0 100, 100 100"/>
@@ -123,6 +120,56 @@ const HomeContainer = Container.extend`
   justify-content: center;
   width: 100%;
   min-height: 100vh;
+`;
+
+const AnimFade = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+const HomeHero = styled(MainHero)`
+  opacity: 0;
+  animation-name: ${AnimFade};
+  animation-timing-function: ease;
+  animation-duration: 0.9s;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards;
+
+  @media (max-width: ${Media.tablet}) {
+    animation: none;
+    opacity: 1;
+  }
+`;
+
+const AnimSlide = keyframes`
+  0% {
+    transform: translate3d(120px, 0, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+`;
+
+const HomePhoneContainer = styled(PhoneContainer)`
+  transform: translate3d(120px, 0, 0);
+  opacity: 0;
+  animation-name: ${AnimSlide};
+  animation-timing-function: ${props => props.theme.curveFastoutSlowin};
+  animation-duration: 1s;
+  animation-delay: 0.6s;
+  animation-fill-mode: forwards;
+
+  @media (max-width: ${Media.tablet}) {
+    animation: none;
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 `;
 
 const HomeMobileFooter = styled(Footer)`
@@ -234,25 +281,41 @@ const PreviewSectionImage = styled.img`
   transition: opacity 0.9s ease;
 `;
 
+const AnimBackgroundMask = keyframes`
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-60vw, 0, 0);
+  }
+`;
+
 const PreviewSectionMaskWrapper = styled.div`
   position: absolute;
   min-height: 100vh;
-  left: -30vh;
+  width: 100vw;
+  left: 0;
   z-index: 20;
   height: 100%;
-  transform: translate3d(calc(40vw + 30vh), 0, 0);
+  transform: translate3d(0, 0, 0);
+  animation-name: ${AnimBackgroundMask};
+  animation-duration: 1.4s;
+  animation-delay: 0.2s;
+  animation-timing-function: ${props => props.theme.curveFastoutSlowin};
+  animation-fill-mode: forwards;
 
   @media (max-width: ${Media.tablet}) {
     left: 0;
     transform: none;
+    animation: none;
   }
 `;
 
 const PreviewSectionMask = styled.div`
-  width: 40vw;
+  width: 100vw;
   min-height: 100vh;
   height: 100%;
-  left: -40vw;
+  right: 0;
   z-index: 20;
   position: absolute;
   background: ${props => props.theme.colorBackground(1)};
@@ -267,7 +330,7 @@ const PreviewSectionAngle = styled.svg`
   height: 100%;
   width: 30vh;
   position: absolute;
-  left: 0;
+  left: 100%;
   z-index: 20;
   fill: ${props => props.theme.colorBackground(1)};
 
@@ -287,14 +350,6 @@ const PreviewSectionAngle = styled.svg`
 
     @media (max-width: ${Media.tablet}) {
       display: block;
-    }
-  `}
-
-  ${props => props.left &&`
-    left: -40vw;
-    margin-left: -30vh;
-    @media (max-width: ${Media.tablet}) {
-      display: none;
     }
   `}
 `;

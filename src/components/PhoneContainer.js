@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Media } from '../utils/StyleUtils';
 
 const PhoneContainer = (props) => (
-  <PhoneContainerWrapper>
+  <PhoneContainerWrapper className={props.className}>
     <PhoneContainerPhone>
       <PhoneContainerScreen>
         <PhoneContainerVideo
