@@ -8,8 +8,7 @@ import { Media } from '../utils/StyleUtils';
 
 const MainHero = (props) => {
   const { appName, title, description, className } = props;
-  const contactEmail = 'contact@gamestackapp.com';
-  const mailToString = `mailto:${contactEmail}?subject=${appName}%20Beta%20Request`;
+  const actionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSf-8LaHUz8ftPvpgPeZQiaQVLcyw2caXF_57DGAvFJhClDBKw/viewform?usp=sf_link';
 
   return (
     <MainHeroContainer className={className}>
@@ -26,7 +25,7 @@ const MainHero = (props) => {
             icon="apple"
             text="Request beta invite"
             data-gtm="beta-request"
-            onClick={() => window.location = mailToString}
+            onClick={() => window.location = actionUrl}
           />
           <Button
             flat

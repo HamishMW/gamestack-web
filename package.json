@@ -8,6 +8,7 @@
     "react-snap": "^1.1.1"
   },
   "dependencies": {
+    "color": "^2.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",
