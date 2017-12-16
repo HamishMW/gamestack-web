@@ -19,7 +19,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && react-snap && sw-precache --config=sw-precache-config.js",
+    "test": "react-scripts test --env=jsdom",
     "deploy": "firebase deploy --only hosting",
+    "serve": "firebase serve --only hosting",
     "eject": "react-scripts eject"
   },
   "reactSnap": {
