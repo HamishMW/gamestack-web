@@ -14,16 +14,16 @@ const Button = (props) => {
       onClick={onClick}
       data-gtm={props['data-gtm']}
     >
-      <ButtonContent>
-        { icon && <ButtonIcon icon={icon} color="white"/> }
-        <ButtonText secondary={secondary}>{text}</ButtonText>
-      </ButtonContent>
       <ButtonFill
         secondary={secondary}
         shadow={shadow}
         disabled={disabled}
         flat={flat}
       />
+      <ButtonContent>
+        { icon && <ButtonIcon icon={icon} color="white"/> }
+        <ButtonText secondary={secondary}>{text}</ButtonText>
+      </ButtonContent>
     </ButtonWrapper>
   );
 }
@@ -64,7 +64,6 @@ const ButtonFill = styled.div`
   left: 0;
   border-radius: 6px;
   transition: all 0.3s ${props => props.theme.curveFastoutSlowin};
-  z-index: -1;
 
   ${ButtonWrapper}:hover &,
   ${ButtonWrapper}:focus &,
@@ -107,6 +106,7 @@ const ButtonContent = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0 20px;
+  position: relative;
 `;
 
 const ButtonIcon = styled(Icon)`
