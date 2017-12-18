@@ -1,32 +1,104 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Color from 'color';
 import Icon from '../utils/Icon';
 
-const Button = (props) => {
-  const { disabled, onClick, text, icon, flat,
-    secondary, shadow, className } = props;
+const Fragment = React.Fragment;
+
+const ButtonInner = (props) => {
+  const { text, icon, flat, secondary, shadow } = props;
 
   return (
-    <ButtonWrapper
-      disabled={disabled}
-      className={className}
-      onClick={onClick}
-      data-gtm={props['data-gtm']}
-    >
+    <Fragment>
       <ButtonFill
         secondary={secondary}
         shadow={shadow}
-        disabled={disabled}
         flat={flat}
       />
       <ButtonContent>
         { icon && <ButtonIcon icon={icon} color="white"/> }
         <ButtonText secondary={secondary}>{text}</ButtonText>
       </ButtonContent>
+    </Fragment>
+  );
+}
+
+const Button = (props) => {
+  const { disabled, onClick, className, flat, secondary } = props;
+
+  return (
+    <ButtonWrapper
+      disabled={disabled}
+      flat={flat}
+      secondary={secondary}
+      className={className}
+      onClick={onClick}
+      data-gtm={props['data-gtm']}
+    >
+      <ButtonInner {...props} />
     </ButtonWrapper>
   );
 }
+
+const AnchorButton = (props) => {
+  const { disabled, href, className, target, flat, secondary } = props;
+
+  return (
+    <AnchorButtonWrapper
+      disabled={disabled}
+      flat={flat}
+      secondary={secondary}
+      className={className}
+      href={href}
+      target={target}
+      data-gtm={props['data-gtm']}
+    >
+      <ButtonInner {...props} />
+    </AnchorButtonWrapper>
+  );
+}
+
+const LinkButton = (props) => {
+  const { disabled, to, className, flat, secondary } = props;
+
+  return (
+    <ButtonWrapper
+      disabled={disabled}
+      flat={flat}
+      secondary={secondary}
+      className={className}
+      data-gtm={props['data-gtm']}
+    >
+      <ButtonLink to={to}><ButtonInner {...props} /></ButtonLink>
+    </ButtonWrapper>
+  );
+}
+
+const ButtonFill = styled.div`
+  background: ${props => props.theme.colorPrimary(1)};
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 6px;
+  transition: all 0.3s ${props => props.theme.curveFastoutSlowin};
+
+  ${props => props.flat &&`
+    background: transparent;
+  `}
+
+  ${props => props.secondary &&`
+    background: ${props.theme.colorWhite(1)};
+  `}
+
+  ${props => props.shadow &&`
+    box-shadow:
+      0 4px 16px 0 rgba(0, 0, 0, 0.15),
+      0 12px 36px 0 rgba(0, 0, 0, 0.2);
+  `}
+`;
 
 const ButtonWrapper = styled.button`
   height: 48px;
@@ -38,6 +110,27 @@ const ButtonWrapper = styled.button`
   cursor: pointer;
   position: relative;
   color: ${props => props.theme.colorText(1)};
+  text-decoration: none;
+
+  &:hover ${ButtonFill},
+  &:focus ${ButtonFill},
+  &:active ${ButtonFill} {
+    background: ${props => Color(props.theme.colorPrimary(1)).darken(0.1).string()};
+    transform: scale3d(1.05, 1.05, 1);
+
+    ${props => props.flat &&`
+      background: ${props.theme.colorText(0.1)};
+    `}
+
+    ${props => props.secondary &&`
+      background: ${props.theme.colorWhite(0.8)};
+      outline: none;
+    `}
+  }
+
+  &:disabled:hover ${ButtonFill} {
+    background: inherit;
+  }
 
   &:hover,
   &:focus,
@@ -55,49 +148,10 @@ const ButtonWrapper = styled.button`
   }
 `;
 
-const ButtonFill = styled.div`
-  background: ${props => props.theme.colorPrimary(1)};
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: 6px;
-  transition: all 0.3s ${props => props.theme.curveFastoutSlowin};
+const AnchorButtonWrapper = ButtonWrapper.withComponent('a');
 
-  ${ButtonWrapper}:hover &,
-  ${ButtonWrapper}:focus &,
-  ${ButtonWrapper}:active & {
-    background: ${props => Color(props.theme.colorPrimary(1)).darken(0.1).string()};
-    transform: scale3d(1.05, 1.05, 1);
-
-    ${props => props.flat &&`
-      background: ${props.theme.colorText(0.1)};
-    `}
-
-    ${props => props.secondary &&`
-      background: ${props.theme.colorWhite(0.8)};;
-      outline: none;
-    `}
-  }
-
-  ${props => props.flat &&`
-    background: transparent;
-  `}
-
-  ${props => props.secondary &&`
-    background: ${props.theme.colorWhite(1)};
-  `}
-
-  ${props => props.shadow &&`
-    box-shadow:
-      0 4px 16px 0 rgba(0, 0, 0, 0.15),
-      0 12px 36px 0 rgba(0, 0, 0, 0.2);
-  `}
-
-  ${ButtonWrapper}:disabled:hover & {
-    background: inherit;
-  }
+const ButtonLink = styled(Link)`
+  text-decoration: none;
 `;
 
 const ButtonContent = styled.div`
@@ -107,6 +161,7 @@ const ButtonContent = styled.div`
   justify-content: center;
   padding: 0 20px;
   position: relative;
+  height: 100%;
 `;
 
 const ButtonIcon = styled(Icon)`
@@ -125,4 +180,4 @@ const ButtonText = styled.div`
   `}
 `;
 
-export default Button;
+export { Button, LinkButton, AnchorButton };

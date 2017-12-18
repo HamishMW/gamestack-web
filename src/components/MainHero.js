@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Logo from '../components/Logo';
-import Button from '../components/Button';
+import { AnchorButton, Button } from '../components/Button';
 import Footer from '../components/Footer';
 import Theme from '../utils/Theme';
 import { Media } from '../utils/StyleUtils';
@@ -25,7 +25,8 @@ const MainHero = (props) => {
             icon="apple"
             text="Request beta invite"
             data-gtm="beta-request"
-            onClick={() => window.location = actionUrl}
+            target="_blank"
+            href={actionUrl}
           />
           <Button
             flat
@@ -153,7 +154,7 @@ const MainHeroActions = styled.div`
   }
 `;
 
-const MainHeroButton = styled(Button)`
+const MainHeroButton = styled(AnchorButton)`
   margin-right: 10px;
   margin-bottom: 20px;
 

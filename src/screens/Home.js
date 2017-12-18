@@ -37,7 +37,7 @@ class Home extends Component {
 
   render() {
     const { imageLoaded } = this.state;
-    const imageAlt = 'Gamestack – organize all your games in one place';
+    const imageAlt = 'Gamestack – an app to organize all your games in one place';
 
     return (
       <HomeContainer>

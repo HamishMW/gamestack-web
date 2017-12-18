@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../components/Button';
+import { AnchorButton } from '../components/Button';
 import Footer from '../components/Footer';
 import SupportImage2x from '../images/support@2x.png';
 import SupportImage from '../images/support.png';
@@ -37,7 +37,7 @@ const Support = () => (
           shadow
           text="Contact Support"
           data-gtm="support-contact"
-          onClick={() => window.location='mailto:contact@gamestackapp.com?subject=Gamestack Support Request'}
+          href="mailto:contact@gamestackapp.com?subject=Gamestack%20Support%20Request"
         />
       </SupportTextSection>
     </SupportWrapper>
@@ -83,7 +83,7 @@ const SupportDescription = styled.p`
   text-align: center;
 `;
 
-const SupportButton = styled(Button)`
+const SupportButton = styled(AnchorButton)`
   margin-top: 30px;
 `;
 

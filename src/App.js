@@ -22,7 +22,7 @@ class App extends Component {
             <title>Gamestack | Track your games</title>
             <meta
               name="description"
-              content={'Gamestack is a todo list for your game collection. Sync your Steam and Blizzard game libraries, track your progress, finish your games.'}
+              content={'Gamestack is a todo list app for your game collection. Sync your Steam and Blizzard game libraries, track your progress, finish your games.'}
             />
           </Helmet>
           <Router>

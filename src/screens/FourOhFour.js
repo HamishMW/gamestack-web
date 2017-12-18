@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
-import Button from '../components/Button';
+import { LinkButton } from '../components/Button';
 import { Media } from '../utils/StyleUtils';
 import FourOhFourMp4 from '../images/four-oh-four.mp4';
 import FourOhFourWebm from '../images/four-oh-four.webm';
@@ -36,7 +35,7 @@ class FourOhFour extends Component {
             <FourOhFourBackground>404</FourOhFourBackground>
             <FourOhFourTitle>Sneaky Beaky</FourOhFourTitle>
             <FourOhFourDescription>This page went in sneaky beaky like and couldn't be found. It probably doesn't exist, or it may have moved</FourOhFourDescription>
-            <Link to="/"><Button secondary text="Back to home" /></Link>
+            <LinkButton secondary to="/" text="Back to home" />
           </FourOhFourContent>
 
           <FourOhFourVideoWrapper>
@@ -75,6 +74,7 @@ const FourOhFourContent = styled.div`
   justify-content: center;
   flex-direction: column;
   position: relative;
+  top: -30px;
   height: 100vh;
   width: 100vw;
   z-index: 10;
@@ -158,6 +158,10 @@ const FourOhFourVideo = styled.video`
 
   ${props => !props.loaded && props.image &&
     'opacity: 1;'
+  }
+
+  @media (max-width: ${Media.mobile}) {
+    object-position: left;
   }
 `;
 
