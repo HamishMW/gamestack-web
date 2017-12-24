@@ -4,53 +4,45 @@
   },
   "hosting": {
     "public": "build",
+    
     "rewrites": [{
-      "source": "/functions/steamRedirect",
-      "function": "steamRedirect"
-    },{
-      "source": "/functions/steamVerify",
-      "function": "steamVerify"
-    },{
-      "source": "/functions/blizzardRedirect",
-      "function": "blizzardRedirect"
-    },{
-      "source": "/functions/blizzardToken",
-      "function": "blizzardToken"
+      "source": "/functions/**",
+      "function": "app"
     },{
       "source": "**",
       "destination": "/index.html"
     }],
 
-    "headers": [ {
+    "headers": [{
       "source" : "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
-      "headers" : [ {
+      "headers" : [{
         "key" : "Access-Control-Allow-Origin",
         "value" : "*"
-      } ]
-    }, {
+      }]
+    },{
       "source" : "**/*.@(jpg|jpeg|gif|png)",
-      "headers" : [ {
+      "headers" : [{
         "key" : "Cache-Control",
         "value" : "max-age=604800"
-      } ]
-    }, {
+      }]
+    },{
       "source" : "**/*.@(css|js)",
-      "headers" : [ {
+      "headers" : [{
         "key" : "Cache-Control",
         "value" : "max-age=604800"
-      } ]
-    }, {
+      }]
+    },{
       "source" : "service-worker.js",
-      "headers" : [ {
+      "headers" : [{
         "key" : "Cache-Control",
         "value" : "max-age=0"
-      } ]
-    }, {
+      }]
+    },{
       "source" : "404.html",
-      "headers" : [ {
+      "headers" : [{
         "key" : "Cache-Control",
         "value" : "max-age=300"
-      } ]
-    } ]
+      }]
+    }]
   }
 }
