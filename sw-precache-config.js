@@ -3,6 +3,7 @@ module.exports = {
     './build/**/!(404).html',
     './build/images/**.*',
     './build/static/**',
+    './build/app/**',
   ],
   dontCacheBustUrlsMatching: /\.\w{8}\./,
   swFilePath: './build/service-worker.js',

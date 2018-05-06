@@ -4,13 +4,10 @@
   },
   "hosting": {
     "public": "build",
-    
+
     "rewrites": [{
       "source": "/functions/**",
       "function": "app"
-    },{
-      "source": "**",
-      "destination": "/index.html"
     }],
 
     "headers": [{
