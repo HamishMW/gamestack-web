@@ -4,42 +4,58 @@
   },
   "hosting": {
     "public": "build",
-
-    "rewrites": [{
-      "source": "/functions/**",
-      "function": "app"
-    }],
-
-    "headers": [{
-      "source" : "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
-      "headers" : [{
-        "key" : "Access-Control-Allow-Origin",
-        "value" : "*"
-      }]
-    },{
-      "source" : "**/*.@(jpg|jpeg|gif|png)",
-      "headers" : [{
-        "key" : "Cache-Control",
-        "value" : "max-age=604800"
-      }]
-    },{
-      "source" : "**/*.@(css|js)",
-      "headers" : [{
-        "key" : "Cache-Control",
-        "value" : "max-age=604800"
-      }]
-    },{
-      "source" : "service-worker.js",
-      "headers" : [{
-        "key" : "Cache-Control",
-        "value" : "max-age=0"
-      }]
-    },{
-      "source" : "404.html",
-      "headers" : [{
-        "key" : "Cache-Control",
-        "value" : "max-age=300"
-      }]
-    }]
+    "rewrites": [
+      {
+        "source": "/functions/**",
+        "function": "app"
+      }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(jpg|jpeg|gif|png)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=1210000"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(css|js)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=1210000"
+          }
+        ]
+      },
+      {
+        "source": "service-worker.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      },
+      {
+        "source": "404.html",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=300"
+          }
+        ]
+      }
+    ]
   }
 }

@@ -19,6 +19,9 @@ const MainHero = (props) => {
         <MainHeroTitle>{title}</MainHeroTitle>
         <MainHeroDescription>{description}</MainHeroDescription>
         <MainHeroActions>
+          <MainHeroInput
+            Placeholder="Enter your email"
+          />
           <MainHeroButton
             shadow
             icon="apple"
@@ -150,6 +153,15 @@ const MainHeroActions = styled.div`
     align-items: center;
   }
 `;
+
+const MainHeroInput = styled.input`
+  background: white;
+  border-radius: 8px;
+  padding: 0;
+  border: 0;
+  margin: 0;
+`;
+
 
 const MainHeroButton = styled(AnchorButton)`
   margin-right: 10px;
