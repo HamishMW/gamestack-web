@@ -5,7 +5,8 @@ import Container from '../components/Container';
 import MainHero from '../components/MainHero';
 import PhoneContainer from '../components/PhoneContainer';
 import Icon from '../utils/Icon';
-import HeroVideo from '../images/app-preview.mp4';
+import HeroMp4 from '../images/app-preview.mp4';
+import HeroWebm from '../images/app-preview.webm';
 import HeroVideoFrame from '../images/app-preview-frame.jpg';
 import BackgroundLargeBlur from '../images/background-large-blur.png';
 import BackgroundLarge from '../images/background-large.png';
@@ -51,7 +52,11 @@ class Home extends Component {
         />
 
         <PreviewSection>
-          <HomePhoneContainer video={HeroVideo} frame={HeroVideoFrame} />
+          <HomePhoneContainer
+            mp4={HeroMp4}
+            webm={HeroWebm}
+            frame={HeroVideoFrame}
+          />
 
           <PreviewSectionDetail>
             <PreviewSectionDetailRow>
@@ -348,7 +353,7 @@ const PreviewSectionAngle = styled.svg`
     bottom: auto;
     display: none;
 
-    @media (max-width: ${props => props.theme.tablet}) {
+    @media (max-width: ${props.theme.tablet}) {
       display: block;
     }
   `}

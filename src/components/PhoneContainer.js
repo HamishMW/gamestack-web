@@ -1,18 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const PhoneContainer = (props) => (
-  <PhoneContainerWrapper className={props.className}>
+const PhoneContainer = ({ className, frame, mp4, webm }) => (
+  <PhoneContainerWrapper className={className}>
     <PhoneContainerPhone>
       <PhoneContainerScreen>
         <PhoneContainerVideo
-          poster={props.frame}
+          poster={frame}
           autoPlay
           muted
           loop
           playsInline
         >
-          <source src={props.video} type="video/mp4" />
+          <source src={mp4} type="video/mp4" />
+          <source src={webm} type="video/webm" />
         </PhoneContainerVideo>
       </PhoneContainerScreen>
     </PhoneContainerPhone>
