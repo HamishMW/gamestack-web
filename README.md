@@ -2,7 +2,7 @@
 
 A simple website for the Gamestack iOS App.
 
-![Site preview](/public/social-image.png)
+![Site preview](/public/site-preview.png)
 
 ## Install & run
 
