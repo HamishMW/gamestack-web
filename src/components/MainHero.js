@@ -44,7 +44,6 @@ export default class MainHero extends Component {
               data-gtm="beta-request"
               target="_blank"
               href={actionUrl}
-              rel="noopener noreferrer"
             />
           </MainHeroActions>
         </MainHeroDetails>

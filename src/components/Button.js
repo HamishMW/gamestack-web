@@ -42,6 +42,7 @@ const AnchorButton = ({ disabled, href, className, style, target, flat, secondar
     href={href}
     target={target}
     data-gtm={props['data-gtm']}
+    rel="noopener noreferrer"
   >
     <ButtonInner secondary={secondary} {...props} />
   </AnchorButtonWrapper>
