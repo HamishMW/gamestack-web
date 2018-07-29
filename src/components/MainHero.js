@@ -12,7 +12,7 @@ export default class MainHero extends Component {
   }
 
   onChange = event => {
-    this.setState({inputValue: event.target.value});
+    this.setState({ inputValue: event.target.value });
   }
 
   render() {
@@ -37,14 +37,14 @@ export default class MainHero extends Component {
                 onChange={this.onChange}
               />
             }
-            <AnchorButton
+            <MainHeroButton
               shadow
-              style={{maxWidth: 'fit-content'}}
               icon="apple"
               text="Request beta invite"
               data-gtm="beta-request"
               target="_blank"
               href={actionUrl}
+              rel="noopener noreferrer"
             />
           </MainHeroActions>
         </MainHeroDetails>
@@ -158,23 +158,28 @@ const MainHeroDescription = styled.p`
 
 const MainHeroActions = styled.div`
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: auto;
   grid-gap: 10px;
   width: 100%;
   max-width: 480px;
 
   @media (max-width: ${props => props.theme.tablet}) {
-    grid-template-columns: 1fr;
-    justify-content: center;
-    align-items: center;
+    grid-template-columns: auto;
     max-width: 300px;
     align-self: center;
   }
 
   @media (max-width: ${props => props.theme.mobile}) {
-    align-items: center;
     max-width: 100%;
     width: 100%;
+  }
+`;
+
+const MainHeroButton = styled(AnchorButton)`
+  max-width: fit-content;
+
+  @media (max-width: ${props => props.theme.tablet}) {
+    justify-self: center;
   }
 `;
 

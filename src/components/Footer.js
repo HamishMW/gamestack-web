@@ -6,10 +6,10 @@ const Footer = (props) => (
   <FooterWrapper className={props.className}>
     <FooterRow>
       <FooterLink to="/support">Support</FooterLink>
-      <FooterAnchor href="mailto:contact@gamestackapp.com">Contact</FooterAnchor>
+      <FooterAnchor target="_blank" rel="noopener noreferrer" href="mailto:contact@gamestackapp.com">Contact</FooterAnchor>
       <FooterLink to="/terms">Legal</FooterLink>
-      <FooterAnchor href="https://twitter.com/gamestackapp">Twitter</FooterAnchor>
-      <FooterAnchor faded href="https://hamishw.com">
+      <FooterAnchor target="_blank" rel="noopener noreferrer" href="https://twitter.com/gamestackapp">Twitter</FooterAnchor>
+      <FooterAnchor faded target="_blank" rel="noopener noreferrer" href="https://hamishw.com">
         {`© ${new Date().getFullYear()} Hamish Williams`}
       </FooterAnchor>
     </FooterRow>
@@ -43,7 +43,7 @@ const FooterLink = styled(Link)`
   text-decoration: none;
   margin: 15px;
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   transition: all 0.3s ease;
   text-decoration: underline;
   text-decoration-color: transparent;

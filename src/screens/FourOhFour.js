@@ -34,7 +34,7 @@ class FourOhFour extends Component {
             <FourOhFourBackground>404</FourOhFourBackground>
             <FourOhFourTitle>Sneaky Beaky</FourOhFourTitle>
             <FourOhFourDescription>This page couldn't be found. It probably doesn't exist, or it may have moved</FourOhFourDescription>
-            <LinkButton secondary to="/" text="Back to home" />
+            <LinkButton secondary to="/" text="Back to homepage" />
           </FourOhFourContent>
 
           <FourOhFourVideoWrapper>

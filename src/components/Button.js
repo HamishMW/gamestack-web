@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import Color from 'color';
 import Icon from '../utils/Icon';
 
-const ButtonInner = ({ text, icon, flat, secondary, shadow }) => (
+const ButtonInner = ({ text, icon, flat, secondary, shadow, ...props }) => (
   <React.Fragment>
     <ButtonFill
       secondary={secondary}
       shadow={shadow}
       flat={flat}
+      {...props}
     />
     <ButtonContent>
       {icon && <ButtonIcon icon={icon} color="white" />}
@@ -27,7 +28,7 @@ const Button = ({ disabled, onClick, className, flat, secondary, ...props }) => 
     onClick={onClick}
     data-gtm={props['data-gtm']}
   >
-    <ButtonInner {...props} />
+    <ButtonInner secondary={secondary} {...props} />
   </ButtonWrapper>
 );
 
@@ -42,7 +43,7 @@ const AnchorButton = ({ disabled, href, className, style, target, flat, secondar
     target={target}
     data-gtm={props['data-gtm']}
   >
-    <ButtonInner {...props} />
+    <ButtonInner secondary={secondary} {...props} />
   </AnchorButtonWrapper>
 );
 
@@ -54,7 +55,9 @@ const LinkButton = ({ disabled, to, className, flat, secondary, ...props }) => (
     className={className}
     data-gtm={props['data-gtm']}
   >
-    <ButtonLink to={to}><ButtonInner {...props} /></ButtonLink>
+    <ButtonLink to={to}>
+      <ButtonInner secondary={secondary} {...props} />
+    </ButtonLink>
   </ButtonWrapper>
 );
 

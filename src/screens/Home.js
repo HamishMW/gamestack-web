@@ -397,7 +397,7 @@ const PreviewSectionDetailIcon = styled(Icon)`
 `;
 
 const PreviewSectionDetailText = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   color: ${props => props.theme.colorWhite(0.6)};
   font-weight: 500;
 
