@@ -9,11 +9,11 @@ const Auth = () => {
   return (
     <Fragment>
       <Helmet>
-        <title>Waiting</title>
-        <meta name="description" content="waiting"/>
+        <title>Gamestack | Waiting</title>
+        <meta name="description" content="waiting" />
       </Helmet>
       <AuthWrapper>
-        <Loader/>
+        <Loader />
       </AuthWrapper>
     </Fragment>
   );

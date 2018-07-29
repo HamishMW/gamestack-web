@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, withTheme } from 'styled-components';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
 import MainHero from '../components/MainHero';
 import PhoneContainer from '../components/PhoneContainer';
 import Icon from '../utils/Icon';
-import { Media } from '../utils/StyleUtils';
 import HeroVideo from '../images/app-preview.mp4';
 import HeroVideoFrame from '../images/app-preview-frame.jpg';
 import BackgroundLargeBlur from '../images/background-large-blur.png';
@@ -32,10 +31,11 @@ class Home extends Component {
   }
 
   setImageLoaded = () => {
-    !isReactSnap && this.setState({imageLoaded: true});
+    !isReactSnap && this.setState({ imageLoaded: true });
   }
 
   render() {
+    const { theme } = this.props;
     const { imageLoaded } = this.state;
     const imageAlt = 'Gamestack – an app to organize all your games in one place';
 
@@ -55,7 +55,7 @@ class Home extends Component {
 
           <PreviewSectionDetail>
             <PreviewSectionDetailRow>
-              <PreviewSectionDetailIcon icon="steam"/>
+              <PreviewSectionDetailIcon icon="steam" />
               <PreviewSectionDetailIcon icon="blizzard" />
             </PreviewSectionDetailRow>
             <PreviewSectionDetailText>Currently supported</PreviewSectionDetailText>
@@ -65,11 +65,11 @@ class Home extends Component {
             <PreviewSectionPicture>
               <source
                 srcSet={`${BackgroundLargeBlur}`}
-                media={`(min-width: ${Media.desktop})`}
+                media={`(min-width: ${theme.desktop})`}
               />
               <source
                 srcSet={`${BackgroundMediumBlur}`}
-                media={`(min-width: ${Media.mobile})`}
+                media={`(min-width: ${theme.mobile})`}
               />
               <PreviewSectionImage
                 blur
@@ -82,11 +82,11 @@ class Home extends Component {
             <PreviewSectionPicture>
               <source
                 srcSet={`${BackgroundLarge} 1x, ${BackgroundLarge2x} 2x`}
-                media={`(min-width: ${Media.desktop})`}
+                media={`(min-width: ${theme.desktop})`}
               />
               <source
                 srcSet={`${BackgroundMedium} 1x, ${BackgroundMedium2x} 2x`}
-                media={`(min-width: ${Media.mobile})`}
+                media={`(min-width: ${theme.mobile})`}
               />
               <PreviewSectionImage
                 innerRef={(image) => this.image = image}
@@ -99,13 +99,13 @@ class Home extends Component {
             </PreviewSectionPicture>
 
             <PreviewSectionAngle top viewBox="0 0 100 100" preserveAspectRatio="none">
-              <polygon points="0 0, 100 0, 100 100"/>
+              <polygon points="0 0, 100 0, 100 100" />
             </PreviewSectionAngle>
 
             <PreviewSectionMaskWrapper>
               <PreviewSectionMask />
               <PreviewSectionAngle viewBox="0 0 100 100" preserveAspectRatio="none">
-                <polygon points="0 0, 0 100, 100 100"/>
+                <polygon points="0 0, 0 100, 100 100" />
               </PreviewSectionAngle>
             </PreviewSectionMaskWrapper>
           </PreviewSectionBackground>
@@ -139,7 +139,7 @@ const HomeHero = styled(MainHero)`
   animation-delay: 0.3s;
   animation-fill-mode: forwards;
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     animation: none;
     opacity: 1;
   }
@@ -165,7 +165,7 @@ const HomePhoneContainer = styled(PhoneContainer)`
   animation-delay: 0.6s;
   animation-fill-mode: forwards;
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     animation: none;
     transform: translate3d(0, 0, 0);
     opacity: 1;
@@ -175,7 +175,7 @@ const HomePhoneContainer = styled(PhoneContainer)`
 const HomeMobileFooter = styled(Footer)`
   display: none;
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     display: block;
   }
 `;
@@ -189,7 +189,7 @@ const PreviewSection = styled.section`
   justify-content: center;
   position: relative;
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     height: auto;
     padding: 180px 30px 100px;
     overflow: hidden;
@@ -219,7 +219,7 @@ const PreviewSectionBackground = styled.div`
     z-index: 1;
   }
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     top: 0;
     left: 0;
     right: 0;
@@ -249,18 +249,18 @@ const PreviewSectionPicture = styled.picture`
     z-index: 1;
 
     ${props =>
-      `background: linear-gradient(90deg,
+    `background: linear-gradient(90deg,
         ${props.theme.colorPrimary(1)},
         ${props.theme.colorPrimary(0)}
       );`
-    }
+  }
 
-    @media (max-width: ${Media.tablet}) {
+    @media (max-width: ${props => props.theme.tablet}) {
       display: none;
     }
   }
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     left: 0;
     width: 100vw;
   }
@@ -304,7 +304,7 @@ const PreviewSectionMaskWrapper = styled.div`
   animation-timing-function: ${props => props.theme.curveFastoutSlowin};
   animation-fill-mode: forwards;
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     left: 0;
     transform: none;
     animation: none;
@@ -320,7 +320,7 @@ const PreviewSectionMask = styled.div`
   position: absolute;
   background: ${props => props.theme.colorBackground(1)};
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     display: none;
   }
 `;
@@ -334,7 +334,7 @@ const PreviewSectionAngle = styled.svg`
   z-index: 20;
   fill: ${props => props.theme.colorBackground(1)};
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     height: 20vw;
     min-height: 0;
     width: 100vw;
@@ -343,12 +343,12 @@ const PreviewSectionAngle = styled.svg`
     bottom: 0;
   }
 
-  ${props => props.top &&`
+  ${props => props.top && `
     top: 0;
     bottom: auto;
     display: none;
 
-    @media (max-width: ${Media.tablet}) {
+    @media (max-width: ${props => props.theme.tablet}) {
       display: block;
     }
   `}
@@ -364,7 +364,7 @@ const PreviewSectionDetail = styled.div`
   position: absolute;
   bottom: 0;
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     position: relative;
     margin-top: 50px;
     flex-direction: column-reverse;
@@ -382,7 +382,7 @@ const PreviewSectionDetailIcon = styled(Icon)`
   margin-right: 15px;
   fill: ${props => props.theme.colorWhite(0.8)};
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     margin-right: 0;
 
     &:first-child {
@@ -396,9 +396,9 @@ const PreviewSectionDetailText = styled.div`
   color: ${props => props.theme.colorWhite(0.6)};
   font-weight: 500;
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     margin-bottom: 20px;
   }
 `;
 
-export default Home;
+export default withTheme(Home);

@@ -4,7 +4,7 @@ import Logo from './Logo';
 import Theme from '../utils/Theme';
 
 const Loader = () => (
-  <LoaderElem color={Theme.colorPrimary(1)}/>
+  <LoaderElem color={Theme.colorPrimary(1)} />
 );
 
 const AnimLoader = props => keyframes`

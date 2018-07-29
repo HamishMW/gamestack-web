@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import { ThemeProvider, injectGlobal } from 'styled-components';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import Home from './screens/Home';
-import Auth from './screens/Auth';
-import FourOhFour from './screens/FourOhFour';
-import Support from './screens/Support';
-import Article from './components/Article';
+import asyncComponent from './components/AsyncComponent';
 import Theme from './utils/Theme';
-import Terms from './articles/Terms';
-import Privacy from './articles/Privacy';
+
+const Home = asyncComponent(props => import('./screens/Home'));
+const Auth = asyncComponent(props => import('./screens/Auth'));
+const FourOhFour = asyncComponent(props => import('./screens/FourOhFour'));
+const Support = asyncComponent(props => import('./screens/Support'));
+const Terms = asyncComponent(props => import('./screens/Terms'));
+const Privacy = asyncComponent(props => import('./screens/Privacy'));
 
 const Fragment = React.Fragment;
 
@@ -27,23 +28,13 @@ class App extends Component {
           </Helmet>
           <Router>
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/support" component={Support} />
-              <Route path="/auth" component={Auth} />
-              <Route path="/functions" component={Auth} />
-              <Route path="/terms" render={() => (
-                <Article
-                  title="Gamestack Terms of Service"
-                  article={Terms}
-                />
-              )}/>
-              <Route path="/privacy" component={() => (
-                <Article
-                  title="Gamestack Privacy Policy"
-                  article={Privacy}
-                />
-              )}/>
-              <Route component={FourOhFour} />
+              <Route exact path="/" render={props => <Home {...props} />} />
+              <Route path="/support" render={props => <Support {...props} />} />
+              <Route path="/auth" render={props => <Auth {...props} />} />
+              <Route path="/functions" render={props => <Auth {...props} />} />
+              <Route path="/terms" render={props => <Terms {...props} />} />
+              <Route path="/privacy" render={props => <Privacy {...props} />} />
+              <Route render={props => <FourOhFour {...props} />} />
             </Switch>
           </Router>
         </Fragment>

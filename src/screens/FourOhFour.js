@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
 import { LinkButton } from '../components/Button';
-import { Media } from '../utils/StyleUtils';
 import FourOhFourMp4 from '../images/four-oh-four.mp4';
 import FourOhFourWebm from '../images/four-oh-four.webm';
 import FourOhFourBlur from '../images/four-oh-four-blur.jpg';
@@ -17,7 +16,7 @@ class FourOhFour extends Component {
   };
 
   setLoaded = () => {
-    this.setState({videoLoaded: true});
+    this.setState({ videoLoaded: true });
   }
 
   render() {
@@ -28,13 +27,13 @@ class FourOhFour extends Component {
       <Fragment>
         <Helmet>
           <title>404 Not Found</title>
-          <meta name="description" content="This page doesn't exist"/>
+          <meta name="description" content="This page doesn't exist" />
         </Helmet>
         <FourOhFourWrapper>
           <FourOhFourContent>
             <FourOhFourBackground>404</FourOhFourBackground>
             <FourOhFourTitle>Sneaky Beaky</FourOhFourTitle>
-            <FourOhFourDescription>This page went in sneaky beaky like and couldn't be found. It probably doesn't exist, or it may have moved</FourOhFourDescription>
+            <FourOhFourDescription>This page couldn't be found. It probably doesn't exist, or it may have moved</FourOhFourDescription>
             <LinkButton secondary to="/" text="Back to home" />
           </FourOhFourContent>
 
@@ -65,7 +64,8 @@ class FourOhFour extends Component {
 const FourOhFourWrapper = Container.extend`
   flex-direction: column;
   align-items: center;
-  justify-content: center
+  justify-content: center;
+  overflow: hidden;
 `;
 
 const FourOhFourContent = styled.div`
@@ -90,29 +90,33 @@ const FourOhFourTitle = styled.h1`
   margin: 0;
   margin-bottom: 16px;
 
-  @media (max-width: ${Media.mobile}) {
+  @media (max-width: ${props => props.theme.mobile}) {
     font-size: 48px;
   }
 `;
 
 const FourOhFourDescription = styled.p`
-  font-size: 18px;
+  font-size: 22px;
   color: white;
   margin: 0;
   max-width: 500px;
   text-align: center;
   line-height: 1.6;
   margin-bottom: 30px;
+
+  @media (max-width: ${props => props.theme.mobile}) {
+    font-size: 18px;
+  }
 `;
 
 const FourOhFourBackground = styled.div`
-  font-size: 320px;
+  font-size: 380px;
   font-weight: 800;
   position: absolute;
   z-index: -1;
   color: ${props => props.theme.colorWhite(0.15)};
 
-  @media (max-width: ${Media.mobile}) {
+  @media (max-width: ${props => props.theme.mobile}) {
     font-size: 220px;
   }
 `;
@@ -160,7 +164,7 @@ const FourOhFourVideo = styled.video`
     'opacity: 1;'
   }
 
-  @media (max-width: ${Media.mobile}) {
+  @media (max-width: ${props => props.theme.mobile}) {
     object-position: left;
   }
 `;

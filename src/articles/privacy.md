@@ -1,4 +1,3 @@
-const Privacy = `
 # Gamestack Privacy Policy
 
 Last Revised: June 2017
@@ -75,5 +74,3 @@ You may opt out of receiving any promotional emails from us by following the ins
 ## Contact Us
 
 If you have any questions about this privacy policy, please contact us at:  [contact@gamestackapp.com](mailto:contact@gamestackapp.com).
-`
-export default Privacy;

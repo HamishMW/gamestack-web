@@ -6,7 +6,6 @@ import SupportImage2x from '../images/support@2x.png';
 import SupportImage from '../images/support.png';
 import Container from '../components/Container';
 import { Helmet } from 'react-helmet';
-import { Media } from '../utils/StyleUtils';
 import ScrollToTop from '../utils/ScrollToTop';
 
 const Fragment = React.Fragment;
@@ -16,7 +15,7 @@ const Support = () => (
     <ScrollToTop />
     <Helmet>
       <title>Support</title>
-      <meta name="description" content="Contact Gamestack support if you‘re having problems"/>
+      <meta name="description" content="Contact Gamestack support if you‘re having problems" />
     </Helmet>
 
     <SupportWrapper>
@@ -64,23 +63,32 @@ const SupportTextSection = styled.section`
   flex-direction: column;
   position: relative;
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     max-width: 100vw;
   }
 `;
 
 const SupportTitle = styled.h1`
-  font-size: 32px;
+  font-size: 46px;
   font-weight: 400;
   margin: 0 0 15px;
+
+  @media (max-width: ${props => props.theme.mobile}) {
+    font-size: 32px;
+  }
 `;
 
 const SupportDescription = styled.p`
-  font-size: 16px;
+  font-size: 22px;
   max-width: 435px;
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.5;
   text-align: center;
+  color: ${props => props.theme.colorText(0.8)};
+
+  @media (max-width: ${props => props.theme.mobile}) {
+    font-size: 18px;
+  }
 `;
 
 const SupportButton = styled(AnchorButton)`

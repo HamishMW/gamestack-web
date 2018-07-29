@@ -2,13 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
+import Markdown from 'markdown-to-jsx';
 import Logo from '../components/Logo';
 import Footer from '../components/Footer';
 import Theme from '../utils/Theme';
-import { Media } from '../utils/StyleUtils';
 import ScrollToTop from '../utils/ScrollToTop';
-
 
 const Fragment = React.Fragment;
 
@@ -20,14 +18,14 @@ const Article = (props) => {
       <ScrollToTop />
       <Helmet>
         <title>{title}</title>
-        { description && <meta name="description" content={description}/>}
+        {description && <meta name="description" content={description} />}
       </Helmet>
       <ArticleContainer>
         <ArticleHeader>
           <Link to="/"><Logo color={Theme.colorPrimary(1)} /></Link>
         </ArticleHeader>
         <ArticleContent>
-          <ReactMarkdown source={article} />
+          <Markdown>{article}</Markdown>
         </ArticleContent>
       </ArticleContainer>
       <Footer />
@@ -51,28 +49,47 @@ const ArticleContent = styled.div`
   h4 {
     color: ${props => props.theme.colorText(0.9)};
     font-weight: 400;
+    line-height: 1.2;
   }
 
   h1 {
-    font-size: 42px;
-  }
+    font-size: 56px;
 
-  @media (max-width: ${Media.tablet}) {
-    h1 {
-      font-size: 32px;
+    @media (max-width: ${props => props.theme.tablet}) {
+      font-size: 36px;
     }
   }
 
   h2 {
-    font-size: 24px;
-    margin-top: 50px;
+    font-size: 38px;
+    margin-top: 64px;
+    margin-bottom: 16px;
+
+    @media (max-width: ${props => props.theme.tablet}) {
+      font-size: 28px;
+    }
   }
 
   h3 {
-    font-size: 18px;
+    font-size: 26px;
     font-weight: 500;
-    margin-top: 30px;
-    margin-bottom: 15px;
+    margin-top: 50px;
+    margin-bottom: 16px;
+  }
+
+  a, 
+  p,
+  li {
+    font-size: 22px;
+    line-height: 1.5;
+
+    @media (max-width: ${props => props.theme.mobile}) {
+      font-size: 18px;
+    }
+  }
+
+  li {
+    margin-bottom: 16px;
   }
 
   a,

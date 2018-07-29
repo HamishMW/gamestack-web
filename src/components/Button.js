@@ -17,7 +17,7 @@ const ButtonInner = (props) => {
         flat={flat}
       />
       <ButtonContent>
-        { icon && <ButtonIcon icon={icon} color="white"/> }
+        {icon && <ButtonIcon icon={icon} color="white" />}
         <ButtonText secondary={secondary}>{text}</ButtonText>
       </ButtonContent>
     </Fragment>
@@ -85,15 +85,15 @@ const ButtonFill = styled.div`
   border-radius: 6px;
   transition: all 0.3s ${props => props.theme.curveFastoutSlowin};
 
-  ${props => props.flat &&`
+  ${props => props.flat && `
     background: transparent;
   `}
 
-  ${props => props.secondary &&`
+  ${props => props.secondary && `
     background: ${props.theme.colorWhite(1)};
   `}
 
-  ${props => props.shadow &&`
+  ${props => props.shadow && `
     box-shadow:
       0 4px 16px 0 rgba(0, 0, 0, 0.15),
       0 12px 36px 0 rgba(0, 0, 0, 0.2);
@@ -101,7 +101,7 @@ const ButtonFill = styled.div`
 `;
 
 const ButtonWrapper = styled.button`
-  height: 48px;
+  height: 56px;
   border-radius: 6px;
   border: 0;
   background: transparent;
@@ -118,11 +118,11 @@ const ButtonWrapper = styled.button`
     background: ${props => Color(props.theme.colorPrimary(1)).darken(0.1).string()};
     transform: scale3d(1.05, 1.05, 1);
 
-    ${props => props.flat &&`
+    ${props => props.flat && `
       background: ${props.theme.colorText(0.1)};
     `}
 
-    ${props => props.secondary &&`
+    ${props => props.secondary && `
       background: ${props.theme.colorWhite(0.8)};
       outline: none;
     `}
@@ -159,7 +159,7 @@ const ButtonContent = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 0 20px;
+  padding: 0 28px;
   position: relative;
   height: 100%;
 `;
@@ -170,12 +170,12 @@ const ButtonIcon = styled(Icon)`
 `;
 
 const ButtonText = styled.div`
-  font-size: 14px;
+  font-size: 18px;
   position: relative;
   font-weight: 600;
   line-height: 1;
 
-  ${props => props.secondary &&`
+  ${props => props.secondary && `
     color: ${props.theme.colorPrimary(1)};
   `}
 `;

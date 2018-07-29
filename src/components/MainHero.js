@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Logo from '../components/Logo';
-import { AnchorButton, Button } from '../components/Button';
+import { AnchorButton } from '../components/Button';
 import Footer from '../components/Footer';
 import Theme from '../utils/Theme';
-import { Media } from '../utils/StyleUtils';
 
 const MainHero = (props) => {
   const { appName, title, description, className } = props;
@@ -14,7 +13,7 @@ const MainHero = (props) => {
     <MainHeroContainer className={className}>
       <MainHeroDetails>
         <MainHeroLogo>
-          <MainHeroLogoIcon color={Theme.colorPrimary(1)}/>
+          <MainHeroLogoIcon color={Theme.colorPrimary(1)} />
           <MainHeroLogoText>{appName}</MainHeroLogoText>
         </MainHeroLogo>
         <MainHeroTitle>{title}</MainHeroTitle>
@@ -27,12 +26,6 @@ const MainHero = (props) => {
             data-gtm="beta-request"
             target="_blank"
             href={actionUrl}
-          />
-          <Button
-            flat
-            disabled
-            icon="android"
-            text="Android coming soon"
           />
         </MainHeroActions>
       </MainHeroDetails>
@@ -52,7 +45,7 @@ const MainHeroContainer = styled.section`
   z-index: 40;
   color: ${props => props.theme.colorText(1)};
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     flex-direction: column;
   }
 `;
@@ -64,11 +57,11 @@ const MainHeroDetails = styled.div`
   flex-direction: column;
   justify-content: center;
 
-  @media (max-width: ${Media.desktop}) {
+  @media (max-width: ${props => props.theme.desktop}) {
     max-width: 450px;
   }
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     justify-content: center;
     text-align: center;
     max-width: none;
@@ -76,7 +69,7 @@ const MainHeroDetails = styled.div`
     max-width: 500px;
   }
 
-  @media (max-width: ${Media.mobile}) {
+  @media (max-width: ${props => props.theme.mobile}) {
     padding-top: 60px;
   }
 `;
@@ -86,7 +79,7 @@ const MainHeroLogo = styled.div`
   flex-direction: row;
   align-items: center;
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     justify-content: center;
   }
 `;
@@ -95,7 +88,7 @@ const MainHeroLogoIcon = styled(Logo)`
   width: 62px;
   margin-right: 16px;
 
-  @media (max-width: ${Media.mobile}) {
+  @media (max-width: ${props => props.theme.mobile}) {
     width: 56px;
     margin-right: 10px;
   }
@@ -106,7 +99,7 @@ const MainHeroLogoText = styled.h2`
   font-weight: 300;
   margin: 0;
 
-  @media (max-width: ${Media.mobile}) {
+  @media (max-width: ${props => props.theme.mobile}) {
     font-size: 20px;
   }
 `;
@@ -118,24 +111,28 @@ const MainHeroTitle = styled.h1`
   line-height: 1;
   margin-bottom: 5px;
 
-  @media (max-width: ${Media.desktop}) {
+  @media (max-width: ${props => props.theme.desktop}) {
     font-size: 48px;
   }
 
-  @media (max-width: ${Media.mobile}) {
+  @media (max-width: ${props => props.theme.mobile}) {
     font-size: 32px;
   }
 `;
 
 const MainHeroDescription = styled.p`
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 40px;
-  line-height: 1.4;
+  line-height: 1.5;
 
-  @media (max-width: ${Media.tablet}) {
+  @media (min-width: ${props => props.theme.desktop}) {
+    font-size: 22px;
+  }
+
+  @media (max-width: ${props => props.theme.tablet}) {
     margin-left: auto;
     margin-right: auto;
-    font-size: 16px;
+    font-size: 18px;
   }
 `;
 
@@ -144,11 +141,11 @@ const MainHeroActions = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     justify-content: center;
   }
 
-  @media (max-width: ${Media.mobile}) {
+  @media (max-width: ${props => props.theme.mobile}) {
     flex-direction: column;
     align-items: center;
   }
@@ -158,7 +155,7 @@ const MainHeroButton = styled(AnchorButton)`
   margin-right: 10px;
   margin-bottom: 20px;
 
-  @media (max-width: ${Media.mobile}) {
+  @media (max-width: ${props => props.theme.mobile}) {
     margin-right: 0;
   }
 `;
@@ -167,7 +164,7 @@ const MainHeroFooter = styled(Footer)`
   position: absolute;
   bottom: 0;
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     display: none;
   }
 `;

@@ -44,9 +44,18 @@ const FooterLink = styled(Link)`
   margin: 15px;
   display: block;
   font-size: 14px;
+  transition: all 0.3s ease;
+  text-decoration: underline;
+  text-decoration-color: transparent;
   color: ${props => props.faded
     ? props.theme.colorText(0.4)
-    : props.theme.colorText(0.8)}
+    : props.theme.colorText(0.8)};
+
+  &:hover {
+    text-decoration-color: ${props => props.faded
+    ? props.theme.colorText(0.2)
+    : props.theme.colorText(0.6)};
+  }
 `;
 
 const FooterAnchor = FooterLink.withComponent('a');

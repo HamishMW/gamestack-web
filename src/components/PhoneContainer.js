@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Media } from '../utils/StyleUtils';
 
 const PhoneContainer = (props) => (
   <PhoneContainerWrapper className={props.className}>
@@ -35,7 +34,7 @@ const PhoneContainerWrapper = styled.div`
   padding-top: 40px;
   padding-bottom: 80px;
 
-  @media (max-width: ${Media.tablet}) {
+  @media (max-width: ${props => props.theme.tablet}) {
     padding: 0;
     justify-content: center;
   }
@@ -47,7 +46,7 @@ const PhoneContainerPhone = styled.div`
   background: linear-gradient(#2E3747, #21252B);
   justify-content: center;
   border-radius: 54px;
-  max-width: 360px;
+  max-width: 368px;
   width: 100%;
   height: auto;
   box-shadow:
@@ -64,12 +63,16 @@ const PhoneContainerPhone = styled.div`
     background: ${props => props.theme.colorBlack(0.3)};
     border-radius: 3px;
     position: absolute;
-    top: 28px;
+    top: 36px;
     left: 50%;
     margin-left: -30px;
+
+    @media (max-width: ${props => props.theme.desktop}) {
+      top: 28px;
+    }
   }
 
-  @media (max-width: ${Media.desktop}) {
+  @media (max-width: ${props => props.theme.desktop}) {
     max-width: 280px;
     border-radius: 46px;
   }
@@ -77,11 +80,15 @@ const PhoneContainerPhone = styled.div`
 
 const PhoneContainerScreen = styled.div`
   flex: 1 0 auto;
-  padding: 60px 20px;
+  padding: 76px 24px;
   border-radius: 4px;
   max-width: 100%;
   display: flex;
   align-items: flex-start;
+
+  @media (max-width: ${props => props.theme.desktop}) {
+    padding: 60px 20px;
+  }
 `;
 
 const PhoneContainerVideo = styled.video`
@@ -92,12 +99,12 @@ const PhoneContainerVideo = styled.video`
   width: 240px;
   height: 426px;
 
-  @media (min-width: ${Media.desktop}) {
+  @media (min-width: ${props => props.theme.desktop}) {
     width: 320px;
     height: 568px;
   }
 
-  @media (max-width: ${Media.mobile}) {
+  @media (max-width: ${props => props.theme.mobile}) {
     width: 100%;
     height: auto;
   }
