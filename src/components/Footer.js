@@ -6,7 +6,7 @@ const Footer = (props) => (
   <FooterWrapper className={props.className}>
     <FooterRow>
       <FooterLink to="/support">Support</FooterLink>
-      <FooterAnchor target="_blank" rel="noopener noreferrer" href="mailto:contact@gamestackapp.com">Contact</FooterAnchor>
+      <FooterAnchor href="mailto:contact@gamestackapp.com">Contact</FooterAnchor>
       <FooterLink to="/terms">Legal</FooterLink>
       <FooterAnchor target="_blank" rel="noopener noreferrer" href="https://twitter.com/gamestackapp">Twitter</FooterAnchor>
       <FooterAnchor faded target="_blank" rel="noopener noreferrer" href="https://hamishw.com">

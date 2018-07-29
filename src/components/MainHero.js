@@ -43,6 +43,7 @@ export default class MainHero extends Component {
               text="Request beta invite"
               data-gtm="beta-request"
               target="_blank"
+              rel="noopener noreferrer"
               href={actionUrl}
             />
           </MainHeroActions>
