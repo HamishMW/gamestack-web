@@ -1,42 +1,58 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import Logo from '../components/Logo';
 import { AnchorButton } from '../components/Button';
 import Footer from '../components/Footer';
+import Input from '../components/Input';
 import Theme from '../utils/Theme';
 
-const MainHero = (props) => {
-  const { appName, title, description, className } = props;
-  const actionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSf-8LaHUz8ftPvpgPeZQiaQVLcyw2caXF_57DGAvFJhClDBKw/viewform?usp=sf_link';
+export default class MainHero extends Component {
+  state = {
+    inputValue: '',
+  }
 
-  return (
-    <MainHeroContainer className={className}>
-      <MainHeroDetails>
-        <MainHeroLogo>
-          <MainHeroLogoIcon color={Theme.colorPrimary(1)} />
-          <MainHeroLogoText>{appName}</MainHeroLogoText>
-        </MainHeroLogo>
-        <MainHeroTitle>{title}</MainHeroTitle>
-        <MainHeroDescription>{description}</MainHeroDescription>
-        <MainHeroActions>
-          <MainHeroInput
-            Placeholder="Enter your email"
-          />
-          <MainHeroButton
-            shadow
-            icon="apple"
-            text="Request beta invite"
-            data-gtm="beta-request"
-            target="_blank"
-            href={actionUrl}
-          />
-        </MainHeroActions>
-      </MainHeroDetails>
-      <MainHeroFooter />
-    </MainHeroContainer>
-  );
-};
+  onChange = event => {
+    this.setState({inputValue: event.target.value});
+  }
 
+  render() {
+    const { appName, title, description, className } = this.props;
+    const { inputValue } = this.state;
+    const actionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSf-8LaHUz8ftPvpgPeZQiaQVLcyw2caXF_57DGAvFJhClDBKw/viewform?usp=sf_link';
+
+    return (
+      <MainHeroContainer className={className}>
+        <MainHeroDetails>
+          <MainHeroLogo>
+            <MainHeroLogoIcon color={Theme.colorPrimary(1)} />
+            <MainHeroLogoText>{appName}</MainHeroLogoText>
+          </MainHeroLogo>
+          <MainHeroTitle>{title}</MainHeroTitle>
+          <MainHeroDescription>{description}</MainHeroDescription>
+          <MainHeroActions>
+            {false &&
+              <Input
+                value={inputValue}
+                label="Enter your email"
+                onChange={this.onChange}
+              />
+            }
+            <AnchorButton
+              shadow
+              style={{maxWidth: 'fit-content'}}
+              icon="apple"
+              text="Request beta invite"
+              data-gtm="beta-request"
+              target="_blank"
+              href={actionUrl}
+            />
+          </MainHeroActions>
+        </MainHeroDetails>
+        <MainHeroFooter />
+      </MainHeroContainer>
+    );
+  }
+}
 
 const MainHeroContainer = styled.section`
   display: flex;
@@ -127,6 +143,7 @@ const MainHeroDescription = styled.p`
   font-size: 20px;
   margin-bottom: 40px;
   line-height: 1.5;
+  color: ${props => props.theme.colorWhite(0.8)};
 
   @media (min-width: ${props => props.theme.desktop}) {
     font-size: 22px;
@@ -140,35 +157,24 @@ const MainHeroDescription = styled.p`
 `;
 
 const MainHeroActions = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: 10px;
+  width: 100%;
+  max-width: 480px;
 
   @media (max-width: ${props => props.theme.tablet}) {
+    grid-template-columns: 1fr;
     justify-content: center;
-  }
-
-  @media (max-width: ${props => props.theme.mobile}) {
-    flex-direction: column;
     align-items: center;
+    max-width: 300px;
+    align-self: center;
   }
-`;
-
-const MainHeroInput = styled.input`
-  background: white;
-  border-radius: 8px;
-  padding: 0;
-  border: 0;
-  margin: 0;
-`;
-
-
-const MainHeroButton = styled(AnchorButton)`
-  margin-right: 10px;
-  margin-bottom: 20px;
 
   @media (max-width: ${props => props.theme.mobile}) {
-    margin-right: 0;
+    align-items: center;
+    max-width: 100%;
+    width: 100%;
   }
 `;
 
@@ -180,5 +186,3 @@ const MainHeroFooter = styled(Footer)`
     display: none;
   }
 `;
-
-export default MainHero;

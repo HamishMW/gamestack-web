@@ -31,12 +31,13 @@ const Button = ({ disabled, onClick, className, flat, secondary, ...props }) => 
   </ButtonWrapper>
 );
 
-const AnchorButton = ({ disabled, href, className, target, flat, secondary, ...props }) => (
+const AnchorButton = ({ disabled, href, className, style, target, flat, secondary, ...props }) => (
   <AnchorButtonWrapper
     disabled={disabled}
     flat={flat}
     secondary={secondary}
     className={className}
+    style={style}
     href={href}
     target={target}
     data-gtm={props['data-gtm']}
@@ -95,8 +96,7 @@ const ButtonWrapper = styled.button`
   text-decoration: none;
 
   &:hover ${ButtonFill},
-  &:focus ${ButtonFill},
-  &:active ${ButtonFill} {
+  &:focus ${ButtonFill} {
     background: ${props => Color(props.theme.colorPrimary(1)).darken(0.1).string()};
     transform: scale3d(1.05, 1.05, 1);
 
@@ -108,6 +108,10 @@ const ButtonWrapper = styled.button`
       background: ${props.theme.colorWhite(0.8)};
       outline: none;
     `}
+  }
+
+  &:active ${ButtonFill} {
+    transform: scale3d(1, 1, 1);
   }
 
   &:disabled:hover ${ButtonFill} {
