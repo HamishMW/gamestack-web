@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
 import { LinkButton } from '../components/Button';
@@ -29,6 +30,7 @@ class FourOhFour extends Component {
           <title>404 Not Found</title>
           <meta name="description" content="This page doesn't exist" />
         </Helmet>
+        <Header transparent white fixed={false} />
         <FourOhFourWrapper>
           <FourOhFourContent>
             <FourOhFourBackground>404</FourOhFourBackground>
@@ -74,7 +76,6 @@ const FourOhFourContent = styled.div`
   justify-content: center;
   flex-direction: column;
   position: relative;
-  top: -30px;
   height: 100vh;
   width: 100vw;
   z-index: 10;
@@ -91,7 +92,7 @@ const FourOhFourTitle = styled.h1`
   margin-bottom: 16px;
 
   @media (max-width: ${props => props.theme.mobile}) {
-    font-size: 48px;
+    font-size: 36px;
   }
 `;
 
@@ -101,7 +102,7 @@ const FourOhFourDescription = styled.p`
   margin: 0;
   max-width: 500px;
   text-align: center;
-  line-height: 1.6;
+  line-height: 1.5;
   margin-bottom: 30px;
 
   @media (max-width: ${props => props.theme.mobile}) {
@@ -136,7 +137,7 @@ const FourOhFourVideoWrapper = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
-    background: ${props => props.theme.colorPrimary(0.8)};
+    background: ${props => props.theme.colorBlue(0.8)};
     z-index: 1;
   }
 `;

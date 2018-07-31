@@ -208,7 +208,7 @@ const PreviewSectionBackground = styled.div`
   align-items: center;
   position: absolute;
   height: 100%;
-  background-color: ${props => props.theme.colorPrimary(1)};
+  background-color: ${props => props.theme.colorBlue(1)};
   width: 100vw;
   right: 0;
   overflow: hidden;
@@ -220,7 +220,7 @@ const PreviewSectionBackground = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
-    background: ${props => props.theme.colorPrimary(0.5)};
+    background: ${props => props.theme.colorBlue(0.5)};
     z-index: 1;
   }
 
@@ -255,8 +255,8 @@ const PreviewSectionPicture = styled.picture`
 
     ${props =>
     `background: linear-gradient(90deg,
-        ${props.theme.colorPrimary(1)},
-        ${props.theme.colorPrimary(0)}
+        ${props.theme.colorBlue(1)},
+        ${props.theme.colorBlue(0)}
       );`
   }
 

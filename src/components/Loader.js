@@ -4,7 +4,7 @@ import Logo from './Logo';
 import Theme from '../utils/Theme';
 
 const Loader = () => (
-  <LoaderElem color={Theme.colorPrimary(1)} />
+  <LoaderElem color={Theme.colorBlue(1)} />
 );
 
 const AnimLoader = props => keyframes`
@@ -12,7 +12,7 @@ const AnimLoader = props => keyframes`
     fill: ${props.theme.colorBlack(0.4)};
   }
   100% {
-    fill: ${props.theme.colorPrimary(1)};
+    fill: ${props.theme.colorBlue(1)};
   }
 `;
 

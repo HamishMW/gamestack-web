@@ -4,38 +4,41 @@ import { Link } from 'react-router-dom';
 import Color from 'color';
 import Icon from '../utils/Icon';
 
-const ButtonInner = ({ text, icon, flat, secondary, shadow, ...props }) => (
+const ButtonInner = ({ text, icon, flat, secondary, shadow, size, ...props }) => (
   <React.Fragment>
     <ButtonFill
       secondary={secondary}
+      size={size}
       shadow={shadow}
       flat={flat}
       {...props}
     />
-    <ButtonContent>
+    <ButtonContent size={size}>
       {icon && <ButtonIcon icon={icon} color="white" />}
-      <ButtonText secondary={secondary}>{text}</ButtonText>
+      <ButtonText secondary={secondary} size={size}>{text}</ButtonText>
     </ButtonContent>
   </React.Fragment>
 );
 
-const Button = ({ disabled, onClick, className, flat, secondary, ...props }) => (
+const Button = ({ disabled, onClick, className, flat, secondary, size, ...props }) => (
   <ButtonWrapper
     disabled={disabled}
     flat={flat}
+    size={size}
     secondary={secondary}
     className={className}
     onClick={onClick}
     data-gtm={props['data-gtm']}
   >
-    <ButtonInner secondary={secondary} {...props} />
+    <ButtonInner secondary={secondary} size={size} {...props} />
   </ButtonWrapper>
 );
 
-const AnchorButton = ({ disabled, href, className, style, target, flat, secondary, rel, ...props }) => (
+const AnchorButton = ({ disabled, href, className, style, target, flat, secondary, rel, size, ...props }) => (
   <AnchorButtonWrapper
     disabled={disabled}
     flat={flat}
+    size={size}
     secondary={secondary}
     className={className}
     style={style}
@@ -44,26 +47,27 @@ const AnchorButton = ({ disabled, href, className, style, target, flat, secondar
     data-gtm={props['data-gtm']}
     rel={rel}
   >
-    <ButtonInner secondary={secondary} {...props} />
+    <ButtonInner secondary={secondary} size={size} {...props} />
   </AnchorButtonWrapper>
 );
 
-const LinkButton = ({ disabled, to, className, flat, secondary, ...props }) => (
+const LinkButton = ({ disabled, to, className, flat, secondary, size, ...props }) => (
   <ButtonWrapper
     disabled={disabled}
     flat={flat}
+    size={size}
     secondary={secondary}
     className={className}
     data-gtm={props['data-gtm']}
   >
     <ButtonLink to={to}>
-      <ButtonInner secondary={secondary} {...props} />
+      <ButtonInner secondary={secondary} size={size} {...props} />
     </ButtonLink>
   </ButtonWrapper>
 );
 
 const ButtonFill = styled.div`
-  background: ${props => props.theme.colorPrimary(1)};
+  background: ${props => props.theme.colorBlueDark()};
   position: absolute;
   top: 0;
   right: 0;
@@ -101,7 +105,7 @@ const ButtonWrapper = styled.button`
 
   &:hover ${ButtonFill},
   &:focus ${ButtonFill} {
-    background: ${props => Color(props.theme.colorPrimary(1)).darken(0.1).string()};
+    background: ${props => Color(props.theme.colorBlueDark()).darken(0.1).string()};
     transform: scale3d(1.05, 1.05, 1);
 
     ${props => props.flat && `
@@ -136,6 +140,10 @@ const ButtonWrapper = styled.button`
   &:disabled:hover {
     cursor: default;
   }
+
+  ${props => props.size === 'small' && `
+    height: 40px;
+  `}
 `;
 
 const AnchorButtonWrapper = ButtonWrapper.withComponent('a');
@@ -152,6 +160,10 @@ const ButtonContent = styled.div`
   padding: 0 28px;
   position: relative;
   height: 100%;
+
+  ${props => props.size === 'small' && `
+    padding: 0 16px;
+  `}
 `;
 
 const ButtonIcon = styled(Icon)`
@@ -166,7 +178,11 @@ const ButtonText = styled.div`
   line-height: 1;
 
   ${props => props.secondary && `
-    color: ${props.theme.colorPrimary(1)};
+    color: ${props.theme.colorBlueDark()};
+  `}
+
+  ${props => props.size === 'small' && `
+    font-size: 16px;
   `}
 `;
 

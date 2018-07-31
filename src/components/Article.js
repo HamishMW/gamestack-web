@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
 import Markdown from 'markdown-to-jsx';
-import Logo from '../components/Logo';
 import Footer from '../components/Footer';
-import Theme from '../utils/Theme';
 import ScrollToTop from '../utils/ScrollToTop';
 
 const Fragment = React.Fragment;
@@ -21,9 +18,6 @@ const Article = (props) => {
         {description && <meta name="description" content={description} />}
       </Helmet>
       <ArticleContainer>
-        <ArticleHeader>
-          <Link to="/"><Logo color={Theme.colorPrimary(1)} /></Link>
-        </ArticleHeader>
         <ArticleContent>
           <Markdown>{article}</Markdown>
         </ArticleContent>
@@ -34,7 +28,7 @@ const Article = (props) => {
 };
 
 const ArticleContainer = styled.article`
-  max-width: 800px;
+  max-width: 740px;
   padding: 80px 20px;
   margin: 0 auto;
   color: ${props => props.theme.colorText(0.7)};
@@ -77,7 +71,7 @@ const ArticleContent = styled.div`
     margin-bottom: 16px;
   }
 
-  a, 
+  a,
   p,
   li {
     font-size: 22px;
@@ -92,24 +86,23 @@ const ArticleContent = styled.div`
     margin-bottom: 16px;
   }
 
+  ul {
+    padding-left: 30px;
+  }
+
   a,
   a:visited {
-    color: ${props => props.theme.colorPrimary(1)};
+    color: ${props => props.theme.colorBlueLight()};
     cursor: pointer;
     text-decoration: none;
     transition: all 0.3s ease;
+    text-decoration: underline;
+    text-decoration-color: ${props => props.theme.colorBlueLight(0)};
   }
 
   a:hover {
-    background: ${props => props.theme.colorPrimary(0.2)};
+    text-decoration-color: ${props => props.theme.colorBlueLight(0.4)};
   }
-`;
-
-const ArticleHeader = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 80px;
 `;
 
 export default Article;

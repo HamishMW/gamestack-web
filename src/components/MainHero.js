@@ -24,7 +24,7 @@ export default class MainHero extends Component {
       <MainHeroContainer className={className}>
         <MainHeroDetails>
           <MainHeroLogo>
-            <MainHeroLogoIcon color={Theme.colorPrimary(1)} />
+            <MainHeroLogoIcon color={Theme.colorBlue(1)} />
             <MainHeroLogoText>{appName}</MainHeroLogoText>
           </MainHeroLogo>
           <MainHeroTitle>{title}</MainHeroTitle>

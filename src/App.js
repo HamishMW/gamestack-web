@@ -66,7 +66,7 @@ injectGlobal`
   }
 
   ::selection {
-    background: ${Theme.colorPrimary(0.5)};
+    background: ${Theme.colorBlue(0.5)};
   }
 `;
 

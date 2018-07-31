@@ -11,7 +11,9 @@ const Theme = {
   colorWhite: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
   colorBackground: (opacity = 1) => `rgba(33, 38, 47, ${opacity})`,
   colorText: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-  colorPrimary: (opacity = 1) => `rgba(41, 121, 255, ${opacity})`,
+  colorBlueLight: (opacity = 1) => `rgba(57, 142, 253, ${opacity})`,
+  colorBlue: (opacity = 1) => `rgba(41, 121, 255, ${opacity})`,
+  colorBlueDark: (opacity = 1) => `rgb(24, 109, 253, ${opacity})`,
   curveFastoutSlowin: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
 }
 

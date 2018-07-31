@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { AnchorButton } from '../components/Button';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SupportImage2x from '../images/support@2x.png';
 import SupportImage from '../images/support.png';
@@ -17,7 +18,7 @@ const Support = () => (
       <title>Support</title>
       <meta name="description" content="Contact Gamestack support if you‘re having problems" />
     </Helmet>
-
+    <Header />
     <SupportWrapper>
       <SupportTextSection>
         <picture>
