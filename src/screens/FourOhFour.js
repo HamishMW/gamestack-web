@@ -8,8 +8,6 @@ import FourOhFourMp4 from '../images/four-oh-four.mp4';
 import FourOhFourWebm from '../images/four-oh-four.webm';
 import FourOhFourBlur from '../images/four-oh-four-blur.jpg';
 
-const Fragment = React.Fragment;
-
 class FourOhFour extends Component {
   state = {
     videoLoaded: false,
@@ -24,7 +22,7 @@ class FourOhFour extends Component {
     const isReactSnap = window.location.port === '45678';
 
     return (
-      <Fragment>
+      <React.Fragment>
         <Helmet>
           <title>404 Not Found</title>
           <meta name="description" content="This page doesn't exist" />
@@ -56,7 +54,7 @@ class FourOhFour extends Component {
           </FourOhFourVideoWrapper>
           <FourOhFourFooter />
         </FourOhFourWrapper>
-      </Fragment>
+      </React.Fragment>
     );
   }
 }

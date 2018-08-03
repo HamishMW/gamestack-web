@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 import Logo from '../components/Logo';
 import { AnchorButton } from '../components/Button';
 import Footer from '../components/Footer';
 import Input from '../components/Input';
-import Theme from '../utils/Theme';
 
-export default class MainHero extends Component {
+class MainHero extends Component {
   state = {
     inputValue: '',
   }
@@ -16,7 +15,7 @@ export default class MainHero extends Component {
   }
 
   render() {
-    const { appName, title, description, className } = this.props;
+    const { appName, title, description, className, theme } = this.props;
     const { inputValue } = this.state;
     const actionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSf-8LaHUz8ftPvpgPeZQiaQVLcyw2caXF_57DGAvFJhClDBKw/viewform?usp=sf_link';
 
@@ -24,7 +23,7 @@ export default class MainHero extends Component {
       <MainHeroContainer className={className}>
         <MainHeroDetails>
           <MainHeroLogo>
-            <MainHeroLogoIcon color={Theme.colorBlue(1)} />
+            <MainHeroLogoIcon color={theme.colorBlue(1)} />
             <MainHeroLogoText>{appName}</MainHeroLogoText>
           </MainHeroLogo>
           <MainHeroTitle>{title}</MainHeroTitle>
@@ -191,3 +190,5 @@ const MainHeroFooter = styled(Footer)`
     display: none;
   }
 `;
+
+export default withTheme(MainHero);
