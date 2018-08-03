@@ -3,6 +3,7 @@ import { ThemeProvider, injectGlobal } from 'styled-components';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import asyncComponent from './components/AsyncComponent';
+import Header from './components/Header';
 import Theme from './utils/Theme';
 
 const Home = asyncComponent(props => import('./screens/Home'));
@@ -27,15 +28,20 @@ class App extends Component {
             />
           </Helmet>
           <Router>
-            <Switch>
-              <Route exact path="/" render={props => <Home {...props} />} />
-              <Route path="/support" render={props => <Support {...props} />} />
-              <Route path="/auth" render={props => <Auth {...props} />} />
-              <Route path="/functions" render={props => <Auth {...props} />} />
-              <Route path="/terms" render={props => <Terms {...props} />} />
-              <Route path="/privacy" render={props => <Privacy {...props} />} />
-              <Route render={props => <FourOhFour {...props} />} />
-            </Switch>
+            <Route render={(routeProps) => (
+              <React.Fragment>
+                {routeProps.location.pathname !== '/' && <Header />}
+                <Switch>
+                  <Route exact path="/" render={props => <Home {...props} />} />
+                  <Route path="/support" render={props => <Support {...props} />} />
+                  <Route path="/auth" render={props => <Auth {...props} />} />
+                  <Route path="/functions" render={props => <Auth {...props} />} />
+                  <Route path="/terms" render={props => <Terms {...props} />} />
+                  <Route path="/privacy" render={props => <Privacy {...props} />} />
+                  <Route render={props => <FourOhFour {...props} />} />
+                </Switch>
+              </React.Fragment>
+            )} />
           </Router>
         </Fragment>
       </ThemeProvider>

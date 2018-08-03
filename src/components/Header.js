@@ -36,14 +36,8 @@ const HeaderContainer = styled.header`
   padding: 0 16px;
   background: ${props => props.transparent
     ? 'transparent'
-    : props.theme.colorBackground()
+    : props.theme.colorBackgroundDark()
   };
-
-  ${props => !props.transparent && `
-    box-shadow:
-      0 2px 4px ${props.theme.colorBlack(0.2)},
-      0 8px 16px ${props.theme.colorBlack(0.1)};
-  `}
 `;
 
 const HeaderLogo = styled(Link)`

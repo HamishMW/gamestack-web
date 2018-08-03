@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
 import { LinkButton } from '../components/Button';
@@ -30,7 +29,6 @@ class FourOhFour extends Component {
           <title>404 Not Found</title>
           <meta name="description" content="This page doesn't exist" />
         </Helmet>
-        <Header transparent white fixed={false} />
         <FourOhFourWrapper>
           <FourOhFourContent>
             <FourOhFourBackground>404</FourOhFourBackground>
