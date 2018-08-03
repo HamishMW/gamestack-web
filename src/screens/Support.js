@@ -8,10 +8,8 @@ import Container from '../components/Container';
 import { Helmet } from 'react-helmet';
 import ScrollToTop from '../utils/ScrollToTop';
 
-const Fragment = React.Fragment;
-
 const Support = () => (
-  <Fragment>
+  <React.Fragment>
     <ScrollToTop />
     <Helmet>
       <title>Support</title>
@@ -40,7 +38,7 @@ const Support = () => (
       </SupportTextSection>
     </SupportWrapper>
     <Footer />
-  </Fragment>
+  </React.Fragment>
 );
 
 const SupportWrapper = Container.extend`

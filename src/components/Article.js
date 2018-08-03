@@ -5,13 +5,11 @@ import Markdown from 'markdown-to-jsx';
 import Footer from '../components/Footer';
 import ScrollToTop from '../utils/ScrollToTop';
 
-const Fragment = React.Fragment;
-
 const Article = (props) => {
   const { title, description, article } = props;
 
   return (
-    <Fragment>
+    <React.Fragment>
       <ScrollToTop />
       <Helmet>
         <title>{title}</title>
@@ -23,7 +21,7 @@ const Article = (props) => {
         </ArticleContent>
       </ArticleContainer>
       <Footer />
-    </Fragment>
+    </React.Fragment>
   )
 };
 

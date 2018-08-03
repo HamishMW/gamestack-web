@@ -3,11 +3,9 @@ import styled from 'styled-components';
 import Loader from '../components/Loader';
 import { Helmet } from 'react-helmet';
 
-const Fragment = React.Fragment;
-
 const Auth = () => {
   return (
-    <Fragment>
+    <React.Fragment>
       <Helmet>
         <title>Gamestack | Waiting</title>
         <meta name="description" content="waiting" />
@@ -15,7 +13,7 @@ const Auth = () => {
       <AuthWrapper>
         <Loader />
       </AuthWrapper>
-    </Fragment>
+    </React.Fragment>
   );
 }
 
