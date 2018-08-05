@@ -7,8 +7,7 @@ const Footer = (props) => (
     <FooterRow>
       <FooterLink to="/support">Support</FooterLink>
       <FooterAnchor href="mailto:contact@gamestackapp.com">Contact</FooterAnchor>
-      <FooterLink to="/terms">Legal</FooterLink>
-      <FooterAnchor target="_blank" rel="noopener noreferrer" href="https://twitter.com/gamestackapp">Twitter</FooterAnchor>
+      <FooterLink to="/terms">Terms</FooterLink>
       <FooterAnchor faded target="_blank" rel="noopener noreferrer" href="https://hamishw.com">
         {`© ${new Date().getFullYear()} Hamish Williams`}
       </FooterAnchor>
