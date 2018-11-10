@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ThemeProvider, injectGlobal } from 'styled-components';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import asyncComponent from './components/AsyncComponent';
@@ -27,6 +27,7 @@ class App extends Component {
               content={'Gamestack is a todo list app for your game collection. Sync your Steam and Blizzard game libraries, track your progress, finish your games.'}
             />
           </Helmet>
+          <GlobalStyles />
           <Router>
             <Route render={(routeProps) => (
               <React.Fragment>
@@ -49,7 +50,7 @@ class App extends Component {
   }
 };
 
-injectGlobal`
+const GlobalStyles = createGlobalStyle`
   html,
   body {
     background-color: ${Theme.colorBackground(1)}

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import Logo from './Logo';
 import Theme from '../utils/Theme';
 
@@ -18,7 +18,7 @@ const AnimLoader = props => keyframes`
 
 const LoaderElem = styled(Logo)`
   fill: ${props => props.theme.colorBlack(0.4)};
-  animation: ${AnimLoader} 1.4s ${props => props.theme.curveFastoutSlowin} 0.5s infinite alternate;
+  animation: ${css`${AnimLoader} 1.4s ${props => props.theme.curveFastoutSlowin} 0.5s infinite alternate`};
 `;
 
 export default Loader;

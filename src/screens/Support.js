@@ -41,7 +41,7 @@ const Support = () => (
   </React.Fragment>
 );
 
-const SupportWrapper = Container.extend`
+const SupportWrapper = styled(Container)`
   flex-direction: column;
   justify-content: center;
   width: 100%;

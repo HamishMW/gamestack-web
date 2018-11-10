@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled, { keyframes, withTheme } from 'styled-components';
+import styled, { css, keyframes, withTheme } from 'styled-components';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
 import MainHero from '../components/MainHero';
@@ -94,7 +94,7 @@ class Home extends Component {
                 media={`(min-width: ${theme.mobile})`}
               />
               <PreviewSectionImage
-                innerRef={(image) => this.image = image}
+                ref={(image) => this.image = image}
                 src={BackgroundSmall}
                 show={imageLoaded && !isReactSnap}
                 onLoad={this.setImageLoaded}
@@ -121,7 +121,7 @@ class Home extends Component {
   }
 }
 
-const HomeContainer = Container.extend`
+const HomeContainer = styled(Container)`
   justify-content: center;
   width: 100%;
   min-height: 100vh;
@@ -138,7 +138,7 @@ const AnimFade = keyframes`
 
 const HomeHero = styled(MainHero)`
   opacity: 0;
-  animation-name: ${AnimFade};
+  animation-name: ${css`${AnimFade}`};
   animation-timing-function: ease;
   animation-duration: 0.9s;
   animation-delay: 0.3s;
@@ -164,7 +164,7 @@ const AnimSlide = keyframes`
 const HomePhoneContainer = styled(PhoneContainer)`
   transform: translate3d(120px, 0, 0);
   opacity: 0;
-  animation-name: ${AnimSlide};
+  animation-name: ${css`${AnimSlide}`};
   animation-timing-function: ${props => props.theme.curveFastoutSlowin};
   animation-duration: 1s;
   animation-delay: 0.6s;
@@ -303,7 +303,7 @@ const PreviewSectionMaskWrapper = styled.div`
   z-index: 20;
   height: 100%;
   transform: translate3d(0, 0, 0);
-  animation-name: ${AnimBackgroundMask};
+  animation-name: ${css`${AnimBackgroundMask}`};
   animation-duration: 1.4s;
   animation-delay: 0.2s;
   animation-timing-function: ${props => props.theme.curveFastoutSlowin};

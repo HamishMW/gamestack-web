@@ -59,7 +59,7 @@ class FourOhFour extends Component {
   }
 }
 
-const FourOhFourWrapper = Container.extend`
+const FourOhFourWrapper = styled(Container)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
