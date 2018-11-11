@@ -31,7 +31,7 @@ class App extends Component {
           <Router>
             <Route render={(routeProps) => (
               <React.Fragment>
-                {routeProps.location.pathname !== '/' && <Header />}
+                {routeProps.location.pathname !== '/' && routeProps.location.pathname !== '/auth' && <Header />}
                 <Switch>
                   <Route exact path="/" render={props => <Home {...props} />} />
                   <Route path="/support" render={props => <Support {...props} />} />
