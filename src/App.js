@@ -1,69 +1,95 @@
-import React, { Component } from 'react';
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import React, { createContext, lazy, Suspense, useEffect } from 'react';
+import styled, { ThemeProvider, createGlobalStyle, css } from 'styled-components/macro';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import asyncComponent from './components/AsyncComponent';
+import { Transition, TransitionGroup } from 'react-transition-group';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Theme from './utils/Theme';
 
-const Home = asyncComponent(props => import('./screens/Home'));
-const Auth = asyncComponent(props => import('./screens/Auth'));
-const FourOhFour = asyncComponent(props => import('./screens/FourOhFour'));
-const Support = asyncComponent(props => import('./screens/Support'));
-const Terms = asyncComponent(props => import('./screens/Terms'));
-const Privacy = asyncComponent(props => import('./screens/Privacy'));
+const Home = lazy(() => import('./screens/Home'));
+const Auth = lazy(() => import('./screens/Auth'));
+const FourOhFour = lazy(() => import('./screens/FourOhFour'));
+const Support = lazy(() => import('./screens/Support'));
+const Terms = lazy(() => import('./screens/Terms'));
+const Privacy = lazy(() => import('./screens/Privacy'));
 
-const Fragment = React.Fragment;
+export const AppContext = createContext();
 
-class App extends Component {
-  render() {
-    return (
+function App() {
+  useEffect(() => {
+    window.history.scrollRestoration = 'manual';
+  }, []);
+
+  return (
+    <HelmetProvider>
       <ThemeProvider theme={Theme}>
-        <Fragment>
+        <React.Fragment>
           <Helmet>
             <title>Gamestack | Track your games</title>
             <meta
               name="description"
-              content={'Gamestack is a todo list app for your game collection. Sync your Steam and Blizzard game libraries, track your progress, finish your games.'}
+              content="Gamestack is a todo list app for your game collection. Sync your Steam and Blizzard game libraries, track your progress, finish your games."
             />
           </Helmet>
           <GlobalStyles />
           <Router>
-            <Route render={(routeProps) => (
+            <Route render={({ location }) => (
               <React.Fragment>
-                {routeProps.location.pathname !== '/' && routeProps.location.pathname !== '/auth' && <Header />}
-                <Switch>
-                  <Route exact path="/" render={props => <Home {...props} />} />
-                  <Route path="/support" render={props => <Support {...props} />} />
-                  <Route path="/auth" render={props => <Auth {...props} />} />
-                  <Route path="/functions" render={props => <Auth {...props} />} />
-                  <Route path="/terms" render={props => <Terms {...props} />} />
-                  <Route path="/privacy" render={props => <Privacy {...props} />} />
-                  <Route render={props => <FourOhFour {...props} />} />
-                </Switch>
+                <Transition
+                  mountOnEnter
+                  unmountOnExit
+                  in={location.pathname !== '/' && location.pathname !== '/auth'}
+                  timeout={{enter: 0, exit: 400}}
+                >
+                  {status => <Header status={status} />}
+                </Transition>
+                <TransitionGroup component={React.Fragment}>
+                  <Transition key={location.pathname} timeout={300}>
+                    {status => (
+                      <MainContent status={status} id="MainContent" role="main">
+                        <Helmet>
+                          <link rel="canonical" href={`https://gamestackapp.com${location.pathname}`} />
+                        </Helmet>
+                        <AppContext.Provider value={{ status }}>
+                          <Suspense fallback={<React.Fragment />}>
+                            <Switch location={location}>
+                              <Route exact path="/" component={Home} />
+                              <Route path="/support" component={Support} />
+                              <Route path="/auth" component={Auth} />
+                              <Route path="/functions" component={Auth} />
+                              <Route path="/terms" component={Terms} />
+                              <Route path="/privacy" component={Privacy} />
+                              <Route component={FourOhFour} />
+                            </Switch>
+                          </Suspense>
+                        </AppContext.Provider>
+                      </MainContent>
+                    )}
+                  </Transition>
+                </TransitionGroup>
               </React.Fragment>
             )} />
           </Router>
-        </Fragment>
+        </React.Fragment>
       </ThemeProvider>
-    );
-  }
+    </HelmetProvider>
+  );
 };
 
 const GlobalStyles = createGlobalStyle`
   html,
   body {
-    background-color: ${Theme.colorBackground(1)}
+    background-color: ${props => props.theme.colorBackground(1)}
   }
 
   body {
     margin: 0;
     padding: 0;
-    font-family: ${Theme.fontStack};
+    font-family: ${props => props.theme.fontStack};
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -moz-font-feature-settings: "liga" on;
+    font-feature-settings: "liga" on;
   }
 
   *,
@@ -73,8 +99,31 @@ const GlobalStyles = createGlobalStyle`
   }
 
   ::selection {
-    background: ${Theme.colorBlue(0.5)};
+    background: ${props => props.theme.colorBlue(0.5)};
   }
+`;
+
+const MainContent = styled.main`
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+
+  ${props => props.status === 'exiting' && css`
+    position: absolute;
+    opacity: 0;
+  `}
+
+  ${props => props.status === 'entering' && css`
+    position: absolute;
+    opacity: 0;
+  `}
+
+  ${props => props.status === 'entered' && css`
+    transition-duration: 0.5s;
+    opacity: 1;
+  `}
 `;
 
 export default App;

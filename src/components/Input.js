@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const Input = ({ value, label, className, ...props }) => {
   const hasValue = value.length > 0;
@@ -15,7 +15,7 @@ const Input = ({ value, label, className, ...props }) => {
       </InputLabel>
     </InputWrapper>
   );
-}
+};
 
 const InputWrapper = styled.div`
   position: relative;
@@ -54,7 +54,7 @@ const InputLabel = styled.label`
   transform-origin: left top 0px;
   transition: all 0.4s ${props => props.theme.curveFastoutSlowin};
 
-  ${InputElement}:focus + & {
+  ${/* sc-selector */InputElement}:focus + & {
     transform: translate3d(0, -7px, 0) scale(0.7);
   }
 

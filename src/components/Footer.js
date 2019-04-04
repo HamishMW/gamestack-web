@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 
-const Footer = (props) => (
+const Footer = props => (
   <FooterWrapper className={props.className}>
     <FooterRow>
       <FooterLink to="/support">Support</FooterLink>
@@ -25,7 +25,6 @@ const FooterRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
   flex: 1 0 auto;
   position: relative;
   align-items: flex-end;
@@ -39,7 +38,6 @@ const FooterRow = styled.div`
 `;
 
 const FooterLink = styled(Link)`
-  text-decoration: none;
   margin: 15px;
   display: block;
   font-size: 16px;

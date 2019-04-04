@@ -3,37 +3,47 @@
   "version": "1.0.0",
   "private": true,
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
-    "eslint": "^4.1.1",
-    "eslint-config-react-app": "^2.1.0",
-    "eslint-plugin-flowtype": "^2.34.1",
-    "eslint-plugin-import": "^2.6.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.1.0",
-    "flow-bin": "^0.53.0",
-    "raw-loader": "^0.5.1",
-    "react-scripts": "1.1.4",
-    "react-snap": "^1.19.0"
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "raw-loader": "^2.0.0",
+    "react-scripts": "2.1.8",
+    "react-snap": "^1.23.0",
+    "stylelint": "^9.10.1",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.6.0"
   },
   "dependencies": {
     "color": "^3.1.0",
-    "markdown-to-jsx": "^6.8.3",
-    "react": "^16.6.1",
-    "react-dom": "^16.6.1",
-    "react-helmet": "^5.2.0",
-    "react-router-dom": "^4.3.1",
-    "styled-components": "^4.0.3"
+    "markdown-to-jsx": "^6.9.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-helmet-async": "^1.0.2",
+    "react-router-dom": "^5.0.0",
+    "react-transition-group": "^2.8.0",
+    "styled-components": "^4.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "postbuild": "node scripts/prerender.js && sw-precache --config=sw-precache-config.js",
+    "postbuild": "react-snap",
     "test": "react-scripts test --env=jsdom",
     "deploy": "firebase deploy --only hosting",
     "serve": "firebase serve --only hosting",
     "eject": "react-scripts eject"
   },
   "reactSnap": {
-    "skipThirdPartyRequests": true
-  }
+    "include": [
+      "/privacy",
+      "/support"
+    ],
+    "crawl": true,
+    "skipThirdPartyRequests": true,
+    "headless": false
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

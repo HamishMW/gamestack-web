@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled, { withTheme } from 'styled-components';
+import styled, { withTheme } from 'styled-components/macro';
 import Logo from '../components/Logo';
 import { AnchorButton } from '../components/Button';
 import Footer from '../components/Footer';
@@ -82,7 +82,6 @@ const MainHeroDetails = styled.div`
   @media (max-width: ${props => props.theme.tablet}) {
     justify-content: center;
     text-align: center;
-    max-width: none;
     padding: 80px 20px 40px;
     max-width: 500px;
   }

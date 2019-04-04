@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
-export default styled.main`
+export default styled.div`
   display: flex;
   flex-direction: row;
 

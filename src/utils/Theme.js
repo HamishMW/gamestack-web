@@ -2,7 +2,7 @@ export const Media = {
   desktop: '1440px',
   tablet: '1024px',
   mobile: '400px',
-}
+};
 
 const Theme = {
   ...Media,
@@ -16,6 +16,6 @@ const Theme = {
   colorBlue: (opacity = 1) => `rgba(41, 121, 255, ${opacity})`,
   colorBlueDark: (opacity = 1) => `rgba(24, 109, 253, ${opacity})`,
   curveFastoutSlowin: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
-}
+};
 
 export default Theme;

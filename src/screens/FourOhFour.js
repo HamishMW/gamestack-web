@@ -1,62 +1,57 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { Helmet } from 'react-helmet';
+import React, { useState, useContext } from 'react';
+import styled from 'styled-components/macro';
+import { Helmet } from 'react-helmet-async';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
 import { LinkButton } from '../components/Button';
 import FourOhFourMp4 from '../images/four-oh-four.mp4';
 import FourOhFourWebm from '../images/four-oh-four.webm';
 import FourOhFourBlur from '../images/four-oh-four-blur.jpg';
+import { useScrollToTop } from '../utils/Hooks';
+import { AppContext } from '../App';
 
-class FourOhFour extends Component {
-  state = {
-    videoLoaded: false,
-  };
+const prerender = navigator.userAgent === 'ReactSnap';
 
-  setLoaded = () => {
-    this.setState({ videoLoaded: true });
-  }
+function FourOhFour() {
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const { status } = useContext(AppContext);
+  useScrollToTop(status);
 
-  render() {
-    const { videoLoaded } = this.state;
-    const isReactSnap = window.location.port === '45678';
+  return (
+    <React.Fragment>
+      <Helmet>
+        <title>404 Not Found</title>
+        <meta name="description" content="This page doesn't exist" />
+      </Helmet>
+      <FourOhFourWrapper>
+        <FourOhFourContent>
+          <FourOhFourBackground>404</FourOhFourBackground>
+          <FourOhFourTitle>Sneaky Beaky</FourOhFourTitle>
+          <FourOhFourDescription>This page couldn't be found. It probably doesn't exist, or it may have moved</FourOhFourDescription>
+          <LinkButton secondary to="/" text="Back to homepage" />
+        </FourOhFourContent>
 
-    return (
-      <React.Fragment>
-        <Helmet>
-          <title>404 Not Found</title>
-          <meta name="description" content="This page doesn't exist" />
-        </Helmet>
-        <FourOhFourWrapper>
-          <FourOhFourContent>
-            <FourOhFourBackground>404</FourOhFourBackground>
-            <FourOhFourTitle>Sneaky Beaky</FourOhFourTitle>
-            <FourOhFourDescription>This page couldn't be found. It probably doesn't exist, or it may have moved</FourOhFourDescription>
-            <LinkButton secondary to="/" text="Back to homepage" />
-          </FourOhFourContent>
-
-          <FourOhFourVideoWrapper>
-            <FourOhFourImage src={FourOhFourBlur} loaded={videoLoaded} image alt="404 not found" />
-            {!isReactSnap &&
-              <FourOhFourVideo
-                autoPlay
-                muted
-                loop
-                playsInline
-                loaded={videoLoaded}
-                onLoadStart={this.setLoaded}
-              >
-                <source src={FourOhFourWebm} type="video/webm" />
-                <source src={FourOhFourMp4} type="video/mp4" />
-                <img src={FourOhFourBlur} alt="404 not found" />
-              </FourOhFourVideo>
-            }
-          </FourOhFourVideoWrapper>
-          <FourOhFourFooter />
-        </FourOhFourWrapper>
-      </React.Fragment>
-    );
-  }
+        <FourOhFourVideoWrapper>
+          <FourOhFourImage src={FourOhFourBlur} loaded={videoLoaded} image alt="404 not found" />
+          {!prerender &&
+            <FourOhFourVideo
+              autoPlay
+              muted
+              loop
+              playsInline
+              loaded={videoLoaded}
+              onLoadStart={() => setVideoLoaded(true)}
+            >
+              <source src={FourOhFourWebm} type="video/webm" />
+              <source src={FourOhFourMp4} type="video/mp4" />
+              <img src={FourOhFourBlur} alt="404 not found" />
+            </FourOhFourVideo>
+          }
+        </FourOhFourVideoWrapper>
+        <FourOhFourFooter />
+      </FourOhFourWrapper>
+    </React.Fragment>
+  );
 }
 
 const FourOhFourWrapper = styled(Container)`

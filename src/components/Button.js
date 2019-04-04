@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 import Color from 'color';
 import Icon from '../utils/Icon';
@@ -103,8 +103,8 @@ const ButtonWrapper = styled.button`
   color: ${props => props.theme.colorText(1)};
   text-decoration: none;
 
-  &:hover ${ButtonFill},
-  &:focus ${ButtonFill} {
+  &:hover ${/* sc-selector */ButtonFill},
+  &:focus ${/* sc-selector */ButtonFill} {
     background: ${props => Color(props.theme.colorBlueDark()).darken(0.1).string()};
     transform: scale3d(1.05, 1.05, 1);
 

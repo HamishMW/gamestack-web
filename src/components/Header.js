@@ -1,26 +1,29 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 import Logo from '../components/Logo';
 import { AnchorButton } from '../components/Button';
 
 const betaUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSf-8LaHUz8ftPvpgPeZQiaQVLcyw2caXF_57DGAvFJhClDBKw/viewform?usp=sf_link';
 
-const Header = ({ transparent, white, fixed = true }) => (
-  <HeaderContainer transparent={transparent} fixed={fixed}>
-    <HeaderLogo to="/">
-      <HeaderLogoIcon white={white} />
-      <HeaderLogoText>Gamestack</HeaderLogoText>
-    </HeaderLogo>
-    <HeaderButton
-      href={betaUrl}
-      secondary={white}
-      size="small"
-      text="Beta Sign Up"
-      target="_blank"
-      rel="noopener noreferrer"
-    />
-  </HeaderContainer>
+const Header = ({ transparent, white, fixed = true, status }) => (
+  <React.Fragment>
+    <SkipToMain href="#MainContent">Skip to main content</SkipToMain>
+    <HeaderContainer transparent={transparent} fixed={fixed} status={status}>
+      <HeaderLogo to="/">
+        <HeaderLogoIcon white={white} />
+        <HeaderLogoText>Gamestack</HeaderLogoText>
+      </HeaderLogo>
+      <HeaderButton
+        href={betaUrl}
+        secondary={white}
+        size="small"
+        text="Beta Sign Up"
+        target="_blank"
+        rel="noopener noreferrer"
+      />
+    </HeaderContainer>
+  </React.Fragment>
 );
 
 const HeaderContainer = styled.header`
@@ -34,10 +37,39 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   padding: 0 16px;
+  transition: opacity 0.4s ease;
   background: ${props => props.transparent
     ? 'transparent'
     : props.theme.colorBackgroundDark()
   };
+  opacity: ${props => props.status === 'entered' ? 1 : 0};
+`;
+
+const SkipToMain = styled.a`
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  color: ${props => props.theme.colorBackground()};
+  z-index: 2048;
+
+  &:focus {
+    background: ${props => props.theme.colorBlue()};
+    border-radius: 6px;
+    padding: 8px 16px;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    clip: auto;
+    width: auto;
+    height: auto;
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 1;
+  }
 `;
 
 const HeaderLogo = styled(Link)`

@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
-import styled, { css, keyframes, withTheme } from 'styled-components';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import styled, { css, keyframes, withTheme } from 'styled-components/macro';
+import { useScrollToTop } from '../utils/Hooks';
+import { AppContext } from '../App';
 import Footer from '../components/Footer';
 import Container from '../components/Container';
 import MainHero from '../components/MainHero';
@@ -18,107 +20,98 @@ import BackgroundSmallBlur from '../images/background-small-blur.png';
 import BackgroundSmall from '../images/background-small.png';
 import BackgroundSmall2x from '../images/background-small@2x.png';
 
-const isReactSnap = window.location.port === '45678';
+const prerender = navigator.userAgent === 'ReactSnap';
+const imageAlt = 'Gamestack – an app to organize all your games in one place';
 
-class Home extends Component {
-  state = {
-    imageLoaded: false,
+function Home({ theme }) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const imageRef = useRef();
+  const { status } = useContext(AppContext);
+  useScrollToTop(status);
+
+  useEffect(() => {
+    if (imageRef.current.complete) {
+      setImageLoaded(true);
+    }
+  }, []);
+
+  const handleImageLoad = () => {
+    if (!prerender) setImageLoaded(true);
   };
 
-  componentDidMount() {
-    if (this.image.complete) {
-      this.setImageLoaded();
-    }
-  }
-
-  setImageLoaded = () => {
-    !isReactSnap && this.setState({ imageLoaded: true });
-  }
-
-  render() {
-    const { theme } = this.props;
-    const { imageLoaded } = this.state;
-    const imageAlt = 'Gamestack – an app to organize all your games in one place';
-
-    return (
-      <HomeContainer>
-        <HomeHero
-          appName="Gamestack"
-          title="Track your games"
-          description={
-            `Sync your Steam & Blizzard game libraries.
-            Track your progress, achievements, and time played.`
-          }
+  return (
+    <HomeContainer>
+      <HomeHero
+        appName="Gamestack"
+        title="Track your games"
+        description={
+          `Sync your Steam & Blizzard game libraries.
+          Track your progress, achievements, and time played.`
+        }
+      />
+      <PreviewSection>
+        <HomePhoneContainer
+          mp4={HeroMp4}
+          webm={HeroWebm}
+          frame={HeroVideoFrame}
         />
-
-        <PreviewSection>
-          <HomePhoneContainer
-            mp4={HeroMp4}
-            webm={HeroWebm}
-            frame={HeroVideoFrame}
-          />
-
-          <PreviewSectionDetail>
-            <PreviewSectionDetailRow>
-              <PreviewSectionDetailIcon icon="steam" />
-              <PreviewSectionDetailIcon icon="blizzard" />
-            </PreviewSectionDetailRow>
-            <PreviewSectionDetailText>Currently supported</PreviewSectionDetailText>
-          </PreviewSectionDetail>
-
-          <PreviewSectionBackground>
-            <PreviewSectionPicture>
-              <source
-                srcSet={`${BackgroundLargeBlur}`}
-                media={`(min-width: ${theme.desktop})`}
-              />
-              <source
-                srcSet={`${BackgroundMediumBlur}`}
-                media={`(min-width: ${theme.mobile})`}
-              />
-              <PreviewSectionImage
-                blur
-                src={BackgroundSmallBlur}
-                show={!imageLoaded}
-                srcSet={`${BackgroundSmallBlur}`}
-                alt={imageAlt}
-              />
-            </PreviewSectionPicture>
-            <PreviewSectionPicture>
-              <source
-                srcSet={`${BackgroundLarge} 1x, ${BackgroundLarge2x} 2x`}
-                media={`(min-width: ${theme.desktop})`}
-              />
-              <source
-                srcSet={`${BackgroundMedium} 1x, ${BackgroundMedium2x} 2x`}
-                media={`(min-width: ${theme.mobile})`}
-              />
-              <PreviewSectionImage
-                ref={(image) => this.image = image}
-                src={BackgroundSmall}
-                show={imageLoaded && !isReactSnap}
-                onLoad={this.setImageLoaded}
-                srcSet={`${BackgroundSmall} 1x, ${BackgroundSmall2x} 2x`}
-                alt={imageAlt}
-              />
-            </PreviewSectionPicture>
-
-            <PreviewSectionAngle top viewBox="0 0 100 100" preserveAspectRatio="none">
-              <polygon points="0 0, 100 0, 100 100" />
+        <PreviewSectionDetail>
+          <PreviewSectionDetailRow>
+            <PreviewSectionDetailIcon icon="steam" />
+            <PreviewSectionDetailIcon icon="blizzard" />
+          </PreviewSectionDetailRow>
+          <PreviewSectionDetailText>Currently supported</PreviewSectionDetailText>
+        </PreviewSectionDetail>
+        <PreviewSectionBackground>
+          <PreviewSectionPicture>
+            <source
+              srcSet={`${BackgroundLargeBlur}`}
+              media={`(min-width: ${theme.desktop})`}
+            />
+            <source
+              srcSet={`${BackgroundMediumBlur}`}
+              media={`(min-width: ${theme.mobile})`}
+            />
+            <PreviewSectionImage
+              blur
+              src={BackgroundSmallBlur}
+              show={!imageLoaded}
+              srcSet={`${BackgroundSmallBlur}`}
+              alt={imageAlt}
+            />
+          </PreviewSectionPicture>
+          <PreviewSectionPicture>
+            <source
+              srcSet={`${BackgroundLarge} 1x, ${BackgroundLarge2x} 2x`}
+              media={`(min-width: ${theme.desktop})`}
+            />
+            <source
+              srcSet={`${BackgroundMedium} 1x, ${BackgroundMedium2x} 2x`}
+              media={`(min-width: ${theme.mobile})`}
+            />
+            <PreviewSectionImage
+              ref={imageRef}
+              src={BackgroundSmall}
+              show={imageLoaded && !prerender}
+              onLoad={handleImageLoad}
+              srcSet={`${BackgroundSmall} 1x, ${BackgroundSmall2x} 2x`}
+              alt={imageAlt}
+            />
+          </PreviewSectionPicture>
+          <PreviewSectionAngle top viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polygon points="0 0, 100 0, 100 100" />
+          </PreviewSectionAngle>
+          <PreviewSectionMaskWrapper>
+            <PreviewSectionMask />
+            <PreviewSectionAngle viewBox="0 0 100 100" preserveAspectRatio="none">
+              <polygon points="0 0, 0 100, 100 100" />
             </PreviewSectionAngle>
-
-            <PreviewSectionMaskWrapper>
-              <PreviewSectionMask />
-              <PreviewSectionAngle viewBox="0 0 100 100" preserveAspectRatio="none">
-                <polygon points="0 0, 0 100, 100 100" />
-              </PreviewSectionAngle>
-            </PreviewSectionMaskWrapper>
-          </PreviewSectionBackground>
-        </PreviewSection>
-        <HomeMobileFooter />
-      </HomeContainer>
-    )
-  }
+          </PreviewSectionMaskWrapper>
+        </PreviewSectionBackground>
+      </PreviewSection>
+      <HomeMobileFooter />
+    </HomeContainer>
+  );
 }
 
 const HomeContainer = styled(Container)`
@@ -138,7 +131,7 @@ const AnimFade = keyframes`
 
 const HomeHero = styled(MainHero)`
   opacity: 0;
-  animation-name: ${css`${AnimFade}`};
+  animation-name: ${!prerender && css`${AnimFade}`};
   animation-timing-function: ease;
   animation-duration: 0.9s;
   animation-delay: 0.3s;
@@ -164,7 +157,7 @@ const AnimSlide = keyframes`
 const HomePhoneContainer = styled(PhoneContainer)`
   transform: translate3d(120px, 0, 0);
   opacity: 0;
-  animation-name: ${css`${AnimSlide}`};
+  animation-name: ${!prerender && css`${AnimSlide}`};
   animation-timing-function: ${props => props.theme.curveFastoutSlowin};
   animation-duration: 1s;
   animation-delay: 0.6s;
@@ -303,7 +296,7 @@ const PreviewSectionMaskWrapper = styled.div`
   z-index: 20;
   height: 100%;
   transform: translate3d(0, 0, 0);
-  animation-name: ${css`${AnimBackgroundMask}`};
+  animation-name: ${!prerender && css`${AnimBackgroundMask}`};
   animation-duration: 1.4s;
   animation-delay: 0.2s;
   animation-timing-function: ${props => props.theme.curveFastoutSlowin};

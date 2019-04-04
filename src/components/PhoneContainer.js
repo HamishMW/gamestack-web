@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const PhoneContainer = ({ className, frame, mp4, webm }) => (
   <PhoneContainerWrapper className={className}>
@@ -23,11 +23,9 @@ const PhoneContainer = ({ className, frame, mp4, webm }) => (
 const PhoneContainerWrapper = styled.div`
   display: flex;
   height: auto;
-  overflow: hidden;
   padding: 0;
   position: relative;
   flex: 1 0 auto;
-  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10;

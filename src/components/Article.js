@@ -1,16 +1,19 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Helmet } from 'react-helmet';
+import React, { useContext } from 'react';
+import styled from 'styled-components/macro';
+import { Helmet } from 'react-helmet-async';
 import Markdown from 'markdown-to-jsx';
 import Footer from '../components/Footer';
-import ScrollToTop from '../utils/ScrollToTop';
+import { useScrollToTop } from '../utils/Hooks';
+import { AppContext } from '../App';
+
 
 const Article = (props) => {
   const { title, description, article } = props;
+  const { status } = useContext(AppContext);
+  useScrollToTop(status);
 
   return (
     <React.Fragment>
-      <ScrollToTop />
       <Helmet>
         <title>{title}</title>
         {description && <meta name="description" content={description} />}
@@ -22,7 +25,7 @@ const Article = (props) => {
       </ArticleContainer>
       <Footer />
     </React.Fragment>
-  )
+  );
 };
 
 const ArticleContainer = styled.article`
@@ -92,7 +95,6 @@ const ArticleContent = styled.div`
   a:visited {
     color: ${props => props.theme.colorBlueLight()};
     cursor: pointer;
-    text-decoration: none;
     transition: all 0.3s ease;
     text-decoration: underline;
     text-decoration-color: ${props => props.theme.colorBlueLight(0)};

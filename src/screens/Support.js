@@ -1,45 +1,50 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useContext } from 'react';
+import styled from 'styled-components/macro';
 import { AnchorButton } from '../components/Button';
 import Footer from '../components/Footer';
 import SupportImage2x from '../images/support@2x.png';
 import SupportImage from '../images/support.png';
 import Container from '../components/Container';
-import { Helmet } from 'react-helmet';
-import ScrollToTop from '../utils/ScrollToTop';
+import { Helmet } from 'react-helmet-async';
+import { useScrollToTop } from '../utils/Hooks';
+import { AppContext } from '../App';
 
-const Support = () => (
-  <React.Fragment>
-    <ScrollToTop />
-    <Helmet>
-      <title>Support</title>
-      <meta name="description" content="Contact Gamestack support if you‘re having problems" />
-    </Helmet>
-    <SupportWrapper>
-      <SupportTextSection>
-        <picture>
-          <img
-            srcSet={`${SupportImage} 1x, ${SupportImage2x} 2x`}
-            src={SupportImage}
-            alt="We're here to help"
+function Support() {
+  const { status } = useContext(AppContext);
+  useScrollToTop(status);
+
+  return (
+    <React.Fragment>
+      <Helmet>
+        <title>Support</title>
+        <meta name="description" content="Contact Gamestack support if you‘re having problems" />
+      </Helmet>
+      <SupportWrapper>
+        <SupportTextSection>
+          <picture>
+            <img
+              srcSet={`${SupportImage} 1x, ${SupportImage2x} 2x`}
+              src={SupportImage}
+              alt="We're here to help"
+            />
+          </picture>
+          <SupportTitle>Gamestack Support</SupportTitle>
+          <SupportDescription>
+            {`Reach out to us if you have feedback or
+              want to report a technical problem.`}
+          </SupportDescription>
+          <SupportButton
+            shadow
+            text="Contact Support"
+            data-gtm="support-contact"
+            href="mailto:contact@gamestackapp.com?subject=Gamestack%20Support%20Request"
           />
-        </picture>
-        <SupportTitle>Gamestack Support</SupportTitle>
-        <SupportDescription>
-          {`Reach out to us if you have feedback or
-            want to report a technical problem.`}
-        </SupportDescription>
-        <SupportButton
-          shadow
-          text="Contact Support"
-          data-gtm="support-contact"
-          href="mailto:contact@gamestackapp.com?subject=Gamestack%20Support%20Request"
-        />
-      </SupportTextSection>
-    </SupportWrapper>
-    <Footer />
-  </React.Fragment>
-);
+        </SupportTextSection>
+      </SupportWrapper>
+      <Footer />
+    </React.Fragment>
+  );
+};
 
 const SupportWrapper = styled(Container)`
   flex-direction: column;
