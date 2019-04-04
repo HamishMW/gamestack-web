@@ -6,7 +6,6 @@ import Footer from '../components/Footer';
 import { useScrollToTop } from '../utils/Hooks';
 import { AppContext } from '../App';
 
-
 const Article = (props) => {
   const { title, description, article } = props;
   const { status } = useContext(AppContext);

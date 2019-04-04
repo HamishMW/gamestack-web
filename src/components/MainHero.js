@@ -1,56 +1,51 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import styled, { withTheme } from 'styled-components/macro';
 import Logo from '../components/Logo';
 import { AnchorButton } from '../components/Button';
 import Footer from '../components/Footer';
 import Input from '../components/Input';
 
-class MainHero extends Component {
-  state = {
-    inputValue: '',
-  }
+const actionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSf-8LaHUz8ftPvpgPeZQiaQVLcyw2caXF_57DGAvFJhClDBKw/viewform?usp=sf_link';
 
-  onChange = event => {
-    this.setState({ inputValue: event.target.value });
-  }
+function MainHero(props) {
+  const { appName, title, description, theme, ...rest } = props;
+  const [inputValue, setInputValue] = useState('');
 
-  render() {
-    const { appName, title, description, className, theme } = this.props;
-    const { inputValue } = this.state;
-    const actionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSf-8LaHUz8ftPvpgPeZQiaQVLcyw2caXF_57DGAvFJhClDBKw/viewform?usp=sf_link';
+  const onChange = event => {
+    setInputValue(event.target.value);
+  };
 
-    return (
-      <MainHeroContainer className={className}>
-        <MainHeroDetails>
-          <MainHeroLogo>
-            <MainHeroLogoIcon color={theme.colorBlue(1)} />
-            <MainHeroLogoText>{appName}</MainHeroLogoText>
-          </MainHeroLogo>
-          <MainHeroTitle>{title}</MainHeroTitle>
-          <MainHeroDescription>{description}</MainHeroDescription>
-          <MainHeroActions>
-            {false &&
-              <Input
-                value={inputValue}
-                label="Enter your email"
-                onChange={this.onChange}
-              />
-            }
-            <MainHeroButton
-              shadow
-              icon="apple"
-              text="Request beta invite"
-              data-gtm="beta-request"
-              target="_blank"
-              rel="noopener noreferrer"
-              href={actionUrl}
+  return (
+    <MainHeroContainer {...rest}>
+      <MainHeroDetails>
+        <MainHeroLogo>
+          <MainHeroLogoIcon color={theme.colorBlue(1)} />
+          <MainHeroLogoText>{appName}</MainHeroLogoText>
+        </MainHeroLogo>
+        <MainHeroTitle>{title}</MainHeroTitle>
+        <MainHeroDescription>{description}</MainHeroDescription>
+        <MainHeroActions>
+          {false &&
+            <Input
+              value={inputValue}
+              label="Enter your email"
+              onChange={onChange}
             />
-          </MainHeroActions>
-        </MainHeroDetails>
-        <MainHeroFooter />
-      </MainHeroContainer>
-    );
-  }
+          }
+          <MainHeroButton
+            shadow
+            icon="apple"
+            text="Request beta invite"
+            data-gtm="beta-request"
+            target="_blank"
+            rel="noopener noreferrer"
+            href={actionUrl}
+          />
+        </MainHeroActions>
+      </MainHeroDetails>
+      <MainHeroFooter />
+    </MainHeroContainer>
+  );
 }
 
 const MainHeroContainer = styled.section`
@@ -111,7 +106,7 @@ const MainHeroLogoIcon = styled(Logo)`
   }
 `;
 
-const MainHeroLogoText = styled.h2`
+const MainHeroLogoText = styled.h1`
   font-size: 24px;
   font-weight: 300;
   margin: 0;
@@ -121,7 +116,7 @@ const MainHeroLogoText = styled.h2`
   }
 `;
 
-const MainHeroTitle = styled.h1`
+const MainHeroTitle = styled.h2`
   font-size: 56px;
   font-weight: 600;
   margin: 20px 0 0;
