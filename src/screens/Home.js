@@ -73,7 +73,6 @@ function Home({ theme }) {
               media={`(min-width: ${theme.mobile})`}
             />
             <PreviewSectionImage
-              blur
               src={BackgroundSmallBlur}
               show={!imageLoaded}
               srcSet={`${BackgroundSmallBlur}`}
@@ -273,9 +272,7 @@ const PreviewSectionImage = styled.img`
   left: 0;
   height: 100%;
   width: 100%;
-  opacity: 0;
-  ${props => props.show && 'opacity: 0.5;'}
-  ${props => props.blur && 'filter: blur(10px);'}
+  opacity: ${props => props.show ? 0.5 : 0};
   transition: opacity 0.9s ease;
 `;
 
@@ -341,7 +338,7 @@ const PreviewSectionAngle = styled.svg`
     bottom: 0;
   }
 
-  ${props => props.top && `
+  ${props => props.top && css`
     top: 0;
     bottom: auto;
     display: none;
@@ -361,6 +358,7 @@ const PreviewSectionDetail = styled.div`
   margin: 20px 0;
   position: absolute;
   bottom: 0;
+  opacity: ${prerender ? 0 : 1};
 
   @media (max-width: ${props => props.theme.tablet}) {
     position: relative;
@@ -391,8 +389,12 @@ const PreviewSectionDetailIcon = styled(Icon)`
 
 const PreviewSectionDetailText = styled.div`
   font-size: 16px;
-  color: ${props => props.theme.colorWhite(0.6)};
+  color: ${props => props.theme.colorWhite(0.9)};
   font-weight: 500;
+  background: ${props => props.theme.colorBlack(0.16)};
+  padding: 6px 10px 8px;
+  line-height: 1;
+  border-radius: 6px;
 
   @media (max-width: ${props => props.theme.tablet}) {
     margin-bottom: 20px;

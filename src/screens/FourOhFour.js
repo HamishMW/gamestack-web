@@ -106,7 +106,7 @@ const FourOhFourBackground = styled.div`
   font-weight: 800;
   position: absolute;
   z-index: -1;
-  color: ${props => props.theme.colorWhite(0.15)};
+  color: ${props => props.theme.colorBlack(0.15)};
 
   @media (max-width: ${props => props.theme.mobile}) {
     font-size: 220px;
@@ -120,6 +120,7 @@ const FourOhFourVideoWrapper = styled.div`
   bottom: 0;
   left: 0;
   overflow: hidden;
+  max-height: 100vh;
 
   &:before {
     content: '';
@@ -145,8 +146,6 @@ const FourOhFourVideo = styled.video`
   z-index: 0;
   transition: opacity 0.5s ease;
   opacity: 0;
-
-  ${props => props.image && 'filter: blur(10px);'}
 
   ${props => props.loaded && !props.image &&
     'opacity: 1;'
