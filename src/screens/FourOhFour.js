@@ -31,12 +31,12 @@ function FourOhFour() {
           <LinkButton secondary to="/" text="Back to homepage" />
         </FourOhFourContent>
 
-        <FourOhFourVideoWrapper>
+        <FourOhFourVideoWrapper aria-hidden>
           <FourOhFourImage src={FourOhFourBlur} loaded={videoLoaded} image alt="404 not found" />
           {!prerender &&
             <FourOhFourVideo
-              autoPlay
               muted
+              autoPlay
               loop
               playsInline
               loaded={videoLoaded}

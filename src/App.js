@@ -46,7 +46,7 @@ function App() {
                 <TransitionGroup component={React.Fragment}>
                   <Transition key={location.pathname} timeout={300}>
                     {status => (
-                      <MainContent status={status} id="MainContent" role="main">
+                      <MainContent status={status} id="MainContent" role="main" tabIndex={-1}>
                         <Helmet>
                           <link rel="canonical" href={`https://gamestackapp.com${location.pathname}`} />
                         </Helmet>
@@ -79,7 +79,7 @@ function App() {
 const GlobalStyles = createGlobalStyle`
   html,
   body {
-    background-color: ${props => props.theme.colorBackground(1)}
+    background-color: ${props => props.theme.colorBackground(1)};
   }
 
   body {
@@ -89,7 +89,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: "liga" on;
+    font-feature-settings: 'liga' on;
   }
 
   *,
@@ -109,6 +109,11 @@ const MainContent = styled.main`
   position: relative;
   transition: opacity 0.3s ease;
   opacity: 0;
+  min-height: 100vh;
+
+  &:focus {
+    outline: none;
+  }
 
   ${props => props.status === 'exiting' && css`
     position: absolute;

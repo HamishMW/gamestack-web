@@ -1,16 +1,17 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-const PhoneContainer = ({ className, frame, mp4, webm }) => (
-  <PhoneContainerWrapper className={className}>
+const PhoneContainer = ({ frame, mp4, webm, label, ...rest }) => (
+  <PhoneContainerWrapper {...rest}>
     <PhoneContainerPhone>
       <PhoneContainerScreen>
         <PhoneContainerVideo
-          poster={frame}
           autoPlay
           muted
           loop
           playsInline
+          aria-label={label}
+          poster={frame}
         >
           <source src={mp4} type="video/mp4" />
           <source src={webm} type="video/webm" />

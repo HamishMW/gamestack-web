@@ -51,6 +51,7 @@ function Home({ theme }) {
       />
       <PreviewSection>
         <HomePhoneContainer
+          label="A video showing the process of completing a game in the app and making progress toward a monthly goal."
           mp4={HeroMp4}
           webm={HeroWebm}
           frame={HeroVideoFrame}
@@ -60,9 +61,9 @@ function Home({ theme }) {
             <PreviewSectionDetailIcon icon="steam" />
             <PreviewSectionDetailIcon icon="blizzard" />
           </PreviewSectionDetailRow>
-          <PreviewSectionDetailText>Currently supported</PreviewSectionDetailText>
+          <PreviewSectionDetailText aria-label="Steam and Blizzard are currently supported">Currently supported</PreviewSectionDetailText>
         </PreviewSectionDetail>
-        <PreviewSectionBackground>
+        <PreviewSectionBackground aria-hidden>
           <PreviewSectionPicture>
             <source
               srcSet={`${BackgroundLargeBlur}`}
