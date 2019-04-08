@@ -27,7 +27,8 @@
     "build": "react-scripts build",
     "postbuild": "react-snap",
     "test": "react-scripts test --env=jsdom",
-    "deploy": "firebase deploy --only hosting",
+    "deploy": "irebase use dev && firebase deploy --only hosting",
+    "deploy-prod": "firebase use prod && firebase deploy --only hosting",
     "serve": "firebase serve --only hosting",
     "eject": "react-scripts eject"
   },

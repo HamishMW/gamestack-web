@@ -6,7 +6,7 @@ export const Media = {
 
 const Theme = {
   ...Media,
-  fontStack: '-apple-system, BlinkMacSystemFont, "San Francisco", Roboto, "Segoe UI", Helvetica Neue, sans-serif',
+  fontStack: `system-ui, -apple-system, BlinkMacSystemFont, 'San Francisco', Roboto, 'Segoe UI', Oxygen, Ubuntu, Cantarell, Helvetica Neue, sans-serif`,
   colorBlack: (opacity = 1) => `rgba(0, 0, 0 , ${opacity})`,
   colorWhite: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
   colorBackground: (opacity = 1) => `rgba(33, 38, 47, ${opacity})`,

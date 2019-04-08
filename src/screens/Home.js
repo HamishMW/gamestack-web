@@ -10,6 +10,7 @@ import Icon from '../utils/Icon';
 import HeroMp4 from '../images/app-preview.mp4';
 import HeroWebm from '../images/app-preview.webm';
 import HeroVideoFrame from '../images/app-preview-frame.jpg';
+import HeroVideoPlaceholder from '../images/app-preview-placeholder.jpg';
 import BackgroundLargeBlur from '../images/background-large-blur.png';
 import BackgroundLarge from '../images/background-large.png';
 import BackgroundLarge2x from '../images/background-large@2x.png';
@@ -55,6 +56,7 @@ function Home({ theme }) {
           mp4={HeroMp4}
           webm={HeroWebm}
           frame={HeroVideoFrame}
+          placeholder={HeroVideoPlaceholder}
         />
         <PreviewSectionDetail>
           <PreviewSectionDetailRow>

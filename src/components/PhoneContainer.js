@@ -1,25 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/macro';
 
-const PhoneContainer = ({ frame, mp4, webm, label, ...rest }) => (
-  <PhoneContainerWrapper {...rest}>
-    <PhoneContainerPhone>
-      <PhoneContainerScreen>
-        <PhoneContainerVideo
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-label={label}
-          poster={frame}
-        >
-          <source src={mp4} type="video/mp4" />
-          <source src={webm} type="video/webm" />
-        </PhoneContainerVideo>
-      </PhoneContainerScreen>
-    </PhoneContainerPhone>
-  </PhoneContainerWrapper>
-);
+const PhoneContainer = ({ frame, mp4, webm, label, placeholder, ...rest }) => {
+  const [loaded, setLoaded] = useState(false);
+  const [posterLoaded, setPosterLoaded] = useState(false);
+
+  return (
+    <PhoneContainerWrapper {...rest}>
+      <PhoneContainerPhone>
+        <PhoneContainerScreen>
+          <PhoneContainerVideo
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-label={label}
+            onPlay={() => setLoaded(true)}
+          >
+            <source src={mp4} type="video/mp4" />
+            <source src={webm} type="video/webm" />
+          </PhoneContainerVideo>
+          <PhoneContainerPlaceholder
+            instant
+            src={frame}
+            loaded={loaded}
+            onLoad={() => setPosterLoaded(true)}
+          />
+          <PhoneContainerPlaceholder
+            src={placeholder}
+            loaded={posterLoaded || loaded}
+          />
+        </PhoneContainerScreen>
+      </PhoneContainerPhone>
+    </PhoneContainerWrapper>
+  );
+};
 
 const PhoneContainerWrapper = styled.div`
   display: flex;
@@ -83,7 +98,7 @@ const PhoneContainerScreen = styled.div`
   padding: 76px 24px;
   border-radius: 4px;
   max-width: 100%;
-  display: flex;
+  display: grid;
   align-items: flex-start;
 
   @media (max-width: ${props => props.theme.desktop}) {
@@ -92,7 +107,8 @@ const PhoneContainerScreen = styled.div`
 `;
 
 const PhoneContainerVideo = styled.video`
-  flex: 1 0 auto;
+  grid-column: 1;
+  grid-row: 1;
   box-shadow: 0 0 0 2px #21252B;
   border-radius: 4px;
   object-fit: cover;
@@ -108,6 +124,21 @@ const PhoneContainerVideo = styled.video`
     width: 100%;
     height: auto;
   }
+`;
+
+const PhoneContainerPlaceholder = styled.img.attrs({
+  alt: '',
+  role: 'presentation',
+})`
+  box-shadow: 0 0 0 2px #21252B;
+  opacity: ${props => props.loaded ? 0 : 1};
+  transition: opacity ${props => props.instant ? 0 : 0.4}s ease;
+  border-radius: 4px;
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  position: relative;
+  z-index: 1;
 `;
 
 export default PhoneContainer;
