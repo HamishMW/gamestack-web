@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "color": "^3.1.2",
-    "markdown-to-jsx": "^6.10.2",
+    "markdown-to-jsx": "^6.11.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet-async": "^1.0.2",
