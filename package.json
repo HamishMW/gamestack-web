@@ -27,9 +27,7 @@
     "build": "react-scripts build",
     "postbuild": "react-snap",
     "test": "react-scripts test --env=jsdom",
-    "deploy": "firebase use dev && firebase deploy --only hosting",
-    "deploy-prod": "firebase use prod && firebase deploy --only hosting",
-    "serve": "firebase serve --only hosting",
+    "deploy": "aws s3 sync --delete build/ s3://hamish-portfolio-gamestack",
     "eject": "react-scripts eject"
   },
   "reactSnap": {

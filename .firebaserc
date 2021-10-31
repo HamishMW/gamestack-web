@@ -1,7 +1,0 @@
-{
-  "projects": {
-    "default": "gamestack-app",
-    "prod": "gamestack-app",
-    "dev": "gamestack-dev"
-  }
-}
