@@ -6,7 +6,6 @@
     "eslint-plugin-react-hooks": "^1.6.0",
     "raw-loader": "^3.0.0",
     "react-scripts": "3.0.1",
-    "react-snap": "^1.23.0",
     "stylelint": "^10.0.1",
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-styled-components": "^0.1.1",
@@ -25,7 +24,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "postbuild": "react-snap",
     "test": "react-scripts test --env=jsdom",
     "deploy": "aws s3 sync --delete build/ s3://hamish-portfolio-gamestack",
     "eject": "react-scripts eject"
@@ -44,5 +42,8 @@
     "not dead",
     "not ie 11",
     "not op_mini all"
-  ]
+  ],
+  "engines": {
+    "node": "16.20.0"
+  }
 }

@@ -1,23 +1,26 @@
-import React, { createContext, lazy, Suspense, useEffect } from 'react';
-import styled, { ThemeProvider, createGlobalStyle, css } from 'styled-components/macro';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Transition, TransitionGroup } from 'react-transition-group';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
-import Header from './components/Header';
-import Theme from './utils/Theme';
+import React, { createContext, lazy, Suspense, useEffect } from "react";
+import styled, {
+  ThemeProvider,
+  createGlobalStyle,
+  css,
+} from "styled-components/macro";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Transition, TransitionGroup } from "react-transition-group";
+import { Helmet, HelmetProvider } from "react-helmet-async";
+import Header from "./components/Header";
+import Theme from "./utils/Theme";
 
-const Home = lazy(() => import('./screens/Home'));
-const Auth = lazy(() => import('./screens/Auth'));
-const FourOhFour = lazy(() => import('./screens/FourOhFour'));
-const Support = lazy(() => import('./screens/Support'));
-const Terms = lazy(() => import('./screens/Terms'));
-const Privacy = lazy(() => import('./screens/Privacy'));
+const Home = lazy(() => import("./screens/Home"));
+const FourOhFour = lazy(() => import("./screens/FourOhFour"));
+const Support = lazy(() => import("./screens/Support"));
+const Terms = lazy(() => import("./screens/Terms"));
+const Privacy = lazy(() => import("./screens/Privacy"));
 
 export const AppContext = createContext();
 
 function App() {
   useEffect(() => {
-    window.history.scrollRestoration = 'manual';
+    window.history.scrollRestoration = "manual";
   }, []);
 
   return (
@@ -33,59 +36,69 @@ function App() {
           </Helmet>
           <GlobalStyles />
           <Router>
-            <Route render={({ location }) => (
-              <React.Fragment>
-                <Transition
-                  mountOnEnter
-                  unmountOnExit
-                  in={location.pathname !== '/' && location.pathname !== '/auth'}
-                  timeout={{enter: 0, exit: 400}}
-                >
-                  {status => <Header status={status} />}
-                </Transition>
-                <TransitionGroup component={React.Fragment}>
-                  <Transition key={location.pathname} timeout={300}>
-                    {status => (
-                      <MainContent status={status} id="MainContent" role="main" tabIndex={-1}>
-                        <Helmet>
-                          <link rel="canonical" href={`https://gamestackapp.com${location.pathname}`} />
-                        </Helmet>
-                        <AppContext.Provider value={{ status }}>
-                          <Suspense fallback={<React.Fragment />}>
-                            <Switch location={location}>
-                              <Route exact path="/" component={Home} />
-                              <Route path="/support" component={Support} />
-                              <Route path="/auth" component={Auth} />
-                              <Route path="/functions" component={Auth} />
-                              <Route path="/terms" component={Terms} />
-                              <Route path="/privacy" component={Privacy} />
-                              <Route component={FourOhFour} />
-                            </Switch>
-                          </Suspense>
-                        </AppContext.Provider>
-                      </MainContent>
-                    )}
+            <Route
+              render={({ location }) => (
+                <React.Fragment>
+                  <Transition
+                    mountOnEnter
+                    unmountOnExit
+                    in={
+                      location.pathname !== "/" && location.pathname !== "/auth"
+                    }
+                    timeout={{ enter: 0, exit: 400 }}
+                  >
+                    {(status) => <Header status={status} />}
                   </Transition>
-                </TransitionGroup>
-              </React.Fragment>
-            )} />
+                  <TransitionGroup component={React.Fragment}>
+                    <Transition key={location.pathname} timeout={300}>
+                      {(status) => (
+                        <MainContent
+                          status={status}
+                          id="MainContent"
+                          role="main"
+                          tabIndex={-1}
+                        >
+                          <Helmet>
+                            <link
+                              rel="canonical"
+                              href={`https://gamestackapp.com${location.pathname}`}
+                            />
+                          </Helmet>
+                          <AppContext.Provider value={{ status }}>
+                            <Suspense fallback={<React.Fragment />}>
+                              <Switch location={location}>
+                                <Route exact path="/" component={Home} />
+                                <Route path="/support" component={Support} />
+                                <Route path="/terms" component={Terms} />
+                                <Route path="/privacy" component={Privacy} />
+                                <Route component={FourOhFour} />
+                              </Switch>
+                            </Suspense>
+                          </AppContext.Provider>
+                        </MainContent>
+                      )}
+                    </Transition>
+                  </TransitionGroup>
+                </React.Fragment>
+              )}
+            />
           </Router>
         </React.Fragment>
       </ThemeProvider>
     </HelmetProvider>
   );
-};
+}
 
 const GlobalStyles = createGlobalStyle`
   html,
   body {
-    background-color: ${props => props.theme.colorBackground(1)};
+    background-color: ${(props) => props.theme.colorBackground(1)};
   }
 
   body {
     margin: 0;
     padding: 0;
-    font-family: ${props => props.theme.fontStack};
+    font-family: ${(props) => props.theme.fontStack};
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -99,7 +112,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   ::selection {
-    background: ${props => props.theme.colorBlue(0.5)};
+    background: ${(props) => props.theme.colorBlue(0.5)};
   }
 `;
 
@@ -115,20 +128,26 @@ const MainContent = styled.main`
     outline: none;
   }
 
-  ${props => props.status === 'exiting' && css`
-    position: absolute;
-    opacity: 0;
-  `}
+  ${(props) =>
+    props.status === "exiting" &&
+    css`
+      position: absolute;
+      opacity: 0;
+    `}
 
-  ${props => props.status === 'entering' && css`
-    position: absolute;
-    opacity: 0;
-  `}
+  ${(props) =>
+    props.status === "entering" &&
+    css`
+      position: absolute;
+      opacity: 0;
+    `}
 
-  ${props => props.status === 'entered' && css`
-    transition-duration: 0.5s;
-    opacity: 1;
-  `}
+  ${(props) =>
+    props.status === "entered" &&
+    css`
+      transition-duration: 0.5s;
+      opacity: 1;
+    `}
 `;
 
 export default App;
